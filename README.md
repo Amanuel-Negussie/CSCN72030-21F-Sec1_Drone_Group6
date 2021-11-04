@@ -1,11 +1,6 @@
 <div id="top"></div>
 
 <div align="center">
-
-  <!-- PROJECT SHIELDS -->
-  [![Contributors][contributors-shield]][contributors-url]
-  [![Stargazers][stars-shield]][stars-url]
-  [![Issues][issues-shield]][issues-url] 
   
 </div>
 
@@ -93,12 +88,3 @@ Danny Smith | dsmith2304@conestogac.on.ca
 Amanuel Negussie | anegussie9077@conestogac.on.ca
 
 Project Link: [https://github.com/nickvprince/CSCN72030-21F-Sec1_Drone_Group6](https://github.com/nickvprince/CSCN72030-21F-Sec1_Drone_Group6)
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/nickvprince/CSCN72030-21F-Sec1_Drone_Group6.svg?style=for-the-badge
-[contributors-url]: https://github.com/nickvprince/CSCN72030-21F-Sec1_Drone_Group6/graphs/contributors
-[stars-shield]: https://img.shields.io/github/stars/nickvprince/CSCN72030-21F-Sec1_Drone_Group6.svg?style=for-the-badge
-[stars-url]: https://github.com/nickvprince/CSCN72030-21F-Sec1_Drone_Group6/stargazers
-[issues-shield]: https://img.shields.io/github/issues/nickvprince/CSCN72030-21F-Sec1_Drone_Group6.svg?style=for-the-badge
-[issues-url]: https://github.com/nickvprince/CSCN72030-21F-Sec1_Drone_Group6/issues
