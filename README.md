@@ -1,24 +1,21 @@
 <div id="top"></div>
 
-<div style="text-align: center"> 
-
 [![Contributors][contributors-shield]][contributors-url]
-[![Issues][issues-shield]][issues-url] 
 
-</div>
+[![Issues][issues-shield]][issues-url] 
 
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/nickvprince/CSCN72030-21F-Sec1_Drone_Group6">
-    <img src="images/logo.png" alt="Logo" width="160" height="160">
+    <img src="images/logo.jpg" alt="Logo" width="160" height="160">
   </a>
 
 <h2 align="center">Agricultural Drone</h2>
 
   <p align="center">
-    Agriculture Drone simulator based on drone sensors. 
+    Agriculture Drone Simulator Based on Drone Sensors. 
     <br />
     <a href="https://github.com/nickvprince/CSCN72030-21F-Sec1_Drone_Group6"><strong>Explore the docs »</strong></a>
     <br />
@@ -56,10 +53,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 ### Built With
 
+<a href="https://visualstudio.microsoft.com/">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Visual_Studio_Icon_2019.svg/1200px-Visual_Studio_Icon_2019.svg.png" alt="Logo" width="32" height="32">
+</a>
+<br />
 <a href="https://www.cplusplus.com/">
     <img src="images/1200px-ISO_C++_Logo.svg.png" alt="Logo" width="32" height="38">
 </a>
