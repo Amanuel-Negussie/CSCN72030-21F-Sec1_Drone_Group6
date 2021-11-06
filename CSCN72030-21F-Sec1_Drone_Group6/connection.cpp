@@ -9,7 +9,7 @@
 * Version : 1.0
 *
 * UPDATE HISTORY -
-* 1.0 - Base functionality added including ( class connection, logError, getVoltage, testConnection. { Date : November 6, 2021 } - Updated by Danny Smith
+* 1.0 - Base functionality added including ( class connection, logError, getVoltage, testConnection. { Date : November 6, 2021 } - version created by Danny Smith
 */
 #include "connection.h";
 #include <string>

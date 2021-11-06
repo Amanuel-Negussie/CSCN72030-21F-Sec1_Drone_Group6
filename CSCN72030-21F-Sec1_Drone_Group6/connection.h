@@ -6,10 +6,11 @@
 * Professor : Dr.Elliot coleshill
 * group : Islam Ahmed, Nicholas Prince, Amanual Negussie
 * Project : Drone
-* Version : 1.0
+* Version : 1.1
 * 
 * UPDATE HISTORY - 
-* 1.0 - Base functionality added including ( class connection, logError, getVoltage, testConnection, Exceptions : fileNotOpened, noErrorLog, wrongVoltage.	{ Date : November 6, 2021 } - Updated by Danny Smith
+* 1.0 - Base functionality added including ( class connection, logError, getVoltage, testConnection, Exceptions : fileNotOpened, noErrorLog, wrongVoltage. { Date : November 6, 2021 } - Version created by Danny Smith	
+* 1.1 - Exception renameFail added { Date : November 6, 2021 } - Updated by Danny Smith
 */
 
 using namespace std;
