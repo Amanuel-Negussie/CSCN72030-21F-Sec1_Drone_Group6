@@ -5,7 +5,7 @@
 #define MAX_SENSORS 10
 #define ERROR_FILE ""
 #define STARTUP_INFO ""
-#define ERROR_LOG ""
+
 class batteryWater {
 public :
 	bool decreaseBattery(int watts);
@@ -29,7 +29,7 @@ private:
 	connection* circuit[MAX_CONNECTIONS];
 	const char* errorCodes;
 	const char* startupInfo;
-	const char* errorLog = ERROR_LOG;
+	
 	int batteryCapacity;
 	int waterCapacity;
 	bool padConnected;

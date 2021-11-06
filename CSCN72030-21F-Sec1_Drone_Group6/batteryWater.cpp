@@ -80,6 +80,3 @@ bool batteryWater::openHatch() {
 bool batteryWater::closeHatch() {
 	return true;
 }
-void batteryWater::logError(FILE) {
-
-}
