@@ -1,3 +1,17 @@
+/*
+* File : connection.h
+* Programmer : Danny Smith
+* Date : November 5, 2021
+* Course : CSCN72030
+* Professor : Dr.Elliot coleshill
+* group : Islam Ahmed, Nicholas Prince, Amanual Negussie
+* Project : Drone
+* Version : 1.0
+* 
+* UPDATE HISTORY - 
+* 1.0 - Base functionality added including ( class connection, logError, getVoltage, testConnection, Exceptions : fileNotOpened, noErrorLog, wrongVoltage.	{ Date : November 6, 2021 } - Updated by Danny Smith
+*/
+
 using namespace std;
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>;
@@ -6,22 +20,48 @@ using namespace std;
 #include <ctime>
 #define CIRCUIT_FILE "./connections.txt"
 #define ERROR_LOG "./ErrorLog.txt"
-bool logError(string msg);
+#define TEMP_FILE "./temp.txt"
+
+
+// public helper classes written here since its the bottom reference
+bool logError(string msg); // logs an error in a error log file with current date and time
+
+// class connection
 class connection {
 public :
 	
-	char* point1;
-	char* point2;
-	bool testConnection(int volts);
-	connection(char p1[],char p2[]);
+	char* point1; // one analog point
+	char* point2;// two analog point
+	bool testConnection(int volts); // Simulates testing a connection point with x volts
+	connection(char p1[],char p2[]); // initializer holds two analog output points such as (A0,A22)
 	
 private:
-	int getVoltage();
+	int getVoltage(); // get voltage from connection tests using an ASCII file
 };
 
+
+
+// Exceptions
+struct fileNotOpened : public exception {
+	const char* issue() const throw() {
+		return "Error Opening File";
+	}
+};
 
 struct noErrorLog : public exception {
 	const char* issue() const throw() {
 		return "Error Log Not Opened";
 	}
 };
+
+struct wrongVoltage : public exception {
+	const char* issue() const throw() {
+		return "badVoltage";
+	}
+};
+struct renameFail : public exception {
+	const char* issue() const throw() {
+		return "failed Rename";
+	}
+};
+

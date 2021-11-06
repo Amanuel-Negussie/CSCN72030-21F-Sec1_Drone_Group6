@@ -1,27 +1,96 @@
+/*
+* File : connection.cpp
+* Programmer : Danny Smith
+* Date : November 5, 2021
+* Course : CSCN72030
+* Professor : Dr.Elliot coleshill
+* group : Islam Ahmed, Nicholas Prince, Amanual Negussie
+* Project : Drone
+* Version : 1.0
+*
+* UPDATE HISTORY -
+* 1.0 - Base functionality added including ( class connection, logError, getVoltage, testConnection. { Date : November 6, 2021 } - Updated by Danny Smith
+*/
 #include "connection.h";
+#include <string>
 
 
-
+// see .h file for definitions
 bool connection::testConnection(int volts) {
+	if (getVoltage() == 1) {
+		return true;
+	}
+	else {
+		return false;
+	}
 	
-	return true;
-}
+} 
 
+// see .h file for definitions
 connection::connection(char p1[],char p2[]) {
 	this->point1 = p1;
 	this->point2 =p2;
 }
 
-int connection::getVoltage() {
-	int voltage = 0;
-	ifstream file(CIRCUIT_FILE);
-	if (!file.is_open()) {
 
+// see .h file for definitions
+int connection::getVoltage() { // designed to read from file. Remove first line so that 0 (Broken connection gets closer to being called
+	int voltage;
+	char input;
+	fstream file;
+	fstream temp;
+	file.open(CIRCUIT_FILE, ios::in);
+	temp.open(TEMP_FILE, ios::out);
+	if (!file.is_open()) { // if curcuit file is opened
+		throw fileNotOpened();
 	}
-
-	return 0;
+	else {
+		file >> input;
+		voltage = (int)input;
+		if (!temp.is_open()) { // if temp file is opened
+			throw fileNotOpened();
+		}
+		else {
+			file >> input;
+			while (input != 59) { // while not ;
+				temp << input;
+				file >> input;
+			}
+		
+			switch (voltage) { // append first value at end then EOF (;)
+			case 49:
+				temp << "1;";
+				break;
+			case 48:
+				temp << "0;";
+				break;
+			default:
+				throw wrongVoltage();
+				break;
+			}
+		}
+	}
+	file.close();
+	remove(CIRCUIT_FILE); // delete original file
+	temp.close();
+	// ***************** NOTE : If rename works correctly but you get a renameFail exception switch (==0 TO !=0) on the next line****************** //
+	if (rename(TEMP_FILE, CIRCUIT_FILE)== 0) { // rename temp file to replace circuit file after proper reading and appending
+		throw renameFail();
+	}
+	switch (voltage) {
+	case 49:
+		return 1;
+		break;
+	case 48:
+		return 0;
+		break;
+	default:
+		throw wrongVoltage();
+		break;
+	}
+	return voltage;
 }
-
+// see .h file for definitions
 bool logError(string msg) {
 	
 
@@ -36,6 +105,7 @@ bool logError(string msg) {
 		tm* ltm = localtime(&now);
 		file << 1900 + ltm->tm_year <<":" << 1 + ltm->tm_mon <<":" << ltm->tm_mday << "  "<< ltm->tm_hour <<":"<< ltm->tm_min <<":"<< ltm->tm_sec << " - ERROR : " << msg <<"\n";
 	}
+	file.close();
 }
 
 
