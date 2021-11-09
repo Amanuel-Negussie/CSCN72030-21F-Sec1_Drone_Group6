@@ -5,11 +5,12 @@
 #include <Eigen/Dense>
 #include <numeric>
 
+#include "Location.h"
+
+#include "batteryWater.h"
+
 using namespace std;
 using namespace Eigen;
-
-
-#include <vector>
 
 
 enum DIRECTIONS {
@@ -19,10 +20,6 @@ enum DIRECTIONS {
 	WEST = 270
 };
 
-struct LOCATION
-{
-	double x, y;
-};
 
 struct LIDAR
 {
@@ -38,22 +35,22 @@ private:
 	//LIDAR DATA 	
 	LOCATION currentLocation; //currentLocation of drone  //Islam
 	LOCATION futureLocation; //expected next Location of Drone
-	vector<LOCATION> collisionFile; //file of collisions 
+	vector<LOCATION> collisions; //vector of collisions 
 	LIDAR lidarData; // will update each iteration and will showcase the collisions that are in the way of drone
 	vector<LOCATION> path; //updates the path from current location to destination (Navigation)
 	double requestedSpeed; //
 	vector<pair<LOCATION, double>> pathHistory; //path that we took as well as time it took
-	Vector2d directionOfDrone; //this is using YawFromNorth
+	Vector2d directionOfDrone; //this will be a 2d vector representation
 
 public: 
 
-	//constuctor 
+	//constuctor receives the location of Drone as well as direction in terms of Cardinal Degree
 	FlightController(LOCATION locOfDrone, double direction);
 
-	//saving information to Collision Dat FILE
+	//saving to and reading From files (Collissions and Path History)
 	void writeToCollisionDATFile(const vector<LOCATION>& vec);
 	void writeToCollisionTXTFile(const vector<LOCATION>& vec);
-	bool readCollisionDATFile();
+	bool readCollisionDATFile(); //populates collisions vector with contents of Collision File
 	void savePathHistoryDATFile();
 	bool readPathHistory(vector<pair<LOCATION, double>>& vec);
 	
@@ -70,8 +67,6 @@ public:
 	Vector2d getDirectionOfDrone(void);
 	bool UpdatePath(vector<LOCATION> path);
 };
-
-#endif FLIGHT_CONTROLLER_H
 
 
 
