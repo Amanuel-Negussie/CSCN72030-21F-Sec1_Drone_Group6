@@ -5,11 +5,12 @@
 #include <Eigen/Dense>
 #include <numeric>
 
+#include "Location.h"
+
+#include "batteryWater.h"
+
 using namespace std;
 using namespace Eigen;
-
-
-#include <vector>
 
 
 enum DIRECTIONS {
@@ -19,10 +20,6 @@ enum DIRECTIONS {
 	WEST = 270
 };
 
-struct LOCATION
-{
-	double x, y;
-};
 
 struct LIDAR
 {
@@ -38,40 +35,47 @@ private:
 	//LIDAR DATA 	
 	LOCATION currentLocation; //currentLocation of drone  //Islam
 	LOCATION futureLocation; //expected next Location of Drone
-	vector<LOCATION> collisionFile; //file of collisions 
+	vector<LOCATION> collisions; //vector of collisions 
 	LIDAR lidarData; // will update each iteration and will showcase the collisions that are in the way of drone
 	vector<LOCATION> path; //updates the path from current location to destination (Navigation)
 	double requestedSpeed; //
 	vector<pair<LOCATION, double>> pathHistory; //path that we took as well as time it took
-	Vector2d directionOfDrone; //this is using YawFromNorth
+	Vector2d directionOfDrone; //this will be a 2d vector representation
+
+	//updateLidarData
+	void updateLidarData();
+	//helper function for converting direction from cardinal to vector
+	Vector2d provideVectorFromCardinalDegree(double direction);
+
 
 public: 
 
-	//constuctor 
+	//constuctor receives the location of Drone as well as direction in terms of Cardinal Degree
 	FlightController(LOCATION locOfDrone, double direction);
-
-	//saving information to Collision Dat FILE
-	void writeToCollisionDATFile(const vector<LOCATION>& vec);
-	void writeToCollisionTXTFile(const vector<LOCATION>& vec);
-	bool readCollisionDATFile();
-	void savePathHistoryDATFile();
-	bool readPathHistory(vector<pair<LOCATION, double>>& vec);
 	
 	//getters and setters
 	bool setSpeed(int speed);
-	int getRequestedSpeed();
+	int getSpeed();
 	LOCATION getCurrentLocation(void);
 	LOCATION getFutureLocation(void);
-
-	//updateLidarData()
-	void updateLidarData(); 
-	bool MoveDrone(batteryWater& P);
-	double generateLengthOfArc(double Angle, double radius);
 	Vector2d getDirectionOfDrone(void);
-	bool UpdatePath(vector<LOCATION> path);
-};
 
-#endif FLIGHT_CONTROLLER_H
+	//Update Path and Move Drone
+	bool updatePath(vector<LOCATION> path); //updates path that the drone must follow
+	bool MoveDrone(batteryWater& P); //moves drone unless there's an obstacle in the way
+	bool updatePathHistory(vector<pair<LOCATION, double>>& vec); //updates Path History
+
+	//saving to and reading From files (Collissions and Path History)
+	void writeToCollisionDATFile(const vector<LOCATION>& vec);
+	void writeToCollisionTXTFile(const vector<LOCATION>& vec);
+	void writeToPathHistoryDATFile();
+	void writeToPathHistoryTXTFile();
+	bool readCollisionDATFile(); //populates collisions vector with contents of Collision File
+	bool readPathHistoryDATFile(); //populates pathHistory vector with contents from PathHistoryFile
+
+	
+
+};
 
 
 
