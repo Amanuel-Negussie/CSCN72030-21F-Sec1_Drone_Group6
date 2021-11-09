@@ -1,7 +1,5 @@
 #include "FlightController.h"
 
-//private functions 
-
 
 
 //constructor
