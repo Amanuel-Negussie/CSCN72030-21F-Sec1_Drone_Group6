@@ -1,5 +1,5 @@
 #include "LocationAndLidar.h"
-#include "Coord.h"
+
 
 void LOCATION::setLocation(double x, double y)
 {
@@ -13,6 +13,11 @@ void LOCATION::setLocation(Coord& loc)
 	this->y = loc.getY();
 }
 
+void LOCATION::setLocation(LOCATION& loc)
+{
+	this->x = loc.x;
+	this->y = loc.y;
+}
 
 Vector2d LOCATION::getVectorTo(LOCATION loc) //provides a vector from current location to provided location
 {
@@ -40,6 +45,8 @@ Vector2d provideVectorFromCardinalDegree(double angle)
 	return v;
 
 }
+
+
 double provideCardinalDegreeFromVector(Vector2d vec)
 {
 	return 1;

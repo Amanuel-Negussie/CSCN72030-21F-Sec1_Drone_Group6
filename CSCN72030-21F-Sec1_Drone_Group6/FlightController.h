@@ -50,7 +50,7 @@ private:
 public: 
 
 	//constuctor receives the location of Drone as well as direction in terms of Cardinal Degree
-	FlightController(LOCATION locOfDrone, double direction);
+	FlightController(Coord& locOfDrone, double direction);
 	
 	//getters and setters
 	bool setSpeed(int speed);
@@ -58,6 +58,8 @@ public:
 	LOCATION getCurrentLocation(void);
 	LOCATION getFutureLocation(void);
 	Vector2d getDirectionOfDrone(void);
+
+
 
 	//Update Path and Move Drone
 	bool updatePath(vector<LOCATION> path); //updates path that the drone must follow

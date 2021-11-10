@@ -80,15 +80,6 @@ void FlightController::updateLidarData()
 }
 
 
-Vector2d FlightController::provideVectorFromCardinalDegree(double direction) //helper function stub that converts direction in degree to vector
-{
-	return Vector2d(0, 1); //only shows north for now
-}
-
-double provideCardinalDegreeFromVector(Vector2d vec)
-{
-
-}
 
 
 //public functions
@@ -98,7 +89,10 @@ double provideCardinalDegreeFromVector(Vector2d vec)
 bool FlightController::setSpeed(int speed)
 {
 	requestedSpeed = speed;
+	return true;
 }
+
+
 int FlightController:: getSpeed()
 {
 	return requestedSpeed;
@@ -148,7 +142,7 @@ bool FlightController::MoveDrone(batteryWater& P)
 	}
 }
 
-bool updatePathHistory(vector<pair<LOCATION, double>>& vec) //updates Path History
+bool FlightController::updatePathHistory(vector<pair<LOCATION, double>>& vec) //updates Path History
 {
 	return true;
 }
