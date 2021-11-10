@@ -90,7 +90,7 @@ private:
 	bool isConnectedBase();
 	bool connectBase();
 	bool disconnectBase();
-	void sendAlert();
+	void sendAlert(string input);
 	bool openHatch();
 	bool closeHatch();
 };
