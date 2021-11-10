@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Amanuel\source\repos\nickvprince\CSCN72030-21F-Sec1_Drone_Group6\CSCN72030-21F-Sec1_Drone_Group6\eigen-3.4.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,6 +140,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FlightController.cpp" />
+    <ClCompile Include="LocationAndLidar.cpp" />
     <ClCompile Include="Coord.cpp" />
     <ClCompile Include="NavSensor.cpp" />
     <ClCompile Include="batteryWater.cpp" />
@@ -158,6 +161,8 @@
     <ClInclude Include="tempSensor.h" />
     <ClInclude Include="Coord.h" />
     <ClInclude Include="NavSensor.h" />
+    <ClInclude Include="FlightController.h" />
+    <ClInclude Include="LocationAndLidar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
