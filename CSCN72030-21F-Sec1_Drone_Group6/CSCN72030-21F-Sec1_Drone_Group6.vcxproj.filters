@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\batteryWater">
+      <UniqueIdentifier>{30db0eeb-9b51-49a9-b2d9-d8b7380566d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\batteryWater\headers">
+      <UniqueIdentifier>{1213cb2f-40ee-4926-a168-2c5d11c9efb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\batteryWater\CPP">
+      <UniqueIdentifier>{c80b3b2d-dd52-45ad-876c-d8f06a38a74f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -22,6 +31,22 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NavSensor.cpp">
+    <ClCompile Include="batteryWater.cpp">
+      <Filter>Source Files\batteryWater\CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="connection.cpp">
+      <Filter>Source Files\batteryWater\CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="sonarSensor.cpp">
+      <Filter>Source Files\batteryWater\CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="tempSensor.cpp">
+      <Filter>Source Files\batteryWater\CPP</Filter>
+    </ClCompile>
+   <ClCompile Include="Weather.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Alert.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -31,6 +56,22 @@
     </ClInclude>
     <ClInclude Include="NavSensor.h">
       <Filter>Header Files</Filter>
+    <ClInclude Include="batteryWater.h">
+      <Filter>Source Files\batteryWater\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="connection.h">
+      <Filter>Source Files\batteryWater\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="sonarSensor.h">
+      <Filter>Source Files\batteryWater\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="tempSensor.h">
+      <Filter>Source Files\batteryWater\headers</Filter>
+      <ClInclude Include="Weather.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Alert.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
