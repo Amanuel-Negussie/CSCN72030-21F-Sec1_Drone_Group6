@@ -4,7 +4,7 @@
 
 //constructor
 
-FlightController::FlightController(LOCATION locOfDrone, double direction)
+FlightController::FlightController(Coord& locOfDrone, double direction)
 {
 	currentLocation.setLocation(locOfDrone);
 	directionOfDrone = provideVectorFromCardinalDegree(direction);

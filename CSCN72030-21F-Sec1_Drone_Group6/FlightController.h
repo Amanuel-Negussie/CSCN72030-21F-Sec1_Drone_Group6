@@ -5,8 +5,7 @@
 #include <Eigen/Dense>
 #include <numeric>
 
-#include "Location.h"
-
+#include "LocationAndLidar.h"
 #include "batteryWater.h"
 
 using namespace std;
@@ -73,7 +72,6 @@ public:
 	bool readCollisionDATFile(); //populates collisions vector with contents of Collision File
 	bool readPathHistoryDATFile(); //populates pathHistory vector with contents from PathHistoryFile
 
-	
 
 };
 

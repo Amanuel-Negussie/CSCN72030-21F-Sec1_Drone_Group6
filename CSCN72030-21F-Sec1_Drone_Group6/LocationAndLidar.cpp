@@ -1,4 +1,5 @@
 #include "LocationAndLidar.h"
+#include "Coord.h"
 
 void LOCATION::setLocation(double x, double y)
 {
@@ -6,10 +7,10 @@ void LOCATION::setLocation(double x, double y)
 	this->y = y;
 }
 
-void LOCATION::setLocation(LOCATION loc)
+void LOCATION::setLocation(Coord& loc)
 {
-	this->x = loc.x;
-	this->y = loc.y;
+	this->x = loc.getX();
+	this->y = loc.getY();
 }
 
 
@@ -41,7 +42,13 @@ Vector2d provideVectorFromCardinalDegree(double angle)
 }
 double provideCardinalDegreeFromVector(Vector2d vec)
 {
-
+	return 1;
 }
 
+
+inline bool isEqual(double x, double y) {
+	const double epsilon = 1e-5;
+	return abs(x - y) <= epsilon;
+	// see Knuth section 4.2.2 pages 217-218
+}
 
