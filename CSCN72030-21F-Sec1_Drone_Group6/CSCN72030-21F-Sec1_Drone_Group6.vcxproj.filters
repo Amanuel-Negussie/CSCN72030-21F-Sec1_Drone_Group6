@@ -63,7 +63,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LocationAndLidar.h">
-         <Filter>Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Coord.h">
       <Filter>Header Files</Filter>
@@ -89,5 +89,8 @@
     <ClInclude Include="Weather.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
