@@ -17,7 +17,9 @@
 
 // see .h file for definitions
 bool connection::testConnection(int volts) {
+	
 	if (getVoltage() == 1) {
+		
 		return true;
 	}
 	else {
@@ -73,8 +75,8 @@ int connection::getVoltage() { // designed to read from file. Remove first line 
 	file.close();
 	remove(CIRCUIT_FILE); // delete original file
 	temp.close();
-	// ***************** NOTE : If rename works correctly but you get a renameFail exception switch (==0 TO !=0) on the next line****************** //
-	if (rename(TEMP_FILE, CIRCUIT_FILE)== 0) { // rename temp file to replace circuit file after proper reading and appending
+
+	if (rename(TEMP_FILE, CIRCUIT_FILE)!= 0) { // rename temp file to replace circuit file after proper reading and appending
 		throw renameFail();
 	}
 	switch (voltage) {

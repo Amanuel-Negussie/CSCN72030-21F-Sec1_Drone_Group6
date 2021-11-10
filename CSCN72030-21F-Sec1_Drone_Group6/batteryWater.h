@@ -79,8 +79,8 @@ private:
 	connection* circuit[MAX_CONNECTIONS];
 
 	
-	int batteryCapacity;
-	int waterCapacity;
+	float batteryCapacity;
+	float waterCapacity;
 	bool padConnected;
 	tempSensor* temps[MAX_SENSORS];
 	sonarSensor* sonar;
@@ -88,7 +88,6 @@ private:
 	void verifyConnections();
 	int getTemp();
 	bool isConnectedBase();
-	bool setCharging(bool charging);
 	bool connectBase();
 	bool disconnectBase();
 	void sendAlert();

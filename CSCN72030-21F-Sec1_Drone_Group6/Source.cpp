@@ -6,11 +6,7 @@ int main() {
 	
 		std::cout << "Hello, World!" << std::endl;
 		connection* connect = new connection((char*)"A1", (char*)"a2");
-	//try {
-	//	throw MyException();
-	//}
-	//catch (MyException e) {
-	//	cout << e.what();
-	//}
+		batteryWater* temp = new batteryWater();
+		cout <<temp->getWaterStorage();
 	return 0;
 }

@@ -22,6 +22,7 @@ using namespace std;
 #define CIRCUIT_FILE "./batteryWaterFiles//connections.txt"
 #define ERROR_LOG "./batteryWaterFiles//ErrorLog.txt"
 #define TEMP_FILE "./batteryWaterFiles//temp.txt"
+#define STARTUP_FILE "./batteryWaterFiles//StartupData.txt"
 
 
 // public helper classes written here since its the bottom reference

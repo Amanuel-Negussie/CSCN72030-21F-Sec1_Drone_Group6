@@ -73,6 +73,11 @@ batteryWater::~batteryWater() {
 	
 }
 batteryWater::batteryWater() {
+	this->charging = false;
+	this->batteryCapacity = 0;
+	this->door = false;
+	this->padConnected = false;
+	this->waterCapacity = 0;
 	for (int counter = 0; counter < MAX_CONNECTIONS; counter++) {
 		connection* circuit = new connection((char*)"00", (char*)"00");
 		this->circuit[counter] = circuit;
@@ -83,11 +88,6 @@ batteryWater::batteryWater() {
 	}
 
 	// set default values
-	this->charging = false;
-	this->batteryCapacity = 0;
-	this->door = false;
-	this->padConnected = false;
-	this->waterCapacity = 0;
 
 	// create default sonar
 	connection* con = new connection((char*)"A1", (char*)"A2");
@@ -104,7 +104,16 @@ batteryWater::batteryWater() {
 		this->temps[counter] = NULL;
 	}
 
-	
+	this->charging = false;
+	if (sonar->isOnline()) {
+		//0.4113 and 1.7793;
+		
+		this->waterCapacity = ((sensor->getTime()-0.4113) / 1.7793) *100;
+	}
+	this->door = false;
+	this->padConnected = false;
+	this->batteryCapacity = 0;
+
 }
 
 
@@ -115,67 +124,129 @@ batteryWater::batteryWater() {
 
 
 bool batteryWater::decreaseBattery(int watts) {
-	return true;
+	//watts = 50
+	// 20w/h = 20w/h / 240 apx 15 sec
+	float temp = this->batteryCapacity;
+	this->batteryCapacity = this->batteryCapacity - (watts / 240);
+	if (this->batteryCapacity != temp) {
+		return true;
+	}
+	else {
+		return false;
+	}
+	
 }
 bool batteryWater::startCharging() {
-	return true;
+	this->charging = true;
+	if (this->charging == true) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 bool batteryWater::endCharging() {
-	return true;
+	this->charging = false;
+	if (this->charging == false) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 bool batteryWater::drainWater() {
-	return true;
+	this->waterCapacity = 0;
+	if (this->getWaterStorage() == 0) {
+		return true;
+	}
+	else {
+		return true;
+	}
 }
 bool batteryWater::fill(int percent) {
-	return true;
-}
-int batteryWater::getFlightEstimate(int speed, int maxW) {
-	return 1;
+	this->waterCapacity = percent;
+	if (this->getWaterStorage() == percent) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 int batteryWater::getCurrentBattery() {
-	return 1;
+	return this->batteryCapacity;
 }
 int batteryWater::getWaterStorage() {
-	return 1;
-}
-bool batteryWater::swapBattery() {
-	return true;
-}
-void batteryWater::update() {
-
+	return this->waterCapacity;
 }
 bool batteryWater::isCharging() {
-	return true;
+	return this->charging;
 }
+bool batteryWater::isConnectedBase() {
+	return this->padConnected;
+}
+bool batteryWater::connectBase() {
+	this->padConnected = true;
+	if (this->isConnectedBase()== true) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool batteryWater::disconnectBase() {
+	this->padConnected = false;
+	if (this->isConnectedBase() == false) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool batteryWater::openHatch() {
+	this->door = true;
+	if (this->door == true) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool batteryWater::closeHatch() {
+	this->door = false;
+	if (this->door == false) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+
+
+
+
+
+
+
+void batteryWater::sendAlert() {
+
+}
+
 bool batteryWater::addTempSensor(char* ID, char* connection1, char* connection2) {
 	return true;
 }
-
-
 void batteryWater::verifyConnections() {
 
 }
 int batteryWater::getTemp() {
 	return 1;
 }
-bool batteryWater::isConnectedBase() {
-	return true;
-}
-bool batteryWater::setCharging(bool charging) {
-	return true;
-}
-bool batteryWater::connectBase() {
-	return true;
-}
-bool batteryWater::disconnectBase() {
-	return true;
-}
-void batteryWater::sendAlert() {
+void batteryWater::update() {
 
 }
-bool batteryWater::openHatch() {
+bool batteryWater::swapBattery() {
 	return true;
 }
-bool batteryWater::closeHatch() {
-	return true;
+int batteryWater::getFlightEstimate(int speed, int maxW) {
+	return 1;
 }
