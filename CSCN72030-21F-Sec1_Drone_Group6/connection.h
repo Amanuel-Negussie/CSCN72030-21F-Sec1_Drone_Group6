@@ -23,6 +23,7 @@ using namespace std;
 #define ERROR_LOG "./batteryWaterFiles//ErrorLog.txt"
 #define TEMP_FILE "./batteryWaterFiles//temp.txt"
 #define STARTUP_FILE "./batteryWaterFiles//StartupData.txt"
+#define RULES_FILE "./batteryWayerFiles//Rules.txt"
 
 
 // public helper classes written here since its the bottom reference

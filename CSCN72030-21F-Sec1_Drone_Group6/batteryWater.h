@@ -65,7 +65,7 @@ public :
 	bool fill(int percent);
 	int getFlightEstimate(int speed, int maxW);
 	int getCurrentBattery();
-	int getWaterStorage();
+	float getWaterStorage();
 	bool swapBattery();
 	bool connections[MAX_CONNECTIONS+(MAX_SENSORS+1)];
 	void update();
@@ -73,6 +73,7 @@ public :
 	bool addTempSensor(char* ID, char* connection1, char* connection2);
 	batteryWater();
 	~batteryWater();
+	void save();
 private:
 	
 	bool charging;

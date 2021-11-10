@@ -51,9 +51,11 @@
 */
 #include "batteryWater.h"
 #include <iostream>
-#define WORD_SIZE 5
+#define WORD_SIZE 10
 
 batteryWater::~batteryWater() {
+
+
 	for (int counter = 0; counter < MAX_CONNECTIONS; counter++) {
 		delete(this->circuit[counter]);
 		
@@ -78,6 +80,7 @@ batteryWater::batteryWater() {
 	this->door = false;
 	this->padConnected = false;
 	this->waterCapacity = 0;
+
 	for (int counter = 0; counter < MAX_CONNECTIONS; counter++) {
 		connection* circuit = new connection((char*)"00", (char*)"00");
 		this->circuit[counter] = circuit;
@@ -106,9 +109,11 @@ batteryWater::batteryWater() {
 
 	// init water capacity send issue if sonar is offline
 	if (sonar->isOnline()) {
-		this->waterCapacity = ((sensor->getTime()-0.4113) / 1.7793) *100;
+		this->waterCapacity = sensor->getTime();
+		
 	}
 	else {
+		logError("Sonar Damaged");
 		this->sendAlert("SONAR OFFLINE");
 	}
 	int x = 0;
@@ -118,6 +123,7 @@ batteryWater::batteryWater() {
 	fstream file;
 	file.open(STARTUP_FILE, ios::in);
 	if (!file.is_open()) { // if curcuit file is opened
+		logError("SYSTEM ERROR File Not Opened");
 		throw fileNotOpened();
 	}
 	else {
@@ -151,21 +157,9 @@ batteryWater::batteryWater() {
 				} // if charging or not
 			} // check charging
 
+
+
 			if (count == 2) {
-				if (atoi(word) == 1) {
-					this->openHatch();
-				}
-				else {
-					this->closeHatch();
-				}
-				for (int i = 0; i < WORD_SIZE; i++) { // reset word
-					word[i] = '\0';
-					x = 0;
-				} // if charging or not
-			} // check charging
-
-
-			if (count == 3) {
 				if (atoi(word) == 1) {
 					this->connectBase();
 				}
@@ -178,7 +172,7 @@ batteryWater::batteryWater() {
 				} // if charging or not
 			} // check charging
 
-			if (count == 4) {
+			if (count == 3) {
 				this->batteryCapacity = atoi(word);
 			} // check charging
 				count++;
@@ -191,10 +185,23 @@ batteryWater::batteryWater() {
 }
 
 
+void batteryWater::save() {
+	fstream file;
+	file.open(STARTUP_FILE, ios::out);
+	if (!file.is_open()) { // if curcuit file is opened
+		logError(" SYSTEM ERROR File Not Opened");
+		throw fileNotOpened();
+		
+	}
+	else {
+		file << this->getWaterStorage() << ";\n"; // <causes a bug if you use more then one decimal point
+		file << this->isCharging() << ";\n";
+		file << this->isCharging() << ";\n";
+		file << this->getCurrentBattery() << "&\n";
+	}
+	file.close();
 
-
-
-
+}
 
 
 bool batteryWater::decreaseBattery(int watts) {
@@ -249,7 +256,7 @@ bool batteryWater::fill(int percent) {
 int batteryWater::getCurrentBattery() {
 	return this->batteryCapacity;
 }
-int batteryWater::getWaterStorage() {
+float batteryWater::getWaterStorage() {
 	return this->waterCapacity;
 }
 bool batteryWater::isCharging() {

@@ -23,6 +23,7 @@ bool connection::testConnection(int volts) {
 		return true;
 	}
 	else {
+		logError("Broken Connection");
 		return false;
 	}
 	
@@ -44,6 +45,7 @@ int connection::getVoltage() { // designed to read from file. Remove first line 
 	file.open(CIRCUIT_FILE, ios::in);
 	temp.open(TEMP_FILE, ios::out);
 	if (!file.is_open()) { // if curcuit file is opened
+		logError(" SYSTEM ERROR File Not Opened");
 		throw fileNotOpened();
 	}
 	else {
@@ -77,6 +79,7 @@ int connection::getVoltage() { // designed to read from file. Remove first line 
 	temp.close();
 
 	if (rename(TEMP_FILE, CIRCUIT_FILE)!= 0) { // rename temp file to replace circuit file after proper reading and appending
+		logError(" SYSTEM ERROR File Not Renamed");
 		throw renameFail();
 	}
 	switch (voltage) {
@@ -87,6 +90,7 @@ int connection::getVoltage() { // designed to read from file. Remove first line 
 		return 0;
 		break;
 	default:
+		logError(" SYSTEM ERROR Wrong Voltage Passed");
 		throw wrongVoltage();
 		break;
 	}
