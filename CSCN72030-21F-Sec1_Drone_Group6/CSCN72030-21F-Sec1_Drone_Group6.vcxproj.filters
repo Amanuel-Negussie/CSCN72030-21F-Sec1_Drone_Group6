@@ -31,19 +31,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NavSensor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="batteryWater.cpp">
-      <Filter>Source Files\batteryWater\CPP</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="connection.cpp">
-      <Filter>Source Files\batteryWater\CPP</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sonarSensor.cpp">
-      <Filter>Source Files\batteryWater\CPP</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tempSensor.cpp">
-      <Filter>Source Files\batteryWater\CPP</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-   <ClCompile Include="Weather.cpp">
+    <ClCompile Include="Weather.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Alert.cpp">
@@ -56,22 +58,24 @@
     </ClInclude>
     <ClInclude Include="NavSensor.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="batteryWater.h">
-      <Filter>Source Files\batteryWater\headers</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="connection.h">
-      <Filter>Source Files\batteryWater\headers</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sonarSensor.h">
-      <Filter>Source Files\batteryWater\headers</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tempSensor.h">
-      <Filter>Source Files\batteryWater\headers</Filter>
-      <ClInclude Include="Weather.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Alert.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Weather.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -147,7 +147,6 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="tempSensor.cpp" />
     <ClCompile Include="Alert.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Weather.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -157,8 +156,6 @@
     <ClInclude Include="connection.h" />
     <ClInclude Include="sonarSensor.h" />
     <ClInclude Include="tempSensor.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Coord.h" />
     <ClInclude Include="NavSensor.h" />
   </ItemGroup>
