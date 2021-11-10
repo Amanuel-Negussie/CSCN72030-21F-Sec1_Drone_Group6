@@ -18,7 +18,7 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Location.cpp">
+    <ClCompile Include="LocationAndLidar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FlightController.cpp">
@@ -29,7 +29,7 @@
     <ClInclude Include="FlightController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Location.h">
+    <ClInclude Include="LocationAndLidar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

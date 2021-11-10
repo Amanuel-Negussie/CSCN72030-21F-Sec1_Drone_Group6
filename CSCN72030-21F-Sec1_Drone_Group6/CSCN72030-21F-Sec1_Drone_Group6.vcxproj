@@ -141,12 +141,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FlightController.cpp" />
-    <ClCompile Include="Location.cpp" />
+    <ClCompile Include="LocationAndLidar.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FlightController.h" />
-    <ClInclude Include="Location.h" />
+    <ClInclude Include="LocationAndLidar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

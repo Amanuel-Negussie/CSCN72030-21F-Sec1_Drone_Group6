@@ -44,8 +44,8 @@ private:
 
 	//updateLidarData
 	void updateLidarData();
-	//helper function for converting direction from cardinal to vector
-	Vector2d provideVectorFromCardinalDegree(double direction);
+	
+
 
 
 public: 

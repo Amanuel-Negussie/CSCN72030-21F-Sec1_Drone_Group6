@@ -19,7 +19,64 @@ FlightController::FlightController(LOCATION locOfDrone, double direction)
 //private functions
 void FlightController::updateLidarData()
 {
-
+	double angle = provideCardinalDegreeFromVector(directionOfDrone);
+	if (angle == NORTH)
+		//north 
+	{
+		for (const auto& i : collisions)
+		{
+			if (currentLocation.x == i.x && currentLocation.y + 1 == i.y) //NORTH
+				lidarData.frontSensor = true;
+			if (currentLocation.x + 1 == i.x && currentLocation.y == i.y) //EAST
+				lidarData.rightSensor = true;
+			if (currentLocation.x - 1 == i.x && currentLocation.y == i.y) //WEST 
+				lidarData.leftSensor = true;
+			if (currentLocation.x == i.x && currentLocation.y - 1 == i.y) //SOUTH
+				lidarData.backSensor = true;
+		}
+	}
+	else if (angle == EAST)
+	{
+		for (const auto& i : collisions)
+		{
+			if (currentLocation.x == i.x && currentLocation.y + 1 == i.y)  // NORTH  left
+				lidarData.leftSensor = true;
+			if (currentLocation.x + 1 == i.x && currentLocation.y == i.y) // EAST front
+				lidarData.frontSensor = true;
+			if (currentLocation.x - 1 == i.x && currentLocation.y == i.y) //WEST back
+				lidarData.backSensor = true;
+			if (currentLocation.x == i.x && currentLocation.y - 1 == i.y) // SOUTH right
+				lidarData.rightSensor = true;
+		}
+	}
+	else if (angle == WEST)
+	{
+		for (const auto& i : collisions)
+		{
+			if (currentLocation.x == i.x && currentLocation.y + 1 == i.y)  // NORTH  right
+				lidarData.rightSensor = true;
+			if (currentLocation.x + 1 == i.x && currentLocation.y == i.y) //EAST back
+				lidarData.backSensor = true;
+			if (currentLocation.x - 1 == i.x && currentLocation.y == i.y) //WEST front
+				lidarData.frontSensor = true;
+			if (currentLocation.x == i.x && currentLocation.y - 1 == i.y) // SOUTH left
+				lidarData.leftSensor = true;
+		}
+	}
+	else if (angle == SOUTH)
+	{
+		for (const auto& i : collisions)
+		{
+			if (futureLocation.x == i.x && currentLocation.y + 1 == i.y)  // NORTH  back
+				lidarData.backSensor = true;
+			if (currentLocation.x + 1 == i.x && currentLocation.y == i.y) //EAST left
+				lidarData.leftSensor = true;
+			if (currentLocation.x - 1 == i.x && currentLocation.y == i.y) //WEST right
+				lidarData.rightSensor = true;
+			if (currentLocation.x == i.x && currentLocation.y - 1 == i.y) // SOUTH front
+				lidarData.frontSensor = true;
+		}
+	}
 }
 
 
@@ -28,6 +85,10 @@ Vector2d FlightController::provideVectorFromCardinalDegree(double direction) //h
 	return Vector2d(0, 1); //only shows north for now
 }
 
+double provideCardinalDegreeFromVector(Vector2d vec)
+{
+
+}
 
 
 //public functions

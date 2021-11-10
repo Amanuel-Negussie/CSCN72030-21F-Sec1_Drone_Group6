@@ -1,4 +1,4 @@
-#include "Location.h"
+#include "LocationAndLidar.h"
 
 void LOCATION::setLocation(double x, double y)
 {
@@ -23,3 +23,25 @@ double LOCATION::getDistance(LOCATION loc) //returns the distance from one locat
 {
 	return sqrt((this->x - loc.x) * (this->x - loc.x) + (this->y - loc.y) * (this->y - loc.y));
 }
+
+
+//helper function for converting direction from cardinal to vector vice/versa 
+Vector2d provideVectorFromCardinalDegree(double angle)
+{
+	double x = sin(angle * DEGREES_TO_RADIANS);
+	if (isEqual(x, 0))
+		x = 0;
+	double y = cos(angle * DEGREES_TO_RADIANS);
+	if (isEqual(y, 0))
+		y = 0;
+	Vector2d v(x, y);
+	v.normalize();
+	return v;
+
+}
+double provideCardinalDegreeFromVector(Vector2d vec)
+{
+
+}
+
+
