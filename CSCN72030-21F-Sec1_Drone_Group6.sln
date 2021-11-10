@@ -7,16 +7,20 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CSCN72030-21F-Sec1_Drone_Gr
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66AF0F79-0DD0-4A44-8DA8-E34A7C05603A}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{66AF0F79-0DD0-4A44-8DA8-E34A7C05603A}.Debug|x64.ActiveCfg = Debug|x64
 		{66AF0F79-0DD0-4A44-8DA8-E34A7C05603A}.Debug|x64.Build.0 = Debug|x64
 		{66AF0F79-0DD0-4A44-8DA8-E34A7C05603A}.Debug|x86.ActiveCfg = Debug|Win32
 		{66AF0F79-0DD0-4A44-8DA8-E34A7C05603A}.Debug|x86.Build.0 = Debug|Win32
+		{66AF0F79-0DD0-4A44-8DA8-E34A7C05603A}.Release|Any CPU.ActiveCfg = Release|Win32
 		{66AF0F79-0DD0-4A44-8DA8-E34A7C05603A}.Release|x64.ActiveCfg = Release|x64
 		{66AF0F79-0DD0-4A44-8DA8-E34A7C05603A}.Release|x64.Build.0 = Release|x64
 		{66AF0F79-0DD0-4A44-8DA8-E34A7C05603A}.Release|x86.ActiveCfg = Release|Win32
