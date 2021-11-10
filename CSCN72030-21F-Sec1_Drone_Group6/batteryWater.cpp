@@ -82,11 +82,8 @@ batteryWater::batteryWater() {
 
 	// read below info from rule file
 	this->MAX_TEMP = 70;
-
-
-
-
-
+	this->waterAlert = 20;
+	this->batteryAlert = 40;
 	this->charging = false;
 	this->batteryCapacity = 0;
 	this->door = false;

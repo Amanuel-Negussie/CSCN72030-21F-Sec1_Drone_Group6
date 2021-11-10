@@ -6,7 +6,7 @@
 * Professor : Dr.Elliot coleshill
 * group : Islam Ahmed, Nicholas Prince, Amanual Negussie
 * Project : Drone
-* Version : 1.0
+* Version : 1.1
 *
 * UPDATE HISTORY -
 * 1.0 - Base Functionality created :
@@ -48,6 +48,8 @@
 	Exceptions - 
 	deleteFail
 	------------------------ { Date : November 6, 2021 } Version Created by - Danny Smith
+
+	Version 1.1 - More variables added, Save function Added, setCharging function removed {Date : November 10, 2021 } Version edited by - Danny Smith
 */
 #include <iostream>
 #include "sonarSensor.h";
@@ -76,6 +78,8 @@ public :
 	void save();
 private:
 	float MAX_TEMP;
+	float waterAlert;
+	float batteryAlert;
 	bool charging;
 	connection* circuit[MAX_CONNECTIONS];
 
