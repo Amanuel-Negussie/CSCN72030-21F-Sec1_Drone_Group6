@@ -52,6 +52,7 @@ int connection::getVoltage() { // designed to read from file. Remove first line 
 		file >> input;
 		voltage = (int)input;
 		if (!temp.is_open()) { // if temp file is opened
+			logError(" SYSTEM ERROR File Not Opened");
 			throw fileNotOpened();
 		}
 		else {

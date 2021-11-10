@@ -55,7 +55,7 @@
 #define MAX_SENSORS 10
 #define ERROR_FILE ""
 #define STARTUP_INFO ""
-
+#include <string>
 class batteryWater {
 public :
 	bool decreaseBattery(int watts);
@@ -75,7 +75,7 @@ public :
 	~batteryWater();
 	void save();
 private:
-	
+	float MAX_TEMP;
 	bool charging;
 	connection* circuit[MAX_CONNECTIONS];
 

@@ -10,6 +10,6 @@ int main() {
 		cout << "wtr:" << temp->getWaterStorage()<<"\n";
 		cout << "ch:" << temp->isCharging() << "\n";
 		cout << "Bat:" <<temp->getCurrentBattery() << "\n";
-	
+		temp->update();
 	return 0;
 }

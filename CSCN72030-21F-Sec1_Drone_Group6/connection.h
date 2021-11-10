@@ -6,11 +6,12 @@
 * Professor : Dr.Elliot coleshill
 * group : Islam Ahmed, Nicholas Prince, Amanual Negussie
 * Project : Drone
-* Version : 1.1
+* Version : 1.2
 * 
 * UPDATE HISTORY - 
 * 1.0 - Base functionality added including ( class connection, logError, getVoltage, testConnection, Exceptions : fileNotOpened, noErrorLog, wrongVoltage. { Date : November 6, 2021 } - Version created by Danny Smith	
 * 1.1 - Exception renameFail added { Date : November 6, 2021 } - Updated by Danny Smith
+* 1.2 - Rules File and Temps File Added { Date : November 10, 2021 } - Updated by Danny Smith
 */
 
 using namespace std;
@@ -23,9 +24,9 @@ using namespace std;
 #define ERROR_LOG "./batteryWaterFiles//ErrorLog.txt"
 #define TEMP_FILE "./batteryWaterFiles//temp.txt"
 #define STARTUP_FILE "./batteryWaterFiles//StartupData.txt"
-#define RULES_FILE "./batteryWayerFiles//Rules.txt"
-
-
+#define RULES_FILE "./batteryWaterFiles//Rules.txt"
+#define TEMPS_FILE "./batteryWaterFiles//Temps.txt"
+#define WORD_SIZE 10 // used in file reading
 // public helper classes written here since its the bottom reference
 bool logError(string msg); // logs an error in a error log file with current date and time
 

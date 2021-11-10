@@ -34,5 +34,5 @@ public:
 	~tempSensor();
 	float getTemp();
 	bool  isOnline();
-	char* getID();
+	string getID();
 };

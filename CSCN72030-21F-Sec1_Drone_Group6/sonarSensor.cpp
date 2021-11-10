@@ -21,6 +21,8 @@
 	connection* circuit;
 
 --------------- { Date : November 6, 2021 } - version created by Danny Smith
+
+Functionality Complete on November 10, 2021 - by Danny Smith
 */
 #include "sonarSensor.h";
 

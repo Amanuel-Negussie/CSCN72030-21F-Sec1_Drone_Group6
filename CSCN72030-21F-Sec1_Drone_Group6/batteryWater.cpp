@@ -6,7 +6,7 @@
 * Professor : Dr.Elliot coleshill
 * group : Islam Ahmed, Nicholas Prince, Amanual Negussie
 * Project : Drone
-* Version : 1.0
+* Version : 1.1
 *
 * UPDATE HISTORY -
 * 1.0 - Base Functionality created : 	
@@ -48,10 +48,12 @@
 	Exceptions - 
 	deleteFail
 	------------------------ { Date : November 6, 2021 } Version Created by - Danny Smith
+
+	Version 1.1 - Save Added { Date : November 10, 2021 } Version updated by - Danny Smith
 */
 #include "batteryWater.h"
 #include <iostream>
-#define WORD_SIZE 10
+
 
 batteryWater::~batteryWater() {
 
@@ -75,6 +77,16 @@ batteryWater::~batteryWater() {
 	
 }
 batteryWater::batteryWater() {
+
+
+
+	// read below info from rule file
+	this->MAX_TEMP = 70;
+
+
+
+
+
 	this->charging = false;
 	this->batteryCapacity = 0;
 	this->door = false;
@@ -323,6 +335,27 @@ int batteryWater::getTemp() {
 	return 1;
 }
 void batteryWater::update() {
+
+
+	// check temps and temp sensor
+	if (this->temps[0]->isOnline()) {
+		float temp = 0;
+		temp = this->temps[0]->getTemp();
+		if (temp > this->MAX_TEMP) {
+			logError("Max Temp Exceeded : " + to_string(this->MAX_TEMP) + "Current Temp : " + to_string(temp));
+			this->sendAlert("MaxTempExceeded");
+		}
+		else if (temp > this->MAX_TEMP - 10) {
+			logError("High Temperature : " + to_string(temp));
+			this->sendAlert("MaxTempApproaching");
+		}
+	} // if temp sensor is online ensure good temps
+	else { // log it
+		logError("Temperature Sensor " + this->temps[0]->getID() + " is offline");
+		this->sendAlert("TemperatureSensorOffline");
+	}
+	// check temps and temp sensor
+
 
 }
 bool batteryWater::swapBattery() {
