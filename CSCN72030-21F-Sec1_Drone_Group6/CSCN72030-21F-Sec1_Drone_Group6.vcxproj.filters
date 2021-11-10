@@ -21,9 +21,15 @@
     <ClCompile Include="Weather.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Alert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Weather.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Alert.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
