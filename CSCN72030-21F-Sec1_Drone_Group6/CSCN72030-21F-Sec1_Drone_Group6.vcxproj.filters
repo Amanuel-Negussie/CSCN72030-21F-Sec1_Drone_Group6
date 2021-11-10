@@ -39,6 +39,12 @@
     <ClCompile Include="tempSensor.cpp">
       <Filter>Source Files\batteryWater\CPP</Filter>
     </ClCompile>
+   <ClCompile Include="Weather.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Alert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="batteryWater.h">
@@ -52,6 +58,11 @@
     </ClInclude>
     <ClInclude Include="tempSensor.h">
       <Filter>Source Files\batteryWater\headers</Filter>
+      <ClInclude Include="Weather.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Alert.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
