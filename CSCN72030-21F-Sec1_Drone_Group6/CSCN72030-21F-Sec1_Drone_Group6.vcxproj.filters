@@ -27,6 +27,10 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Coord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NavSensor.cpp">
     <ClCompile Include="batteryWater.cpp">
       <Filter>Source Files\batteryWater\CPP</Filter>
     </ClCompile>
@@ -47,6 +51,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Coord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NavSensor.h">
+      <Filter>Header Files</Filter>
     <ClInclude Include="batteryWater.h">
       <Filter>Source Files\batteryWater\headers</Filter>
     </ClInclude>

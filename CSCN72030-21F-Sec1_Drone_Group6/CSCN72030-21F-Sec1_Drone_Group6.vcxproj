@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Coord.cpp" />
+    <ClCompile Include="NavSensor.cpp" />
     <ClCompile Include="batteryWater.cpp" />
     <ClCompile Include="connection.cpp" />
     <ClCompile Include="sonarSensor.cpp" />
@@ -155,6 +157,10 @@
     <ClInclude Include="connection.h" />
     <ClInclude Include="sonarSensor.h" />
     <ClInclude Include="tempSensor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Coord.h" />
+    <ClInclude Include="NavSensor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
