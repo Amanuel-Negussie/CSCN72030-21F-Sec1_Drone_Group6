@@ -48,7 +48,7 @@ private:
 	//LIDAR DATA 	
 	LOCATION currentLocation; //currentLocation of drone  //Islam
 	LOCATION futureLocation; //expected next Location of Drone
-	vector<LOCATION> collisions; //vector of collisions 
+	vector<LOCATION> collisionList; //vector of collisions 
 	LIDAR lidarData; // will update each iteration and will showcase the collisions that are in the way of drone
 	vector<LOCATION> path; //updates the path from current location to destination (Navigation)
 	double speed; //
@@ -97,7 +97,9 @@ public:
 };
 
 
-
+//outside
+double calculateTotalTime(vector<pair<LOCATION, double>> myVector);
+void viewPathHistory(vector<pair<LOCATION, double>> myVector);
 
 
 

@@ -21,7 +21,7 @@ void FlightController::updateLidarData()
 	if (angle == NORTH)
 		//north 
 	{
-		for (const auto& i : collisions)
+		for (const auto& i : collisionList)
 		{
 			if (currentLocation.x == i.x && currentLocation.y + 1 == i.y) //NORTH
 				lidarData.frontSensor = true;
@@ -35,7 +35,7 @@ void FlightController::updateLidarData()
 	}
 	else if (angle == EAST)
 	{
-		for (const auto& i : collisions)
+		for (const auto& i : collisionList)
 		{
 			if (currentLocation.x == i.x && currentLocation.y + 1 == i.y)  // NORTH  left
 				lidarData.leftSensor = true;
@@ -49,7 +49,7 @@ void FlightController::updateLidarData()
 	}
 	else if (angle == WEST)
 	{
-		for (const auto& i : collisions)
+		for (const auto& i : collisionList)
 		{
 			if (currentLocation.x == i.x && currentLocation.y + 1 == i.y)  // NORTH  right
 				lidarData.rightSensor = true;
@@ -63,7 +63,7 @@ void FlightController::updateLidarData()
 	}
 	else if (angle == SOUTH)
 	{
-		for (const auto& i : collisions)
+		for (const auto& i : collisionList)
 		{
 			if (futureLocation.x == i.x && currentLocation.y + 1 == i.y)  // NORTH  back
 				lidarData.backSensor = true;
@@ -240,18 +240,33 @@ bool FlightController::MoveDrone_Once(Coord& coord, batteryWater& P)
 //saving to and reading From files (Collissions and Path History)
 void FlightController:: writeToCollisionDATFile(const vector<LOCATION>& vec)
 {
-	
+	ofstream os(COLLISIONS_DAT_FILENAME, ios::out | ios::binary);
+	typename vector<LOCATION>::size_type size = vec.size();
+	os.write((char*)&size, sizeof(size));
+	os.write((char*)&vec[0], (vec.size() * sizeof(LOCATION)));
+	os.close();
 }
 
 
 
 void FlightController:: writeToCollisionTXTFile(const vector<LOCATION>& vec)
 {
-
+	ofstream os(COLLISIONS_TXT_FILENAME, ios::out);
+	os << "LIST OF COLLISIONS" << endl;
+	int count = 0;
+	for (auto i : vec)
+	{
+		os << ++count << ".\tx: " << i.x << "\ty: " << i.y << "\n";
+	}
+	os.close();
 }
 void FlightController::  writeToPathHistoryDATFile()
 {
-
+	ofstream os(PATH_HISTORY_DAT_FILENAME, ios::out | ios::binary);
+	typename vector<pair<LOCATION,double>>::size_type size = pathHistory.size();
+	os.write((char*)&size, sizeof(size));
+	os.write((char*)&pathHistory[0], (pathHistory.size() * sizeof(pair<LOCATION,double>)));
+	os.close();
 }
 void FlightController:: writeToPathHistoryTXTFile()
 {
@@ -259,11 +274,47 @@ void FlightController:: writeToPathHistoryTXTFile()
 }
 bool FlightController:: readCollisionDATFile() //populates collisions vector with contents of Collision File
 {
+	ifstream is(COLLISIONS_DAT_FILENAME, ios::in | ios::binary);
+	if (!is.is_open())
+		return false;
+	typename vector<LOCATION>::size_type size = 0;
+	is.read((char*)&size, sizeof(size));
+	collisionList.resize(size);
+	is.read((char*)&collisionList[0], collisionList.size() * sizeof(LOCATION));
+	is.close();
 	return true;
 }
 bool FlightController:: readPathHistoryDATFile() //populates pathHistory vector with contents from PathHistoryFile
 {
+	ifstream is(PATH_HISTORY_DAT_FILENAME, ios::in | ios::binary);
+	if (!is.is_open())
+		return false;
+	typename vector<pair<LOCATION,double>>::size_type size = 0;
+	is.read((char*)&size, sizeof(size));
+	pathHistory.resize(size);
+	is.read((char*)&pathHistory[0], pathHistory.size() * sizeof(pair<LOCATION,double>));
+	is.close();
 	return true;
 }
 
 
+
+void viewPathHistory(vector<pair<LOCATION, double>> myVector)
+{
+	for (auto i : myVector)
+	{
+		cout << "(" << i.first.x << "," << i.first.y << ")\tTime: " << i.second << " s" << endl;
+	}
+}
+
+
+double calculateTotalTime(vector<pair<LOCATION, double>> myVector)
+{
+	double totalTime(0);
+
+	for (auto i : myVector)
+	{
+		totalTime += i.second;
+	}
+	return totalTime;
+}
