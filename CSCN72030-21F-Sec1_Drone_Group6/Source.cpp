@@ -6,34 +6,32 @@
 
 int main() {
 	std::cout << "Hello, World!" << std::endl;
-	//connection* connect = new connection((char*) "A1", (char*) "a2");
+	connection* connect = new connection((char*) "A1", (char*) "a2");
 
 
 	Coord startingLocation(0, 0);
 	FlightController myFC = FlightController(startingLocation, WEST);
-    batteryWater bW;
-    vector<LOCATION> myWritingVector;
-    LOCATION thisVector;
+    batteryWater* bW = new batteryWater();
+    vector<Coord> myWritingVector;
     for (int i = 0; i < 20; i++)
     {
-
-        thisVector.setLocation(9, rand() % 10);
+        Coord thisVector(9, rand() % 10);
         myWritingVector.push_back(thisVector);
     }
 
-    //   myFC.writeToCollisionFile(myWritingVector); //
+   // myFC.writeToCollisionDATFile(myWritingVector); //
     myFC.readCollisionDATFile();
-    myFC.writeToCollisionTXTFile(myWritingVector);
-    vector<LOCATION> coolPath;
-    LOCATION coolLoc;
+   // myFC.writeToCollisionTXTFile(myWritingVector);
+    vector<Coord> coolPath;
+    Coord coolLoc;
     for (int i = 0; i < 10; i++)
     {
         if (i % 2 == 0)
         {
             for (int j = 0; j < 10; j++)
             {
-                coolLoc.setLocation(i, j);
-                cout << coolLoc.x << endl << coolLoc.y << endl;
+                coolLoc.setCoord(i, j);
+                cout << coolLoc.getX() << endl << coolLoc.getY() << endl;
                 coolPath.push_back(coolLoc);
             }
         }
@@ -41,20 +39,28 @@ int main() {
         {
             for (int j = 9; j >= 0; j--)
             {
-                coolLoc.setLocation(i, j);
-                cout << coolLoc.x << endl << coolLoc.y << endl;
+                coolLoc.setCoord(i, j);
+                cout << coolLoc.getX() << endl << coolLoc.getY() << endl;
                 coolPath.push_back(coolLoc);
             }
         }
     }
 
 
-    while (myFC.MoveDrone(bW))
+    for (Coord& loc : coolPath)
     {
-        cout << "LOCATION: " << myFC.getCurrentLocation().x << "," << myFC.getCurrentLocation().y <<
-            "\tDrone Power: " << bW.getCurrentBattery() << " Watts" << endl;
+        myFC.setFutureLocation(loc);
+        if(!myFC.MoveDrone(bW))
+        {       
+            break;
+        }
+        else
+        {
+            cout << "LOCATION: " << myFC.getCurrentLocation().x << "," << myFC.getCurrentLocation().y <<
+                "\tDrone Power: " << bW->getCurrentBattery() << " Watts" << endl;
+        }
+        
     }
-
 
 
 

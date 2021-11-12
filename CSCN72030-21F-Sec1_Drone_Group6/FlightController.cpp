@@ -137,10 +137,10 @@ bool FlightController:: updatePath(vector<LOCATION> path) //updates path that th
 	return true;
 }
 
-bool FlightController::MoveDrone(batteryWater& P)
+bool FlightController::MoveDrone(batteryWater* P)
 {
 	//get future location from path 
-	futureLocation = path.at(0);
+	//futureLocation = path.at(0);
 	Vector2d intendedDirection = currentLocation.getVectorTo(futureLocation);
 	double yawAngle = provideYawAngleBetweenTwoVectors(directionOfDrone, intendedDirection);
 
@@ -150,10 +150,10 @@ bool FlightController::MoveDrone(batteryWater& P)
 	//Power = F * distance/ time 
 	//Power = mg*height /time 
 	double yawPowerLost(0);
-	if (yawDuration != 0)
+	if (yawDuration != 0 && !isnan(yawDuration))
 	{
 		yawPowerLost = WATTS * yawDuration;
-		P.decreaseBattery(yawPowerLost);
+		P->decreaseBattery(yawPowerLost);
 	}
 	if (currentLocation.getDistance(futureLocation) != 0)
 		directionOfDrone = intendedDirection;
@@ -170,11 +170,11 @@ bool FlightController::MoveDrone(batteryWater& P)
 		if (timeDuration != 0)
 		{
 			movePowerLost = WATTS * timeDuration;
-			P.decreaseBattery(movePowerLost);
+			P->decreaseBattery(movePowerLost);
 		}
 		pathHistory.push_back(make_pair(futureLocation, timeDuration + yawDuration));
 		currentLocation = futureLocation;
-		path.erase(path.begin());
+		//path.erase(path.begin());
 		return true;
 	}
 	else
@@ -230,6 +230,11 @@ bool FlightController::MoveDrone_Once(Coord& coord, batteryWater& P)
 		currentLocation = futureLocation;
 		path.erase(path.begin());
 		return true;
+	}
+	else
+	{
+		pathHistory.push_back(make_pair(currentLocation, yawDuration));
+		return false;
 	}
 }
 

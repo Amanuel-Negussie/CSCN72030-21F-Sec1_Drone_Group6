@@ -49,6 +49,7 @@
 	deleteFail
 	------------------------ { Date : November 6, 2021 } Version Created by - Danny Smith
 */
+#pragma once
 #include <iostream>
 #include "sonarSensor.h";
 #define MAX_CONNECTIONS 50

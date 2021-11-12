@@ -12,6 +12,7 @@
 * 1.0 - Base functionality added including ( class connection, logError, getVoltage, testConnection, Exceptions : fileNotOpened, noErrorLog, wrongVoltage. { Date : November 6, 2021 } - Version created by Danny Smith	
 * 1.1 - Exception renameFail added { Date : November 6, 2021 } - Updated by Danny Smith
 */
+#pragma once 
 
 using namespace std;
 #define _CRT_SECURE_NO_WARNINGS

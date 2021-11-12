@@ -22,6 +22,7 @@
 
 --------------- { Date : November 6, 2021 } - version created by Danny Smith
 */
+#pragma once 
 #include "connection.h";
 
 class tempSensor {
