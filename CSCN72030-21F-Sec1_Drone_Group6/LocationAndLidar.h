@@ -14,6 +14,7 @@ using namespace Eigen;
 
 inline bool isEqual(double x, double y);
 
+
 struct LOCATION
 {
 	double x, y;
@@ -29,3 +30,5 @@ struct LOCATION
 //helper function for converting direction from cardinal to vector vice/versa 
 Vector2d provideVectorFromCardinalDegree(double direction);
 double provideCardinalDegreeFromVector(Vector2d vec);
+double provideYawAngleBetweenTwoVectors(Vector2d v1, Vector2d v2); //if positive than it is clockwise from first
+double generateLengthOfArc(double Angle, double radius);

@@ -11,6 +11,20 @@
 using namespace std;
 using namespace Eigen;
 
+#define COLLISIONS_DAT_FILENAME "Collisions.dat"
+#define COLLISIONS_TXT_FILENAME "Collisions.txt"
+#define PATH_HISTORY_DAT_FILENAME "PathHistory.dat"
+#define PATH_HISTORY_TXT_FILENAME "PathHistory.txt"
+#define MASS_DRONE 21.1
+#define ACC_OF_GRAVITY -9.8
+#define ALTITUDE 4.572 //15 feet to meters
+#define RADIUS 0.41
+#define GIVEN_SPEED 5
+#define AIR_DENSITY_CONSTANT_K 22.35
+#define WATTS 1.037
+
+const double POWER_TO_HOVER = AIR_DENSITY_CONSTANT_K * sqrt(MASS_DRONE * MASS_DRONE * MASS_DRONE) / RADIUS;
+
 
 enum DIRECTIONS {
 	NORTH = 0,
@@ -37,9 +51,12 @@ private:
 	vector<LOCATION> collisions; //vector of collisions 
 	LIDAR lidarData; // will update each iteration and will showcase the collisions that are in the way of drone
 	vector<LOCATION> path; //updates the path from current location to destination (Navigation)
-	double requestedSpeed; //
+	double speed; //
 	vector<pair<LOCATION, double>> pathHistory; //path that we took as well as time it took
 	Vector2d directionOfDrone; //this will be a 2d vector representation
+
+	//Interface with Navigation
+
 
 	//updateLidarData
 	void updateLidarData();
@@ -53,18 +70,22 @@ public:
 	FlightController(Coord& locOfDrone, double direction);
 	
 	//getters and setters
-	bool setSpeed(int speed);
-	int getSpeed();
+	bool setSpeed(double speed);
+	double getSpeed();
 	LOCATION getCurrentLocation(void);
 	LOCATION getFutureLocation(void);
+	void setCurrentLocation(Coord& coord); 
+	void setFutureLocation(Coord& coord); 
 	Vector2d getDirectionOfDrone(void);
-
-
 
 	//Update Path and Move Drone
 	bool updatePath(vector<LOCATION> path); //updates path that the drone must follow
 	bool MoveDrone(batteryWater& P); //moves drone unless there's an obstacle in the way
 	bool updatePathHistory(vector<pair<LOCATION, double>>& vec); //updates Path History
+
+	//Navigation Interface 
+	bool MoveDrone_Once(Coord& coord, batteryWater& P); //Islams
+
 
 	//saving to and reading From files (Collissions and Path History)
 	void writeToCollisionDATFile(const vector<LOCATION>& vec);
@@ -73,8 +94,6 @@ public:
 	void writeToPathHistoryTXTFile();
 	bool readCollisionDATFile(); //populates collisions vector with contents of Collision File
 	bool readPathHistoryDATFile(); //populates pathHistory vector with contents from PathHistoryFile
-
-
 };
 
 

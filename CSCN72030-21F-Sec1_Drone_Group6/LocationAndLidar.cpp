@@ -49,7 +49,24 @@ Vector2d provideVectorFromCardinalDegree(double angle)
 
 double provideCardinalDegreeFromVector(Vector2d vec)
 {
-	return 1;
+	Vector3d north(0, 1, 0);
+	Vector3d v(vec[0], vec[1], 0);
+	double dotProduct = (north.dot(v));
+	double scalarProduct = north.norm() * v.norm();
+	double angle = acos(dotProduct / scalarProduct) * RADIANS_TO_DEGREES;
+	Vector3d crossProduct = north.cross(v);
+	if (crossProduct[2] > 0)
+	{
+		//cout << endl<<"The angle is " << 360-angle << " degress." << endl;
+		//cout << "The cross product is " << endl<< crossProduct << endl << endl;
+		return 360 - angle;
+	}
+	else
+	{
+		//cout << endl << "The angle is " << angle << " degress." << endl;
+		//cout << "The cross product is " << endl << crossProduct << endl << endl;
+		return angle;
+	}
 }
 
 
@@ -59,3 +76,32 @@ inline bool isEqual(double x, double y) {
 	// see Knuth section 4.2.2 pages 217-218
 }
 
+double provideYawAngleBetweenTwoVectors(Vector2d v1, Vector2d v2) //if positive than it is clockwise from first
+{
+	Vector3d first(v1[0], v1[1], 0);
+	Vector3d second(v2[0], v2[1], 0);
+	first.normalize();
+	second.normalize();
+	double dotProduct = first.dot(second);
+	double scalarProduct = first.norm() * second.norm();
+	double angle = acos(dotProduct / scalarProduct) * RADIANS_TO_DEGREES;
+	Vector3d crossProduct = first.cross(second);
+	if (crossProduct[2] >= 0)
+	{
+		//	cout << endl << "The angle is " << -angle << " degress." << endl;
+		//	cout << "The cross product is " << endl << crossProduct << endl << endl;
+		return -angle;
+	}
+	else
+	{
+		//	cout << endl << "The angle is " <<  angle << " degress." << endl;
+		//	cout << "The cross product is " << endl << crossProduct << endl << endl;
+		return angle;
+	}
+
+}
+
+ double generateLengthOfArc(double Angle, double radius)
+{
+	return Angle * DEGREES_TO_RADIANS * radius;  //ARC is EQUAL TO ANGLE * RADIUS 
+}
