@@ -302,7 +302,10 @@ bool FlightController:: readPathHistoryDATFile() //populates pathHistory vector 
 	return true;
 }
 
-
+vector<pair<LOCATION, double>> FlightController::getPathHistory()
+{
+	return pathHistory;
+}
 
 void viewPathHistory(vector<pair<LOCATION, double>> myVector)
 {

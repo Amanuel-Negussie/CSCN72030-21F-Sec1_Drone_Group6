@@ -82,6 +82,7 @@ public:
 	bool updatePath(vector<LOCATION> path); //updates path that the drone must follow
 	bool MoveDrone(batteryWater* P); //moves drone unless there's an obstacle in the way
 	bool updatePathHistory(vector<pair<LOCATION, double>>& vec); //updates Path History
+	vector<pair<LOCATION, double>> getPathHistory();
 
 	//Navigation Interface 
 	bool MoveDrone_Once(Coord& coord, batteryWater& P); //Islams

@@ -72,6 +72,6 @@ int main() {
 
     cout << "The total time it took to get to final destination is " << calculateTotalTime(myPathHistory) << " seconds." << endl;
     cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
-    viewPathHistory(myPathHistory);
+    viewPathHistory(myFC.getPathHistory());
 	return 0;
 }
