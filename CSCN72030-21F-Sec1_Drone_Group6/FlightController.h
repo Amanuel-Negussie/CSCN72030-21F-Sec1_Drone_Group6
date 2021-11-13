@@ -4,6 +4,7 @@
 #include <math.h>
 #include <Eigen/Dense>
 #include <numeric>
+#include <iomanip>
 
 #include "LocationAndLidar.h"
 #include "batteryWater.h"
@@ -21,7 +22,7 @@ using namespace Eigen;
 #define RADIUS 0.41
 #define GIVEN_SPEED 5
 #define AIR_DENSITY_CONSTANT_K 22.35
-#define WATTS 1.037
+#define CONSTANT_FACTOR_TEN 10
 
 const double POWER_TO_HOVER = AIR_DENSITY_CONSTANT_K * sqrt(MASS_DRONE * MASS_DRONE * MASS_DRONE) / RADIUS;
 

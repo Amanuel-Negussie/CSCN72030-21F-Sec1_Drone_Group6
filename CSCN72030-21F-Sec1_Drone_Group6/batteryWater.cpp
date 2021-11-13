@@ -115,6 +115,9 @@ batteryWater::batteryWater() {
 
 
 bool batteryWater::decreaseBattery(int watts) {
+	//remove code between these lines this is for implementation testing 
+	batteryCapacity -= watts;
+	//remove code 
 	return true;
 }
 bool batteryWater::startCharging() {
@@ -133,7 +136,12 @@ int batteryWater::getFlightEstimate(int speed, int maxW) {
 	return 1;
 }
 int batteryWater::getCurrentBattery() {
-	return 1;
+	return batteryCapacity; 
+	
+	/*
+		return -1;
+	*/
+
 }
 int batteryWater::getWaterStorage() {
 	return 1;

@@ -86,8 +86,13 @@ void FlightController::updateLidarData()
 
 bool FlightController::setSpeed(double speed)
 {
-	this->speed = speed;
-	return true;
+	if (speed > 0 && speed < 20)
+	{
+		this->speed = speed;
+		return true;
+	}
+	else
+		return false;
 }
 
 
@@ -150,9 +155,9 @@ bool FlightController::MoveDrone(batteryWater* P)
 	//Power = F * distance/ time 
 	//Power = mg*height /time 
 	double yawPowerLost(0);
-	if (yawDuration != 0 && !isnan(yawDuration))
+	if (yawDuration != 0)
 	{
-		yawPowerLost = WATTS * yawDuration;
+		yawPowerLost = CONSTANT_FACTOR_TEN * yawDuration;
 		P->decreaseBattery(yawPowerLost);
 	}
 	if (currentLocation.getDistance(futureLocation) != 0)
@@ -169,7 +174,7 @@ bool FlightController::MoveDrone(batteryWater* P)
 			timeDuration = 0;
 		if (timeDuration != 0)
 		{
-			movePowerLost = WATTS * timeDuration;
+			movePowerLost = CONSTANT_FACTOR_TEN * timeDuration;
 			P->decreaseBattery(movePowerLost);
 		}
 		pathHistory.push_back(make_pair(futureLocation, timeDuration + yawDuration));
@@ -206,7 +211,7 @@ bool FlightController::MoveDrone_Once(Coord& coord, batteryWater& P)
 	double yawPowerLost(0);
 	if (yawDuration != 0)
 	{
-		yawPowerLost = WATTS * yawDuration;
+		yawPowerLost = CONSTANT_FACTOR_TEN * yawDuration;
 		P.decreaseBattery(yawPowerLost);
 	}
 	if (currentLocation.getDistance(futureLocation) != 0)
@@ -223,7 +228,7 @@ bool FlightController::MoveDrone_Once(Coord& coord, batteryWater& P)
 			timeDuration = 0;
 		if (timeDuration != 0)
 		{
-			movePowerLost = WATTS * timeDuration;
+			movePowerLost = CONSTANT_FACTOR_TEN * timeDuration;
 			P.decreaseBattery(movePowerLost);
 		}
 		pathHistory.push_back(make_pair(futureLocation, timeDuration + yawDuration));
@@ -276,6 +281,14 @@ void FlightController::  writeToPathHistoryDATFile()
 void FlightController:: writeToPathHistoryTXTFile()
 {
 
+	ofstream os(PATH_HISTORY_TXT_FILENAME, ios::out);
+	os << "Path History" << endl;
+	int count = 0;
+	for (auto i : pathHistory)
+	{
+		os << ++count << ".\tx: " << i.first.x << "\ty: " << i.first.y << "\tDuration: " << fixed<<setprecision(2)<< i.second << "\tseconds.\n";
+	}
+	os.close();
 }
 bool FlightController:: readCollisionDATFile() //populates collisions vector with contents of Collision File
 {
