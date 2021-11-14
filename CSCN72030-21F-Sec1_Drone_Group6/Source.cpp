@@ -48,6 +48,7 @@ int main() {
     }
    
     myFC.setRequestedSpeed(GIVEN_SPEED);
+    
     for (Coord& loc : coolPath)
     {
         myFC.setFutureLocation(loc);
