@@ -220,7 +220,7 @@ bool FlightController::MoveDrone(batteryWater* P)
 
 		PATH_HISTORY p;
 		p.location = currentLocation;
-		p.duration = yawDuration;
+		p.duration = yawDuration + hoverDuration;
 		p.direction = provideCardinalName(provideCardinalDegreeFromVector(directionOfDrone));
 		p.speed = speed;
 		p.power = P->getCurrentBattery();

@@ -9,7 +9,7 @@
 
 using namespace std;
 
-//Flight Controlelr Module 
+//Flight Controller Module 
 //outside in the main or user interface
 double calculateTotalTime(vector<PATH_HISTORY> myVector);
 void viewPathHistory(vector<PATH_HISTORY> myVector);

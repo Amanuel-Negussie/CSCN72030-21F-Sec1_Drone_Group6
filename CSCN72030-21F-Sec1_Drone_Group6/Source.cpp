@@ -13,7 +13,6 @@ int main() {
 	FlightController myFC = FlightController(startingLocation, WEST);
     batteryWater* bW = new batteryWater();
     vector<LOCATION> myWritingVector;
-    srand(time(0));
     for (int i = 0; i < 20; i++)
     {
         LOCATION thisVector;
@@ -47,7 +46,7 @@ int main() {
             }
         }
     }
-
+   
     myFC.setRequestedSpeed(GIVEN_SPEED);
     for (Coord& loc : coolPath)
     {
