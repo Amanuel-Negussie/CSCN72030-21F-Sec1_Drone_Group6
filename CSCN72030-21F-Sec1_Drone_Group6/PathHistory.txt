@@ -1,92 +1,101 @@
 Path History
-1.	x: 0	y: 0	Duration: 0.00	seconds.
-2.	x: 0.00	y: 1.00	Duration: 0.33	seconds.
-3.	x: 0.00	y: 2.00	Duration: 0.20	seconds.
-4.	x: 0.00	y: 3.00	Duration: 0.20	seconds.
-5.	x: 0.00	y: 4.00	Duration: 0.20	seconds.
-6.	x: 0.00	y: 5.00	Duration: 0.20	seconds.
-7.	x: 0.00	y: 6.00	Duration: 0.20	seconds.
-8.	x: 0.00	y: 7.00	Duration: 0.20	seconds.
-9.	x: 0.00	y: 8.00	Duration: 0.20	seconds.
-10.	x: 0.00	y: 9.00	Duration: 0.20	seconds.
-11.	x: 1.00	y: 9.00	Duration: 0.33	seconds.
-12.	x: 1.00	y: 8.00	Duration: 0.33	seconds.
-13.	x: 1.00	y: 7.00	Duration: 0.20	seconds.
-14.	x: 1.00	y: 6.00	Duration: 0.20	seconds.
-15.	x: 1.00	y: 5.00	Duration: 0.20	seconds.
-16.	x: 1.00	y: 4.00	Duration: 0.20	seconds.
-17.	x: 1.00	y: 3.00	Duration: 0.20	seconds.
-18.	x: 1.00	y: 2.00	Duration: 0.20	seconds.
-19.	x: 1.00	y: 1.00	Duration: 0.20	seconds.
-20.	x: 1.00	y: 0.00	Duration: 0.20	seconds.
-21.	x: 2.00	y: 0.00	Duration: 0.33	seconds.
-22.	x: 2.00	y: 1.00	Duration: 0.33	seconds.
-23.	x: 2.00	y: 2.00	Duration: 0.20	seconds.
-24.	x: 2.00	y: 3.00	Duration: 0.20	seconds.
-25.	x: 2.00	y: 4.00	Duration: 0.20	seconds.
-26.	x: 2.00	y: 5.00	Duration: 0.20	seconds.
-27.	x: 2.00	y: 6.00	Duration: 0.20	seconds.
-28.	x: 2.00	y: 7.00	Duration: 0.20	seconds.
-29.	x: 2.00	y: 8.00	Duration: 0.20	seconds.
-30.	x: 2.00	y: 9.00	Duration: 0.20	seconds.
-31.	x: 3.00	y: 9.00	Duration: 0.33	seconds.
-32.	x: 3.00	y: 8.00	Duration: 0.33	seconds.
-33.	x: 3.00	y: 7.00	Duration: 0.20	seconds.
-34.	x: 3.00	y: 6.00	Duration: 0.20	seconds.
-35.	x: 3.00	y: 5.00	Duration: 0.20	seconds.
-36.	x: 3.00	y: 4.00	Duration: 0.20	seconds.
-37.	x: 3.00	y: 3.00	Duration: 0.20	seconds.
-38.	x: 3.00	y: 2.00	Duration: 0.20	seconds.
-39.	x: 3.00	y: 1.00	Duration: 0.20	seconds.
-40.	x: 3.00	y: 0.00	Duration: 0.20	seconds.
-41.	x: 4.00	y: 0.00	Duration: 0.33	seconds.
-42.	x: 4.00	y: 1.00	Duration: 0.33	seconds.
-43.	x: 4.00	y: 2.00	Duration: 0.20	seconds.
-44.	x: 4.00	y: 3.00	Duration: 0.20	seconds.
-45.	x: 4.00	y: 4.00	Duration: 0.20	seconds.
-46.	x: 4.00	y: 5.00	Duration: 0.20	seconds.
-47.	x: 4.00	y: 6.00	Duration: 0.20	seconds.
-48.	x: 4.00	y: 7.00	Duration: 0.20	seconds.
-49.	x: 4.00	y: 8.00	Duration: 0.20	seconds.
-50.	x: 4.00	y: 9.00	Duration: 0.20	seconds.
-51.	x: 5.00	y: 9.00	Duration: 0.33	seconds.
-52.	x: 5.00	y: 8.00	Duration: 0.33	seconds.
-53.	x: 5.00	y: 7.00	Duration: 0.20	seconds.
-54.	x: 5.00	y: 6.00	Duration: 0.20	seconds.
-55.	x: 5.00	y: 5.00	Duration: 0.20	seconds.
-56.	x: 5.00	y: 4.00	Duration: 0.20	seconds.
-57.	x: 5.00	y: 3.00	Duration: 0.20	seconds.
-58.	x: 5.00	y: 2.00	Duration: 0.20	seconds.
-59.	x: 5.00	y: 1.00	Duration: 0.20	seconds.
-60.	x: 5.00	y: 0.00	Duration: 0.20	seconds.
-61.	x: 6.00	y: 0.00	Duration: 0.33	seconds.
-62.	x: 6.00	y: 1.00	Duration: 0.33	seconds.
-63.	x: 6.00	y: 2.00	Duration: 0.20	seconds.
-64.	x: 6.00	y: 3.00	Duration: 0.20	seconds.
-65.	x: 6.00	y: 4.00	Duration: 0.20	seconds.
-66.	x: 6.00	y: 5.00	Duration: 0.20	seconds.
-67.	x: 6.00	y: 6.00	Duration: 0.20	seconds.
-68.	x: 6.00	y: 7.00	Duration: 0.20	seconds.
-69.	x: 6.00	y: 8.00	Duration: 0.20	seconds.
-70.	x: 6.00	y: 9.00	Duration: 0.20	seconds.
-71.	x: 7.00	y: 9.00	Duration: 0.33	seconds.
-72.	x: 7.00	y: 8.00	Duration: 0.33	seconds.
-73.	x: 7.00	y: 7.00	Duration: 0.20	seconds.
-74.	x: 7.00	y: 6.00	Duration: 0.20	seconds.
-75.	x: 7.00	y: 5.00	Duration: 0.20	seconds.
-76.	x: 7.00	y: 4.00	Duration: 0.20	seconds.
-77.	x: 7.00	y: 3.00	Duration: 0.20	seconds.
-78.	x: 7.00	y: 2.00	Duration: 0.20	seconds.
-79.	x: 7.00	y: 1.00	Duration: 0.20	seconds.
-80.	x: 7.00	y: 0.00	Duration: 0.20	seconds.
-81.	x: 8.00	y: 0.00	Duration: 0.33	seconds.
-82.	x: 8.00	y: 1.00	Duration: 0.33	seconds.
-83.	x: 8.00	y: 2.00	Duration: 0.20	seconds.
-84.	x: 8.00	y: 3.00	Duration: 0.20	seconds.
-85.	x: 8.00	y: 4.00	Duration: 0.20	seconds.
-86.	x: 8.00	y: 5.00	Duration: 0.20	seconds.
-87.	x: 8.00	y: 6.00	Duration: 0.20	seconds.
-88.	x: 8.00	y: 7.00	Duration: 0.20	seconds.
-89.	x: 8.00	y: 8.00	Duration: 0.20	seconds.
-90.	x: 8.00	y: 9.00	Duration: 0.20	seconds.
-91.	x: 8.00	y: 9.00	Duration: 0.13	seconds.
+1.	x: 0	y: 0	Duration: 0.00	seconds.	 Direction: WEST
+2.	x: 0.00	y: 1.00	Duration: 0.33	seconds.	 Direction: NORTH
+3.	x: 0.00	y: 2.00	Duration: 0.40	seconds.	 Direction: NORTH
+4.	x: 0.00	y: 3.00	Duration: 0.60	seconds.	 Direction: NORTH
+5.	x: 0.00	y: 4.00	Duration: 0.80	seconds.	 Direction: NORTH
+6.	x: 0.00	y: 5.00	Duration: 1.00	seconds.	 Direction: NORTH
+7.	x: 0.00	y: 6.00	Duration: 1.20	seconds.	 Direction: NORTH
+8.	x: 0.00	y: 7.00	Duration: 1.40	seconds.	 Direction: NORTH
+9.	x: 0.00	y: 8.00	Duration: 1.60	seconds.	 Direction: NORTH
+10.	x: 0.00	y: 9.00	Duration: 1.80	seconds.	 Direction: NORTH
+11.	x: 1.00	y: 9.00	Duration: 1.82	seconds.	 Direction: 6.340192
+12.	x: 1.00	y: 8.00	Duration: 1.61	seconds.	 Direction: 7.125016
+13.	x: 1.00	y: 7.00	Duration: 1.42	seconds.	 Direction: 8.130102
+14.	x: 1.00	y: 6.00	Duration: 1.22	seconds.	 Direction: 9.462322
+15.	x: 1.00	y: 5.00	Duration: 1.02	seconds.	 Direction: 11.309932
+16.	x: 1.00	y: 4.00	Duration: 0.83	seconds.	 Direction: 14.036243
+17.	x: 1.00	y: 3.00	Duration: 0.64	seconds.	 Direction: 18.434949
+18.	x: 1.00	y: 2.00	Duration: 0.46	seconds.	 Direction: 26.565051
+19.	x: 1.00	y: 1.00	Duration: 0.31	seconds.	 Direction: 45.000000
+20.	x: 1.00	y: 0.00	Duration: 0.26	seconds.	 Direction: EAST
+21.	x: 2.00	y: 0.00	Duration: 0.40	seconds.	 Direction: EAST
+22.	x: 2.00	y: 1.00	Duration: 0.49	seconds.	 Direction: 63.434949
+23.	x: 2.00	y: 2.00	Duration: 0.59	seconds.	 Direction: 45.000000
+24.	x: 2.00	y: 3.00	Duration: 0.74	seconds.	 Direction: 33.690068
+25.	x: 2.00	y: 4.00	Duration: 0.90	seconds.	 Direction: 26.565051
+26.	x: 2.00	y: 5.00	Duration: 1.08	seconds.	 Direction: 21.801409
+27.	x: 2.00	y: 6.00	Duration: 1.27	seconds.	 Direction: 18.434949
+28.	x: 2.00	y: 7.00	Duration: 1.46	seconds.	 Direction: 15.945396
+29.	x: 2.00	y: 8.00	Duration: 1.65	seconds.	 Direction: 14.036243
+30.	x: 2.00	y: 9.00	Duration: 1.85	seconds.	 Direction: 12.528808
+31.	x: 3.00	y: 9.00	Duration: 1.91	seconds.	 Direction: 18.434949
+32.	x: 3.00	y: 8.00	Duration: 1.71	seconds.	 Direction: 20.556045
+33.	x: 3.00	y: 7.00	Duration: 1.53	seconds.	 Direction: 23.198591
+34.	x: 3.00	y: 6.00	Duration: 1.35	seconds.	 Direction: 26.565051
+35.	x: 3.00	y: 5.00	Duration: 1.17	seconds.	 Direction: 30.963757
+36.	x: 3.00	y: 4.00	Duration: 1.01	seconds.	 Direction: 36.869898
+37.	x: 3.00	y: 3.00	Duration: 0.86	seconds.	 Direction: 45.000000
+38.	x: 3.00	y: 2.00	Duration: 0.74	seconds.	 Direction: 56.309932
+39.	x: 3.00	y: 1.00	Duration: 0.65	seconds.	 Direction: 71.565051
+40.	x: 3.00	y: 0.00	Duration: 0.63	seconds.	 Direction: EAST
+41.	x: 4.00	y: 0.00	Duration: 0.80	seconds.	 Direction: EAST
+42.	x: 4.00	y: 1.00	Duration: 0.84	seconds.	 Direction: 75.963757
+43.	x: 4.00	y: 2.00	Duration: 0.91	seconds.	 Direction: 63.434949
+44.	x: 4.00	y: 3.00	Duration: 1.01	seconds.	 Direction: 53.130102
+45.	x: 4.00	y: 4.00	Duration: 1.14	seconds.	 Direction: 45.000000
+46.	x: 4.00	y: 5.00	Duration: 1.29	seconds.	 Direction: 38.659808
+47.	x: 4.00	y: 6.00	Duration: 1.45	seconds.	 Direction: 33.690068
+48.	x: 4.00	y: 7.00	Duration: 1.62	seconds.	 Direction: 29.744881
+49.	x: 4.00	y: 8.00	Duration: 1.79	seconds.	 Direction: 26.565051
+50.	x: 4.00	y: 9.00	Duration: 1.97	seconds.	 Direction: 23.962489
+51.	x: 5.00	y: 9.00	Duration: 2.07	seconds.	 Direction: 29.054604
+52.	x: 5.00	y: 8.00	Duration: 1.89	seconds.	 Direction: 32.005383
+53.	x: 5.00	y: 7.00	Duration: 1.73	seconds.	 Direction: 35.537678
+54.	x: 5.00	y: 6.00	Duration: 1.57	seconds.	 Direction: 39.805571
+55.	x: 5.00	y: 5.00	Duration: 1.42	seconds.	 Direction: 45.000000
+56.	x: 5.00	y: 4.00	Duration: 1.29	seconds.	 Direction: 51.340192
+57.	x: 5.00	y: 3.00	Duration: 1.18	seconds.	 Direction: 59.036243
+58.	x: 5.00	y: 2.00	Duration: 1.09	seconds.	 Direction: 68.198591
+59.	x: 5.00	y: 1.00	Duration: 1.03	seconds.	 Direction: 78.690068
+60.	x: 5.00	y: 0.00	Duration: 1.02	seconds.	 Direction: EAST
+61.	x: 6.00	y: 0.00	Duration: 1.20	seconds.	 Direction: EAST
+62.	x: 6.00	y: 1.00	Duration: 1.23	seconds.	 Direction: 80.537678
+63.	x: 6.00	y: 2.00	Duration: 1.28	seconds.	 Direction: 71.565051
+64.	x: 6.00	y: 3.00	Duration: 1.35	seconds.	 Direction: 63.434949
+65.	x: 6.00	y: 4.00	Duration: 1.45	seconds.	 Direction: 56.309932
+66.	x: 6.00	y: 5.00	Duration: 1.57	seconds.	 Direction: 50.194429
+67.	x: 6.00	y: 6.00	Duration: 1.70	seconds.	 Direction: 45.000000
+68.	x: 6.00	y: 7.00	Duration: 1.85	seconds.	 Direction: 40.601295
+69.	x: 6.00	y: 8.00	Duration: 2.01	seconds.	 Direction: 36.869898
+70.	x: 6.00	y: 9.00	Duration: 2.17	seconds.	 Direction: 33.690068
+71.	x: 7.00	y: 9.00	Duration: 2.29	seconds.	 Direction: 37.874984
+72.	x: 7.00	y: 8.00	Duration: 2.13	seconds.	 Direction: 41.185925
+73.	x: 7.00	y: 7.00	Duration: 1.99	seconds.	 Direction: 45.000000
+74.	x: 7.00	y: 6.00	Duration: 1.85	seconds.	 Direction: 49.398705
+75.	x: 7.00	y: 5.00	Duration: 1.73	seconds.	 Direction: 54.462322
+76.	x: 7.00	y: 4.00	Duration: 1.62	seconds.	 Direction: 60.255119
+77.	x: 7.00	y: 3.00	Duration: 1.53	seconds.	 Direction: 66.801409
+78.	x: 7.00	y: 2.00	Duration: 1.47	seconds.	 Direction: 74.054604
+79.	x: 7.00	y: 1.00	Duration: 1.43	seconds.	 Direction: 81.869898
+80.	x: 7.00	y: 0.00	Duration: 1.41	seconds.	 Direction: EAST
+81.	x: 8.00	y: 0.00	Duration: 1.60	seconds.	 Direction: EAST
+82.	x: 8.00	y: 1.00	Duration: 1.62	seconds.	 Direction: 82.874984
+83.	x: 8.00	y: 2.00	Duration: 1.66	seconds.	 Direction: 75.963757
+84.	x: 8.00	y: 3.00	Duration: 1.72	seconds.	 Direction: 69.443955
+85.	x: 8.00	y: 4.00	Duration: 1.80	seconds.	 Direction: 63.434949
+86.	x: 8.00	y: 5.00	Duration: 1.89	seconds.	 Direction: 57.994617
+87.	x: 8.00	y: 6.00	Duration: 2.01	seconds.	 Direction: 53.130102
+88.	x: 8.00	y: 7.00	Duration: 2.13	seconds.	 Direction: 48.814075
+89.	x: 8.00	y: 8.00	Duration: 2.27	seconds.	 Direction: 45.000000
+90.	x: 8.00	y: 9.00	Duration: 2.41	seconds.	 Direction: 41.633539
+91.	x: 9.00	y: 9.00	Duration: 2.55	seconds.	 Direction: 45.000000
+92.	x: 9.00	y: 8.00	Duration: 2.41	seconds.	 Direction: 48.366461
+93.	x: 9.00	y: 7.00	Duration: 2.29	seconds.	 Direction: 52.125016
+94.	x: 9.00	y: 6.00	Duration: 2.17	seconds.	 Direction: 56.309932
+95.	x: 9.00	y: 5.00	Duration: 2.07	seconds.	 Direction: 60.945396
+96.	x: 9.00	y: 4.00	Duration: 1.98	seconds.	 Direction: 66.037511
+97.	x: 9.00	y: 3.00	Duration: 1.91	seconds.	 Direction: 71.565051
+98.	x: 9.00	y: 2.00	Duration: 1.85	seconds.	 Direction: 77.471192
+99.	x: 9.00	y: 1.00	Duration: 1.82	seconds.	 Direction: 83.659808
+100.	x: 9.00	y: 0.00	Duration: 1.81	seconds.	 Direction: EAST

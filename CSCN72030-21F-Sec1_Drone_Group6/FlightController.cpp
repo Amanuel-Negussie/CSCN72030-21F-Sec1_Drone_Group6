@@ -147,7 +147,7 @@ bool FlightController::MoveDrone(batteryWater* P)
 	//get future location from path 
 	//futureLocation = path.at(0);
 	Vector2d intendedDirection = currentLocation.getVectorTo(futureLocation);
-	double yawAngle = provideYawAngleBetweenTwoVectors(directionOfDrone, intendedDirection);
+	double yawAngle = provideCardinalDegreeBetweenTwoVectors(directionOfDrone, intendedDirection);
 
 	if (isnan(yawAngle))
 		yawAngle = 0;
@@ -177,71 +177,31 @@ bool FlightController::MoveDrone(batteryWater* P)
 			movePowerLost = CONSTANT_FACTOR_TEN * timeDuration;
 			P->decreaseBattery(movePowerLost);
 		}
-		pathHistory.push_back(make_pair(futureLocation, timeDuration + yawDuration));
-		currentLocation = futureLocation;
-		//path.erase(path.begin());
+		PATH_HISTORY p;
+		p.location = futureLocation;
+		p.duration = timeDuration + yawDuration;
+		p.direction = provideCardinalName(provideCardinalDegreeFromVector(directionOfDrone));
+		pathHistory.push_back(p);
 		return true;
 	}
 	else
 	{
-		pathHistory.push_back(make_pair(currentLocation, yawDuration));
+		PATH_HISTORY p;
+		p.location = currentLocation;
+		p.duration = yawDuration;
+		p.direction = provideCardinalName(provideCardinalDegreeFromVector(directionOfDrone));
+		pathHistory.push_back(p);
 		return false;
 	}
 }
 
-bool FlightController::updatePathHistory(vector<pair<LOCATION, double>>& vec) //updates Path History
+bool FlightController::updatePathHistory(vector<PATH_HISTORY>& vec) //updates Path History
 {
 	
+	pathHistory = vec;
 	return true;
 }
 
-
-//Move Drone Once
-bool FlightController::MoveDrone_Once(Coord& coord, batteryWater& P)
-{
-	futureLocation.setLocation(coord);
-	Vector2d intendedDirection = currentLocation.getVectorTo(futureLocation); //get the intended direction of the Drone
-
-	double yawAngle = provideYawAngleBetweenTwoVectors(directionOfDrone, intendedDirection);
-	if (isnan(yawAngle))
-		yawAngle = 0;
-	double yawDuration = abs(generateLengthOfArc(yawAngle, RADIUS)) / speed; //distance over speed equals time
-	//Power = F * distance/ time 
-	//Power = mg*height /time 
-	double yawPowerLost(0);
-	if (yawDuration != 0)
-	{
-		yawPowerLost = CONSTANT_FACTOR_TEN * yawDuration;
-		P.decreaseBattery(yawPowerLost);
-	}
-	if (currentLocation.getDistance(futureLocation) != 0)
-		directionOfDrone = intendedDirection;
-	updateLidarData();
-	double angle = provideCardinalDegreeFromVector(directionOfDrone);
-	if (isnan(angle))
-		angle = 0;
-	double movePowerLost(0);
-	if (!lidarData.frontSensor)
-	{
-		double timeDuration = abs(currentLocation.getDistance(futureLocation)) / speed; //create real calculation 
-		if (isnan(timeDuration))
-			timeDuration = 0;
-		if (timeDuration != 0)
-		{
-			movePowerLost = CONSTANT_FACTOR_TEN * timeDuration;
-			P.decreaseBattery(movePowerLost);
-		}
-		pathHistory.push_back(make_pair(futureLocation, timeDuration + yawDuration));
-		currentLocation = futureLocation;
-		path.erase(path.begin());
-		return true;
-	}
-	else
-	{
-		pathHistory.push_back(make_pair(currentLocation, yawDuration));
-		return false;
-	}
-}
 
 
 //READING AND WRITING TO FILE COLLISIONS AND PATH HISTORY 
@@ -273,9 +233,9 @@ void FlightController:: writeToCollisionTXTFile(const vector<LOCATION>& vec)
 void FlightController::  writeToPathHistoryDATFile()
 {
 	ofstream os(PATH_HISTORY_DAT_FILENAME, ios::out | ios::binary);
-	typename vector<pair<LOCATION,double>>::size_type size = pathHistory.size();
+	typename vector<PATH_HISTORY>::size_type size = pathHistory.size();
 	os.write((char*)&size, sizeof(size));
-	os.write((char*)&pathHistory[0], (pathHistory.size() * sizeof(pair<LOCATION,double>)));
+	os.write((char*)&pathHistory[0], (pathHistory.size() * sizeof(PATH_HISTORY)));
 	os.close();
 }
 void FlightController:: writeToPathHistoryTXTFile()
@@ -286,7 +246,7 @@ void FlightController:: writeToPathHistoryTXTFile()
 	int count = 0;
 	for (auto i : pathHistory)
 	{
-		os << ++count << ".\tx: " << i.first.x << "\ty: " << i.first.y << "\tDuration: " << fixed<<setprecision(2)<< i.second << "\tseconds.\n";
+		os << ++count << ".\tx: " << i.location.x << "\ty: " << i.location.y << "\tDuration: " << fixed<<setprecision(2)<< i.duration << "\tseconds.\t Direction: "<<i.direction<<endl;
 	}
 	os.close();
 }
@@ -307,7 +267,7 @@ bool FlightController:: readPathHistoryDATFile() //populates pathHistory vector 
 	ifstream is(PATH_HISTORY_DAT_FILENAME, ios::in | ios::binary);
 	if (!is.is_open())
 		return false;
-	typename vector<pair<LOCATION,double>>::size_type size = 0;
+	typename vector<PATH_HISTORY>::size_type size = 0;
 	is.read((char*)&size, sizeof(size));
 	pathHistory.resize(size);
 	is.read((char*)&pathHistory[0], pathHistory.size() * sizeof(pair<LOCATION,double>));
@@ -315,27 +275,9 @@ bool FlightController:: readPathHistoryDATFile() //populates pathHistory vector 
 	return true;
 }
 
-vector<pair<LOCATION, double>> FlightController::getPathHistory()
+vector<PATH_HISTORY> FlightController::getPathHistory()
 {
 	return pathHistory;
 }
 
-void viewPathHistory(vector<pair<LOCATION, double>> myVector)
-{
-	for (auto i : myVector)
-	{
-		cout << "(" << i.first.x << "," << i.first.y << ")\tTime: " << i.second << " s" << endl;
-	}
-}
 
-
-double calculateTotalTime(vector<pair<LOCATION, double>> myVector)
-{
-	double totalTime(0);
-
-	for (auto i : myVector)
-	{
-		totalTime += i.second;
-	}
-	return totalTime;
-}

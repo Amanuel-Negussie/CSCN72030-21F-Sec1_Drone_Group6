@@ -6,7 +6,10 @@
 #include <numeric>
 #include <iomanip>
 
-#include "LocationAndLidar.h"
+#include "Physics.h"
+#include "Location.h"
+#include "Lidar.h"
+#include "PathHistory.h"
 #include "batteryWater.h"
 
 using namespace std;
@@ -35,14 +38,6 @@ enum DIRECTIONS {
 };
 
 
-struct LIDAR
-{
-	bool frontSensor;
-	bool backSensor;
-	bool leftSensor;
-	bool rightSensor;
-};
-
 class FlightController
 {
 private: 
@@ -53,18 +48,9 @@ private:
 	LIDAR lidarData; // will update each iteration and will showcase the collisions that are in the way of drone
 	vector<LOCATION> path; //updates the path from current location to destination (Navigation)
 	double speed; //
-	vector<pair<LOCATION, double>> pathHistory; //path that we took as well as time it took
+	vector<PATH_HISTORY> pathHistory; //path that we took as well as time it took
 	Vector2d directionOfDrone; //this will be a 2d vector representation
-
-	//Interface with Navigation
-
-
-	//updateLidarData
 	void updateLidarData();
-	
-
-
-
 public: 
 
 	//constuctor receives the location of Drone as well as direction in terms of Cardinal Degree
@@ -82,11 +68,10 @@ public:
 	//Update Path and Move Drone
 	bool updatePath(vector<LOCATION> path); //updates path that the drone must follow
 	bool MoveDrone(batteryWater* P); //moves drone unless there's an obstacle in the way
-	bool updatePathHistory(vector<pair<LOCATION, double>>& vec); //updates Path History
-	vector<pair<LOCATION, double>> getPathHistory();
+	bool updatePathHistory(vector<PATH_HISTORY>& vec); //updates Path History
+	vector<PATH_HISTORY> getPathHistory();
 
-	//Navigation Interface 
-	bool MoveDrone_Once(Coord& coord, batteryWater& P); //Islams
+	//Navigation Interface
 
 
 	//saving to and reading From files (Collissions and Path History)
@@ -99,10 +84,12 @@ public:
 };
 
 
-//outside
-double calculateTotalTime(vector<pair<LOCATION, double>> myVector);
-void viewPathHistory(vector<pair<LOCATION, double>> myVector);
 
+//helper function for converting direction from cardinal to vector vice/versa 
+Vector2d provideVectorFromCardinalDegree(double direction);
+double provideCardinalDegreeFromVector(Vector2d vec);
+double provideCardinalDegreeBetweenTwoVectors(Vector2d v1, Vector2d v2); //if positive than it is clockwise from first
+double generateLengthOfArc(double Angle, double radius);
 
 
 
