@@ -32,7 +32,7 @@ bool sonarSensor::isOnline() {
 }
 
 
-char* sonarSensor::getID() {
+string sonarSensor::getID() {
 	return (char*)this->ID;
 }
 

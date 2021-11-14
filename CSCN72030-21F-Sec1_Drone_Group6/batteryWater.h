@@ -1,3 +1,4 @@
+#pragma once
 /*
 * File : batteryWater.h
 * Programmer : Danny Smith
@@ -60,7 +61,7 @@
 #include <string>
 class batteryWater {
 public :
-	bool decreaseBattery(int watts);
+	bool decreaseBattery(float watts);
 	bool startCharging();
 	bool endCharging();
 	bool drainWater();
@@ -76,14 +77,15 @@ public :
 	batteryWater();
 	~batteryWater();
 	void save();
+	
 private:
+	bool init;
 	float MAX_TEMP;
 	float waterAlert;
 	float batteryAlert;
 	bool charging;
 	connection* circuit[MAX_CONNECTIONS];
-
-	
+	void updateScreen();
 	float batteryCapacity;
 	float waterCapacity;
 	bool padConnected;
@@ -98,6 +100,7 @@ private:
 	void sendAlert(string input);
 	bool openHatch();
 	bool closeHatch();
+	string currentAlert;
 };
 
 

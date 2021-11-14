@@ -1,3 +1,4 @@
+#pragma once
 /*
 * File : connection.h
 * Programmer : Danny Smith

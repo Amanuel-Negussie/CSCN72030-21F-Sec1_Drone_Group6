@@ -78,12 +78,13 @@ batteryWater::~batteryWater() {
 }
 batteryWater::batteryWater() {
 
-
+	this->init = true;
 
 	// read below info from rule file
 	this->MAX_TEMP = 70;
 	this->waterAlert = 20;
 	this->batteryAlert = 40;
+
 	this->charging = false;
 	this->batteryCapacity = 0;
 	this->door = false;
@@ -119,7 +120,7 @@ batteryWater::batteryWater() {
 	// init water capacity send issue if sonar is offline
 	if (sonar->isOnline()) {
 		this->waterCapacity = sensor->getTime();
-		
+
 	}
 	else {
 		logError("Sonar Damaged");
@@ -139,10 +140,10 @@ batteryWater::batteryWater() {
 		file >> input;
 		while (input != 38) {
 			while (input != 59 && input != 38) {
-				
+
 				word[x] = input;
 				file >> input;
-				
+
 				x++;
 			} // while not ;
 			word[x] = '\0';
@@ -184,14 +185,58 @@ batteryWater::batteryWater() {
 			if (count == 3) {
 				this->batteryCapacity = atoi(word);
 			} // check charging
-				count++;
-				file >> input;
+			count++;
+			file >> input;
 		} // while ! &
-		
-	}
-	file.close();
 
-}
+	}
+	for (int i = 0; i < WORD_SIZE; i++) { // reset word
+		word[i] = '\0';
+		x = 0;
+	} // ignore first element
+	file.close();
+	fstream file2;
+	count = 0;
+	file2.open(RULES_FILE, ios::in);
+	if (!file2.is_open()) { // if rules file is opened
+		logError("SYSTEM ERROR File Not Opened");
+		throw fileNotOpened();
+	}
+
+	else {
+		file2 >> input;
+		while (input != 38) {
+			while (input != 59 && input != 38) {
+
+				word[x] = input;
+				file2 >> input;
+
+				x++;
+			} // while not ;
+			
+			word[x] = '\0';
+			if (count == 0) {
+				
+				this->MAX_TEMP = atof(word);
+			}
+			else if (count == 1) {
+				this->waterAlert = atof(word);
+			}
+			else if (count == 2) {
+
+				this->batteryAlert = atof(word);;
+			}
+			count++;
+			for (int i = 0; i < WORD_SIZE; i++) { // reset word
+				word[i] = '\0';
+				x = 0;
+			} // ignore first element
+			file2 >> input;
+		}
+	}
+	file2.close();
+	this->init = false;
+} // initializer
 
 
 void batteryWater::save() {
@@ -213,15 +258,16 @@ void batteryWater::save() {
 }
 
 
-bool batteryWater::decreaseBattery(int watts) {
-	//watts = 50
-	// 20w/h = 20w/h / 240 apx 15 sec
+bool batteryWater::decreaseBattery(float watts) {
+	cout << watts;
 	float temp = this->batteryCapacity;
-	this->batteryCapacity = this->batteryCapacity - (watts / 240);
+	this->batteryCapacity = this->batteryCapacity - (watts/8); 
 	if (this->batteryCapacity != temp) {
+		this->update();
 		return true;
 	}
 	else {
+		this->update();
 		return false;
 	}
 	
@@ -229,36 +275,44 @@ bool batteryWater::decreaseBattery(int watts) {
 bool batteryWater::startCharging() {
 	this->charging = true;
 	if (this->charging == true) {
+		this->update();
 		return true;
 	}
 	else {
+		this->update();
 		return false;
 	}
 }
 bool batteryWater::endCharging() {
 	this->charging = false;
 	if (this->charging == false) {
+		this->update();
 		return true;
 	}
 	else {
+		this->update();
 		return false;
 	}
 }
 bool batteryWater::drainWater() {
 	this->waterCapacity = 0;
 	if (this->getWaterStorage() == 0) {
+		this->update();
 		return true;
 	}
 	else {
+		this->update();
 		return true;
 	}
 }
 bool batteryWater::fill(int percent) {
 	this->waterCapacity = percent;
 	if (this->getWaterStorage() == percent) {
+		this->update();
 		return true;
 	}
 	else {
+		this->update();
 		return false;
 	}
 }
@@ -277,18 +331,22 @@ bool batteryWater::isConnectedBase() {
 bool batteryWater::connectBase() {
 	this->padConnected = true;
 	if (this->isConnectedBase()== true) {
+		this->update();
 		return true;
 	}
 	else {
+		this->update();
 		return false;
 	}
 }
 bool batteryWater::disconnectBase() {
 	this->padConnected = false;
 	if (this->isConnectedBase() == false) {
+		this->update();
 		return true;
 	}
 	else {
+		this->update();
 		return false;
 	}
 }
@@ -319,7 +377,7 @@ bool batteryWater::closeHatch() {
 
 
 void batteryWater::sendAlert(string input) {
-
+	this->currentAlert = input;
 }
 
 bool batteryWater::addTempSensor(char* ID, char* connection1, char* connection2) {
@@ -333,6 +391,23 @@ int batteryWater::getTemp() {
 }
 void batteryWater::update() {
 
+	// ensure water is within paramaters
+	this->currentAlert = "";
+	if (this->waterCapacity > 100) {
+		this->waterCapacity = 100;
+	}
+	if (this->waterCapacity < 0) {
+		this->waterCapacity = 0;
+	}
+
+	// ensure battery is within paramaters
+
+	if (this->batteryCapacity > 100) {
+		this->batteryCapacity = 100;
+	}
+	if (this->batteryCapacity < 0) {
+		this->batteryCapacity = 0;
+	}
 
 	// check temps and temp sensor
 	if (this->temps[0]->isOnline()) {
@@ -351,13 +426,59 @@ void batteryWater::update() {
 		logError("Temperature Sensor " + this->temps[0]->getID() + " is offline");
 		this->sendAlert("TemperatureSensorOffline");
 	}
-	// check temps and temp sensor
+	// check sonar Sensor
+	if (!this->sonar->isOnline()) {
+		logError("Sonar Sensor " + this->sonar->getID() + " Is Offline");
+		this->sendAlert("SonarSensorOffline");
+	}
 
+	// check Battery Capacity
+	
+	 if (this->batteryCapacity <= batteryAlert / 2) {
+		logError("battery Critical");
+		this->sendAlert("BatteryCritical");
+	}
+	 else if (this->batteryCapacity <= batteryAlert) {
+		 cout << "HI";
+		 logError("Low Battery");
+		 this->sendAlert("LowBattery");
+	 }
 
+	// Check Water Capacity
+
+	 if (this->waterCapacity <= waterAlert / 2) {
+		logError("Water Critical");
+		this->sendAlert("WaterCritical");
+	}
+	 else if (this->waterCapacity <= waterAlert) {
+		 logError("Low Water");
+		 this->sendAlert("LowWater");
+	 }
+	if (!init) { // only make changes if the system is not initializing
+		if (this->isCharging()) { // if battery is charging increase battery
+			this->batteryCapacity++;
+		}
+		if (this->door) { // if door open reduce water because its spreading
+			this->waterCapacity--;
+		}
+	}
+
+	this->save();
+	this->updateScreen();
 }
 bool batteryWater::swapBattery() {
+	this->connectBase();
+	this->startCharging();
+	this->batteryCapacity = 100;
+	this->endCharging();
+	this->disconnectBase();
 	return true;
 }
 int batteryWater::getFlightEstimate(int speed, int maxW) {
 	return 1;
+}
+
+void batteryWater::updateScreen() {
+	//cout << "\x1B[2J\x1B[H";
+	cout << "Battery : " << this->getCurrentBattery() << "%                 " << "Water : " << this->getWaterStorage() << "%" << "                   Alert :" << this->currentAlert << "\n";
 }

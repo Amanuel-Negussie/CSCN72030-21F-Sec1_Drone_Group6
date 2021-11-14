@@ -13,3 +13,362 @@ hi2021:11:5  22:59:34
 2021:11:6  14:14:54 - ERROR : DoneWriting
 2021:11:10  15:6:40 - ERROR : Broken Connection
 2021:11:10  15:6:40 - ERROR : Sonar Damaged
+2021:11:14  11:53:38 - ERROR : SYSTEM ERROR File Not Opened
+2021:11:14  11:53:53 - ERROR : SYSTEM ERROR File Not Opened
+2021:11:14  11:54:1 - ERROR : Broken Connection
+2021:11:14  11:54:1 - ERROR : Sonar Damaged
+2021:11:14  12:19:29 - ERROR : Low Battery
+2021:11:14  12:19:29 - ERROR : Low Battery
+2021:11:14  12:20:39 - ERROR : Low Battery
+2021:11:14  12:20:39 - ERROR : Low Battery
+2021:11:14  12:20:56 - ERROR : Broken Connection
+2021:11:14  12:20:56 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:20:56 - ERROR : Low Battery
+2021:11:14  12:20:56 - ERROR : Low Battery
+2021:11:14  12:22:15 - ERROR : Low Battery
+2021:11:14  12:22:15 - ERROR : Low Battery
+2021:11:14  12:22:53 - ERROR : Low Battery
+2021:11:14  12:22:53 - ERROR : Low Battery
+2021:11:14  12:23:13 - ERROR : Broken Connection
+2021:11:14  12:23:13 - ERROR : Sonar Damaged
+2021:11:14  12:23:13 - ERROR : Low Battery
+2021:11:14  12:23:13 - ERROR : Low Water
+2021:11:14  12:23:13 - ERROR : Low Battery
+2021:11:14  12:23:13 - ERROR : Low Water
+2021:11:14  12:23:13 - ERROR : Low Water
+2021:11:14  12:23:43 - ERROR : Low Battery
+2021:11:14  12:23:43 - ERROR : Low Battery
+2021:11:14  12:24:5 - ERROR : Low Battery
+2021:11:14  12:24:5 - ERROR : Low Battery
+2021:11:14  12:24:5 - ERROR : Broken Connection
+2021:11:14  12:24:5 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:24:15 - ERROR : Low Battery
+2021:11:14  12:24:15 - ERROR : Low Battery
+2021:11:14  12:24:23 - ERROR : Low Battery
+2021:11:14  12:24:23 - ERROR : Low Battery
+2021:11:14  12:24:23 - ERROR : Broken Connection
+2021:11:14  12:24:23 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:24:28 - ERROR : Low Battery
+2021:11:14  12:24:28 - ERROR : Low Battery
+2021:11:14  12:24:33 - ERROR : Low Battery
+2021:11:14  12:24:33 - ERROR : Low Battery
+2021:11:14  12:25:25 - ERROR : Broken Connection
+2021:11:14  12:25:25 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:25:25 - ERROR : Low Battery
+2021:11:14  12:25:25 - ERROR : Low Battery
+2021:11:14  12:26:26 - ERROR : Low Battery
+2021:11:14  12:26:26 - ERROR : Low Battery
+2021:11:14  12:26:30 - ERROR : Low Battery
+2021:11:14  12:26:30 - ERROR : Broken Connection
+2021:11:14  12:26:30 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:26:30 - ERROR : Low Battery
+2021:11:14  12:26:35 - ERROR : Low Battery
+2021:11:14  12:26:35 - ERROR : Low Battery
+2021:11:14  12:26:35 - ERROR :  SYSTEM ERROR File Not Renamed
+2021:11:14  12:26:45 - ERROR : Low Battery
+2021:11:14  12:26:45 - ERROR : Low Battery
+2021:11:14  12:26:45 - ERROR : Broken Connection
+2021:11:14  12:26:45 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:26:50 - ERROR : Low Battery
+2021:11:14  12:26:50 - ERROR : Low Battery
+2021:11:14  12:27:11 - ERROR : Low Battery
+2021:11:14  12:27:11 - ERROR : Low Battery
+2021:11:14  12:27:11 - ERROR : Broken Connection
+2021:11:14  12:27:11 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:27:14 - ERROR : Low Battery
+2021:11:14  12:27:14 - ERROR : Low Battery
+2021:11:14  12:27:18 - ERROR : Low Battery
+2021:11:14  12:27:18 - ERROR : Low Battery
+2021:11:14  12:28:23 - ERROR : Broken Connection
+2021:11:14  12:28:23 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:28:23 - ERROR : Low Battery
+2021:11:14  12:28:23 - ERROR : Low Battery
+2021:11:14  12:28:23 - ERROR : Low Battery
+2021:11:14  12:28:53 - ERROR : Low Battery
+2021:11:14  12:28:53 - ERROR : Low Battery
+2021:11:14  12:28:53 - ERROR : Low Battery
+2021:11:14  12:28:53 - ERROR : Low Battery
+2021:11:14  12:30:11 - ERROR : Low Battery
+2021:11:14  12:30:11 - ERROR : Broken Connection
+2021:11:14  12:30:11 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:30:11 - ERROR : Low Battery
+2021:11:14  12:30:11 - ERROR : Low Battery
+2021:11:14  12:30:11 - ERROR : Low Battery
+2021:11:14  12:30:42 - ERROR : Low Battery
+2021:11:14  12:30:42 - ERROR : Low Battery
+2021:11:14  12:30:59 - ERROR : Low Battery
+2021:11:14  12:30:59 - ERROR : Low Battery
+2021:11:14  12:30:59 - ERROR : Broken Connection
+2021:11:14  12:30:59 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:32:28 - ERROR : Low Battery
+2021:11:14  12:32:28 - ERROR : Low Battery
+2021:11:14  12:32:48 - ERROR : Low Battery
+2021:11:14  12:32:48 - ERROR : Low Battery
+2021:11:14  12:32:48 - ERROR : Broken Connection
+2021:11:14  12:32:48 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:32:54 - ERROR : Low Battery
+2021:11:14  12:32:54 - ERROR : Low Battery
+2021:11:14  12:33:13 - ERROR : Low Battery
+2021:11:14  12:33:13 - ERROR : Low Battery
+2021:11:14  12:33:16 - ERROR : Broken Connection
+2021:11:14  12:33:16 - ERROR : Sonar Damaged
+2021:11:14  12:33:16 - ERROR : Low Battery
+2021:11:14  12:33:16 - ERROR : Low Water
+2021:11:14  12:33:16 - ERROR : Low Battery
+2021:11:14  12:33:16 - ERROR : Low Water
+2021:11:14  12:33:16 - ERROR : Low Water
+2021:11:14  12:33:16 - ERROR : Low Water
+2021:11:14  12:33:20 - ERROR : Low Battery
+2021:11:14  12:33:20 - ERROR : Low Water
+2021:11:14  12:33:20 - ERROR : Low Battery
+2021:11:14  12:33:20 - ERROR : Low Water
+2021:11:14  12:33:20 - ERROR : Low Water
+2021:11:14  12:33:20 - ERROR : Low Water
+2021:11:14  12:33:25 - ERROR : Broken Connection
+2021:11:14  12:33:25 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:33:25 - ERROR : Low Battery
+2021:11:14  12:33:25 - ERROR : Low Water
+2021:11:14  12:33:25 - ERROR : Low Battery
+2021:11:14  12:33:25 - ERROR : Low Water
+2021:11:14  12:33:25 - ERROR : Low Water
+2021:11:14  12:33:25 - ERROR : Low Water
+2021:11:14  12:33:29 - ERROR : Low Battery
+2021:11:14  12:33:29 - ERROR : Low Water
+2021:11:14  12:33:29 - ERROR : Low Battery
+2021:11:14  12:33:29 - ERROR : Low Water
+2021:11:14  12:33:29 - ERROR : Low Water
+2021:11:14  12:33:29 - ERROR : Low Water
+2021:11:14  12:33:32 - ERROR : Low Battery
+2021:11:14  12:33:32 - ERROR : Low Water
+2021:11:14  12:33:32 - ERROR : Broken Connection
+2021:11:14  12:33:32 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:33:32 - ERROR : Low Battery
+2021:11:14  12:33:32 - ERROR : Low Water
+2021:11:14  12:33:32 - ERROR : Low Water
+2021:11:14  12:33:32 - ERROR : Low Water
+2021:11:14  12:33:42 - ERROR : Low Battery
+2021:11:14  12:33:42 - ERROR : Low Water
+2021:11:14  12:33:42 - ERROR : Low Battery
+2021:11:14  12:33:42 - ERROR : Low Water
+2021:11:14  12:33:42 - ERROR : Low Water
+2021:11:14  12:33:42 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Broken Connection
+2021:11:14  12:35:17 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Broken Connection
+2021:11:14  12:35:17 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Broken Connection
+2021:11:14  12:35:17 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:17 - ERROR : Low Battery
+2021:11:14  12:35:17 - ERROR : Low Water
+2021:11:14  12:35:44 - ERROR : Low Battery
+2021:11:14  12:35:44 - ERROR : Low Battery
+2021:11:14  12:35:44 - ERROR : Broken Connection
+2021:11:14  12:35:44 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:35:44 - ERROR : Broken Connection
+2021:11:14  12:35:44 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:35:44 - ERROR : Broken Connection
+2021:11:14  12:35:44 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Broken Connection
+2021:11:14  12:35:58 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:35:58 - ERROR : Broken Connection
+2021:11:14  12:35:58 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Broken Connection
+2021:11:14  12:35:58 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:35:58 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Broken Connection
+2021:11:14  12:36:7 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Broken Connection
+2021:11:14  12:36:7 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:36:7 - ERROR : Broken Connection
+2021:11:14  12:36:7 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:36:7 - ERROR : Low Battery
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : Broken Connection
+2021:11:14  12:37:25 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : Broken Connection
+2021:11:14  12:37:25 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:25 - ERROR : battery Critical
+2021:11:14  12:37:26 - ERROR : battery Critical
+2021:11:14  12:37:26 - ERROR : battery Critical
+2021:11:14  12:37:26 - ERROR : battery Critical
+2021:11:14  12:37:26 - ERROR : battery Critical
+2021:11:14  12:37:26 - ERROR : battery Critical
+2021:11:14  12:37:26 - ERROR : battery Critical
+2021:11:14  12:37:55 - ERROR : Broken Connection
+2021:11:14  12:37:55 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:37:55 - ERROR : battery Critical
+2021:11:14  12:37:55 - ERROR : battery Critical
+2021:11:14  12:37:55 - ERROR : battery Critical
+2021:11:14  12:37:55 - ERROR : battery Critical
+2021:11:14  12:37:55 - ERROR : battery Critical
+2021:11:14  12:37:55 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : Broken Connection
+2021:11:14  12:37:56 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : Broken Connection
+2021:11:14  12:37:56 - ERROR : Temperature Sensor 002 is offline
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:37:56 - ERROR : battery Critical
+2021:11:14  12:38:7 - ERROR : Broken Connection
+2021:11:14  12:38:7 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:38:7 - ERROR : battery Critical
+2021:11:14  12:38:7 - ERROR : battery Critical
+2021:11:14  12:38:7 - ERROR : battery Critical
+2021:11:14  12:38:7 - ERROR :  SYSTEM ERROR File Not Renamed
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : Broken Connection
+2021:11:14  12:38:36 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : Broken Connection
+2021:11:14  12:38:36 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : Broken Connection
+2021:11:14  12:38:36 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:14  12:38:36 - ERROR : battery Critical
+2021:11:14  12:38:36 - ERROR : battery Critical
