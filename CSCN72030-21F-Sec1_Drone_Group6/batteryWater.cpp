@@ -84,7 +84,7 @@ batteryWater::batteryWater() {
 
 	// set default values
 	this->charging = false;
-	this->batteryCapacity = 0;
+	this->batteryCapacity = 550; //Amanuel - you can remove this just for understanding implementation default value was 0
 	this->door = false;
 	this->padConnected = false;
 	this->waterCapacity = 0;

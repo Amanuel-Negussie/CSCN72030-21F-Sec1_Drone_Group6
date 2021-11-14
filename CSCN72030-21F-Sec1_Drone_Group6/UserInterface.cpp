@@ -2,10 +2,13 @@
 
 void viewPathHistory(vector<PATH_HISTORY> myVector)
 {
-	cout << "LOCATION\t\tDURATION\tDIRECTION\t\n";
+	cout << "Path History" << endl;
+	cout << "#\tLOCATION\tDURATION\tDIRECTION\tSPEED\t\tPOWER\n";
+	int count(0);
 	for (auto i : myVector)
 	{
-		cout << i.location.x << "\ty: " << i.location.y << "\tDuration: " << fixed << setprecision(2) << i.duration << "\tseconds.\t Direction: " << i.direction << endl;
+		cout << ++count << ".\t(" << fixed<<setprecision(2)<< i.location.x << "," << fixed<<setprecision(2)<< i.location.y << ")\t" 
+			<< fixed << setprecision(2) << i.duration << " s\t\t" << i.direction << "\t\t" << i.speed << " m/s\t" << i.power << " W" << endl;
 	}
 }
 

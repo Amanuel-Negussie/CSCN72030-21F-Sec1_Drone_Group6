@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <iomanip>
 #include "batteryWater.h"
 #include "UserInterface.h"
 #include "FlightController.h"
@@ -12,6 +13,7 @@ int main() {
 	FlightController myFC = FlightController(startingLocation, WEST);
     batteryWater* bW = new batteryWater();
     vector<LOCATION> myWritingVector;
+    srand(time(0));
     for (int i = 0; i < 20; i++)
     {
         LOCATION thisVector;
@@ -46,10 +48,11 @@ int main() {
         }
     }
 
-    myFC.setSpeed(GIVEN_SPEED);
+    myFC.setRequestedSpeed(GIVEN_SPEED);
     for (Coord& loc : coolPath)
     {
         myFC.setFutureLocation(loc);
+        myFC.setRequestedSpeed(rand() % 10);
         if(!myFC.MoveDrone(bW))
         {       
             break;
@@ -58,18 +61,15 @@ int main() {
         {
             cout << "LOCATION: " << myFC.getCurrentLocation().x << "," << myFC.getCurrentLocation().y <<
                 "\tDrone Power: " << bW->getCurrentBattery() << " Watts" << endl;
+            myFC.setCurrentLocation(loc);
         }
-        
     }
-
-
-
     myFC.writeToPathHistoryDATFile();
     myFC.writeToPathHistoryTXTFile();
     myFC.writeToPathHistoryDATFile();
     myFC.readPathHistoryDATFile();
 
-    cout << "The total time it took to get to final destination is " << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
+    cout << "The total time it took to get to final destination is " <<fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
     cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
     viewPathHistory(myFC.getPathHistory());
 	return 0;

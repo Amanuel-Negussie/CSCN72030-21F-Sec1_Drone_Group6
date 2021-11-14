@@ -9,4 +9,6 @@ struct PATH_HISTORY
 	LOCATION location;
 	double duration;
 	string direction;
+	double speed;
+	int power;
 }typedef PATH_HISTORY;

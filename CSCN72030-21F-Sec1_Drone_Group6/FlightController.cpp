@@ -77,24 +77,76 @@ void FlightController::updateLidarData()
 	}
 }
 
+void FlightController::moveDroneYaw(batteryWater* P, double& yawDuration)
+{
+	//know how much Yaw you must turn 
+	Vector2d intendedDirection = currentLocation.getVectorTo(futureLocation);
+	double yawAngle = provideCardinalDegreeBetweenTwoVectors(directionOfDrone, intendedDirection);
 
+	if (isnan(yawAngle))
+		yawAngle = 0;
+
+	yawDuration = abs(generateLengthOfArc(yawAngle, RADIUS)) / YAW_SPEED; //distance over speed equals time
+	if (isnan(yawDuration))
+		yawDuration = 0;
+	if (yawDuration != 0)
+	{
+		P->decreaseBattery(CONSTANT_FACTOR_TEN * yawDuration); //this is the rotation spin 
+	}
+	if (currentLocation.getDistance(futureLocation) != 0) //if current Location is not the same as future then change direction.
+		directionOfDrone = intendedDirection;
+
+}
+
+//moving the Drone forward
+void FlightController::moveDronePitch(batteryWater* P, double& pitchDuration)
+{
+	pitchDuration = abs(currentLocation.getDistance(futureLocation)) / speed; //create real calculation 
+	if (isnan(pitchDuration))
+		pitchDuration = 0;
+	if (pitchDuration != 0)
+	{
+
+		accelerateDrone(P, pitchDuration);
+	}
+}
+
+//slowing down drone to speed 0
+void FlightController::decellerateDrone(batteryWater* P, double& duration) //calculate the duration to decellerate the drone
+{
+	duration = 2 * (currentLocation.getDistance(futureLocation)) / speed; //time = 2*displacement/(final velocity + initial velocity)
+	P->decreaseBattery(CONSTANT_FACTOR_TEN * duration);
+	speed = 0;
+}
+
+//ramping up drone to requested speed
+void FlightController::accelerateDrone(batteryWater* P, double& duration)
+{
+	duration = 2 * (currentLocation.getDistance(futureLocation)) / (requestedSpeed + speed); //time = 2*displacement/(final velocity + initial velocity)
+	P->decreaseBattery(CONSTANT_FACTOR_TEN * duration);
+	speed = requestedSpeed;
+}
 
 
 //public functions
 //getters and setters 
 
 
-bool FlightController::setSpeed(double speed)
+bool FlightController::setRequestedSpeed(double speed)
 {
 	if (speed > 0 && speed < 20)
 	{
-		this->speed = speed;
+		requestedSpeed = speed;
 		return true;
 	}
 	else
 		return false;
 }
 
+double FlightController::setRequestedSpeed()
+{
+	return requestedSpeed;
+}
 
 double FlightController:: getSpeed()
 {
@@ -110,8 +162,6 @@ LOCATION FlightController::getFutureLocation(void)
 {
 	return futureLocation;
 }
-
-
 
 Vector2d FlightController:: getDirectionOfDrone(void)
 {
@@ -133,67 +183,52 @@ void FlightController:: setFutureLocation(Coord& coord)
 
 }
 
-//updatePath, MoveDrone and updatePathHistory
 
 
-bool FlightController:: updatePath(vector<LOCATION> path) //updates path that the drone must follow
-{
-	this->path = path;
-	return true;
-}
 
 bool FlightController::MoveDrone(batteryWater* P)
 {
-	//get future location from path 
-	//futureLocation = path.at(0);
-	Vector2d intendedDirection = currentLocation.getVectorTo(futureLocation);
-	double yawAngle = provideCardinalDegreeBetweenTwoVectors(directionOfDrone, intendedDirection);
 
-	if (isnan(yawAngle))
-		yawAngle = 0;
-	double yawDuration = abs(generateLengthOfArc(yawAngle, RADIUS)) / speed; //distance over speed equals time
-	//Power = F * distance/ time 
-	//Power = mg*height /time 
-	double yawPowerLost(0);
-	if (yawDuration != 0)
-	{
-		yawPowerLost = CONSTANT_FACTOR_TEN * yawDuration;
-		P->decreaseBattery(yawPowerLost);
-	}
-	if (currentLocation.getDistance(futureLocation) != 0)
-		directionOfDrone = intendedDirection;
+	//moveDrone in Yaw 
+	double yawDuration(0);
+	moveDroneYaw(P,yawDuration);
+
+	//after direction is in intended direction: we're going to check the lidar sensor 
 	updateLidarData();
-	double angle = provideCardinalDegreeFromVector(directionOfDrone);
-	if (isnan(angle))
-		angle = 0;
-	double movePowerLost(0);
-	if (!lidarData.frontSensor)
+
+
+	if (!lidarData.frontSensor) //if false means we can move 
 	{
-		double timeDuration = abs(currentLocation.getDistance(futureLocation)) / speed; //create real calculation 
-		if (isnan(timeDuration))
-			timeDuration = 0;
-		if (timeDuration != 0)
-		{
-			movePowerLost = CONSTANT_FACTOR_TEN * timeDuration;
-			P->decreaseBattery(movePowerLost);
-		}
+
+		double pitchDuration(0);
+		moveDronePitch(P, pitchDuration);
+
+	
 		PATH_HISTORY p;
 		p.location = futureLocation;
-		p.duration = timeDuration + yawDuration;
+		p.duration = pitchDuration + yawDuration;
 		p.direction = provideCardinalName(provideCardinalDegreeFromVector(directionOfDrone));
+		p.speed = speed;
+		p.power = P->getCurrentBattery();
 		pathHistory.push_back(p);
 		return true;
 	}
-	else
+	else // if true means we must hover 
 	{
+		double hoverDuration(0);
+		decellerateDrone(P, hoverDuration);
+
 		PATH_HISTORY p;
 		p.location = currentLocation;
 		p.duration = yawDuration;
 		p.direction = provideCardinalName(provideCardinalDegreeFromVector(directionOfDrone));
+		p.speed = speed;
+		p.power = P->getCurrentBattery();
 		pathHistory.push_back(p);
 		return false;
 	}
 }
+
 
 bool FlightController::updatePathHistory(vector<PATH_HISTORY>& vec) //updates Path History
 {
@@ -201,6 +236,12 @@ bool FlightController::updatePathHistory(vector<PATH_HISTORY>& vec) //updates Pa
 	pathHistory = vec;
 	return true;
 }
+
+vector<PATH_HISTORY> FlightController::getPathHistory()
+{
+	return pathHistory;
+}
+
 
 
 
@@ -243,10 +284,12 @@ void FlightController:: writeToPathHistoryTXTFile()
 
 	ofstream os(PATH_HISTORY_TXT_FILENAME, ios::out);
 	os << "Path History" << endl;
-	int count = 0;
+	os << "#\tLOCATION\tDURATION\tDIRECTION\tSPEED\t\tPOWER\n";
+	int count(0);
 	for (auto i : pathHistory)
 	{
-		os << ++count << ".\tx: " << i.location.x << "\ty: " << i.location.y << "\tDuration: " << fixed<<setprecision(2)<< i.duration << "\tseconds.\t Direction: "<<i.direction<<endl;
+		os << ++count << ".\t(" <<fixed<<setprecision(2)<< i.location.x << "," <<fixed<<setprecision(2)<< i.location.y << ")\t" 
+			<< fixed << setprecision(2) << i.duration << " s\t\t" << i.direction << "\t\t" << i.speed << " m/s\t" <<i.power <<" W"<< endl;
 	}
 	os.close();
 }
@@ -275,9 +318,5 @@ bool FlightController:: readPathHistoryDATFile() //populates pathHistory vector 
 	return true;
 }
 
-vector<PATH_HISTORY> FlightController::getPathHistory()
-{
-	return pathHistory;
-}
 
 

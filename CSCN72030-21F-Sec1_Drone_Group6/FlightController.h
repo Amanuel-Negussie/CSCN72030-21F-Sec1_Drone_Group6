@@ -25,7 +25,10 @@ using namespace Eigen;
 #define RADIUS 0.41
 #define GIVEN_SPEED 5
 #define AIR_DENSITY_CONSTANT_K 22.35
+#define YAW_SPEED 3
 #define CONSTANT_FACTOR_TEN 10
+#define DECCELERATION_RATE -1
+#define ACCELERATION_RATE 0.5
 
 const double POWER_TO_HOVER = AIR_DENSITY_CONSTANT_K * sqrt(MASS_DRONE * MASS_DRONE * MASS_DRONE) / RADIUS;
 
@@ -48,17 +51,24 @@ private:
 	LIDAR lidarData; // will update each iteration and will showcase the collisions that are in the way of drone
 	vector<LOCATION> path; //updates the path from current location to destination (Navigation)
 	double speed; //
+	double requestedSpeed;
 	vector<PATH_HISTORY> pathHistory; //path that we took as well as time it took
 	Vector2d directionOfDrone; //this will be a 2d vector representation
-	void updateLidarData();
+	void updateLidarData(); //this constantly happens when Move() function occurs
+	void moveDroneYaw(batteryWater* P, double& yawDuration); //this is a helper function to Move that rotates the drone in the yaw updating the yaw duration
+	void moveDronePitch(batteryWater* P, double& pitchDuration); //this is a helper function that also Moves the drone in the pitch updating the pitch duration
+	void decellerateDrone(batteryWater* P, double& duration);
+	void accelerateDrone(batteryWater* P, double& duration);
 public: 
 
 	//constuctor receives the location of Drone as well as direction in terms of Cardinal Degree
 	FlightController(Coord& locOfDrone, double direction);
 	
 	//getters and setters
-	bool setSpeed(double speed);
-	double getSpeed();
+	bool setRequestedSpeed(double speed);
+	double getSpeed(); 
+	double getRequestedSpeed(); //this is for the user to control
+	double setRequestedSpeed(); // this is for the user to control
 	LOCATION getCurrentLocation(void);
 	LOCATION getFutureLocation(void);
 	void setCurrentLocation(Coord& coord); 
