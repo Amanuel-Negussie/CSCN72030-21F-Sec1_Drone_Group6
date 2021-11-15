@@ -30,9 +30,11 @@ bool connection::testConnection(int volts) {
 } 
 
 // see .h file for definitions
-connection::connection(char p1[],char p2[]) {
+
+
+connection::connection(string p1, string p2) {
 	this->point1 = p1;
-	this->point2 =p2;
+	this->point2 = p2;
 }
 
 

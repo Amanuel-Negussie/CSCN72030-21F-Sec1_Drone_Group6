@@ -32,6 +32,7 @@ private:
 	char* ID;
 	connection* circuit;
 public:
+	
 	bool isOnline();
 	string getID();
 	double getTime();

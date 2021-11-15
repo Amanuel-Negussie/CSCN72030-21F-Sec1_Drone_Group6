@@ -70,21 +70,23 @@ public :
 	int getCurrentBattery();
 	float getWaterStorage();
 	bool swapBattery();
-	bool connections[MAX_CONNECTIONS+(MAX_SENSORS+1)];
+
 	void update();
 	bool isCharging();
-	bool addTempSensor(char* ID, char* connection1, char* connection2);
+
+	bool addTempSensor(string ID, string connection1, string connection2);
 	batteryWater();
 	~batteryWater();
 	void save();
 	
 private:
+	float update_Temp;
 	bool init;
 	float MAX_TEMP;
 	float waterAlert;
 	float batteryAlert;
 	bool charging;
-	connection* circuit[MAX_CONNECTIONS];
+
 	void updateScreen();
 	float batteryCapacity;
 	float waterCapacity;
@@ -92,14 +94,15 @@ private:
 	tempSensor* temps[MAX_SENSORS];
 	sonarSensor* sonar;
 	bool door;
-	void verifyConnections();
-	int getTemp();
+
+	float getTemp();
 	bool isConnectedBase();
 	bool connectBase();
 	bool disconnectBase();
 	void sendAlert(string input);
 	bool openHatch();
 	bool closeHatch();
+	int tempCount = 0;
 	string currentAlert;
 };
 

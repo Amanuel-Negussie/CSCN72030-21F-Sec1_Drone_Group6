@@ -25,7 +25,8 @@
 # include "tempSensor.h"
 
 
-tempSensor::tempSensor(char* ID, connection* circuit) {
+
+tempSensor::tempSensor(string ID, connection* circuit) {
 	this->ID = ID;
 	this->circuit = circuit;
 }
