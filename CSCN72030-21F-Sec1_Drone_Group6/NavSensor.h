@@ -21,4 +21,6 @@ public:
 	int getNavSensorSpeed(int);
 
 private:
+	void initPath();
+	void generateNewPath();
 };
