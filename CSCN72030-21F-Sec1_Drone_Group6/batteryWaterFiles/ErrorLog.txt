@@ -6966,3 +6966,7 @@ hi2021:11:5  22:59:34
 2021:11:15  12:32:21 - ERROR : Temperature Sensor 002 is offline
 2021:11:15  12:32:22 - ERROR : battery Critical
 2021:11:15  12:32:23 - ERROR : battery Critical
+2021:11:15  12:40:59 - ERROR : battery Critical
+2021:11:15  12:40:59 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 83.599998
+2021:11:15  12:41:0 - ERROR : battery Critical
+2021:11:15  12:41:1 - ERROR : battery Critical
