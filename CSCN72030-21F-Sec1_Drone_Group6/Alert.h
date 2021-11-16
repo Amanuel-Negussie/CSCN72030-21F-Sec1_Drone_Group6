@@ -12,7 +12,7 @@ public:
 	string alertMessage;
 
 	Alert(int alertCode);
-	~Alert();
+
 
 	int getAlertCode();
 	string getAlertMessage();

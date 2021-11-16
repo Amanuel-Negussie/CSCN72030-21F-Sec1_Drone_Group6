@@ -143,7 +143,7 @@ bool FlightController::setRequestedSpeed(double speed)
 		return false;
 }
 
-double FlightController::setRequestedSpeed()
+double FlightController::getRequestedSpeed()
 {
 	return requestedSpeed;
 }
@@ -215,6 +215,7 @@ bool FlightController::MoveDrone(batteryWater* P)
 	}
 	else // if true means we must hover 
 	{
+		Alert a = Alert(100); //sending an alert that object is detected 
 		double hoverDuration(0);
 		decellerateDrone(P, hoverDuration);
 
@@ -225,17 +226,12 @@ bool FlightController::MoveDrone(batteryWater* P)
 		p.speed = speed;
 		p.power = P->getCurrentBattery();
 		pathHistory.push_back(p);
+
 		return false;
 	}
 }
 
 
-bool FlightController::updatePathHistory(vector<PATH_HISTORY>& vec) //updates Path History
-{
-	
-	pathHistory = vec;
-	return true;
-}
 
 vector<PATH_HISTORY> FlightController::getPathHistory()
 {

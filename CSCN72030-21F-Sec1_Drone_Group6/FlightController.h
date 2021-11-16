@@ -5,7 +5,7 @@
 #include <Eigen/Dense>
 #include <numeric>
 #include <iomanip>
-
+#include "Alert.h"
 #include "Physics.h"
 #include "Location.h"
 #include "Lidar.h"
@@ -63,22 +63,17 @@ public:
 
 	//constuctor receives the location of Drone as well as direction in terms of Cardinal Degree
 	FlightController(Coord& locOfDrone, double direction);
-	
-	//getters and setters
-	bool setRequestedSpeed(double speed);
 	double getSpeed(); 
 	double getRequestedSpeed(); //this is for the user to control
-	double setRequestedSpeed(); // this is for the user to control
+	bool setRequestedSpeed(double); // this is for the user to control
 	LOCATION getCurrentLocation(void);
 	LOCATION getFutureLocation(void);
 	void setCurrentLocation(Coord& coord); 
 	void setFutureLocation(Coord& coord); 
 	Vector2d getDirectionOfDrone(void);
 
-	//Update Path and Move Drone
-	bool updatePath(vector<LOCATION> path); //updates path that the drone must follow
+	//Move Drone
 	bool MoveDrone(batteryWater* P); //moves drone unless there's an obstacle in the way
-	bool updatePathHistory(vector<PATH_HISTORY>& vec); //updates Path History
 	vector<PATH_HISTORY> getPathHistory();
 
 	//Navigation Interface
