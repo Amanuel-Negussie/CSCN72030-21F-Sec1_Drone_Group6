@@ -8,8 +8,20 @@ namespace BatteryWater
 	TEST_CLASS(tempSensorTests)
 	{
 	public:
-		
-		TEST_METHOD(TestMethod1)
+
+		TEST_METHOD(constructorValidID)
+		{
+		}
+		TEST_METHOD(constructorValidConnection)
+		{
+		}
+		TEST_METHOD(getTempValidRange50Runs)
+		{
+		}
+		TEST_METHOD(isOnlineHasOneOffline)
+		{
+		}
+		TEST_METHOD(getValidID)
 		{
 		}
 	};
@@ -17,8 +29,19 @@ namespace BatteryWater
 	TEST_CLASS(sonarSensorTests)
 	{
 	public:
-
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(constructorValidID)
+		{
+		}
+		TEST_METHOD(constructorValidConnection)
+		{
+		}
+		TEST_METHOD(getTimeValidCapacity)
+		{
+		}
+		TEST_METHOD(isOnlineHasOneoffline)
+		{
+		}
+		TEST_METHOD(getValidID)
 		{
 		}
 	};
@@ -26,8 +49,13 @@ namespace BatteryWater
 	TEST_CLASS(connectionTests)
 	{
 	public:
-
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(ContructorValidPointOne)
+		{
+		}
+		TEST_METHOD(ContructorValidPointTwo)
+		{
+		}
+		TEST_METHOD(testConnectionOneInvalid20Runs)
 		{
 		}
 	};
@@ -35,12 +63,115 @@ namespace BatteryWater
 	TEST_CLASS(batteryWaterTests)
 	{
 	public:
+		TEST_METHOD(initializerProperCapacityWater)
+		{
+		}
+		TEST_METHOD(initializerProperCapacityBattery)
+		{
 
-		TEST_METHOD(TestMethod1)
+		}
+		TEST_METHOD(initializerPadConnected)
+		{
+		}
+		TEST_METHOD(initializerCharging)
+		{
+		}
+		TEST_METHOD(initializerDoorClosed)
+		{
+		}
+		TEST_METHOD(initializerProperMaxTemp)
+		{
+		}
+		TEST_METHOD(initializerProperBatteryWarning)
+		{
+		}
+		TEST_METHOD(initializerProperWaterWarning)
+		{
+		}
+		TEST_METHOD(update100BatteryDead)
+		{
+		}
+		TEST_METHOD(update100TempWarningShown)
+		{
+		}
+		TEST_METHOD(update100DamagedSensorWarningShown)
+		{
+		}
+		TEST_METHOD(update100batteryWarningShown)
+		{
+		}
+		TEST_METHOD(update100WaterStaysSame)
+		{
+		}
+		TEST_METHOD(swapBatteryCurrentTo100Percent)
+		{
+		}
+		TEST_METHOD(isChargingWhenConnected)
+		{
+		}
+		TEST_METHOD(isChargingWhenDisconnected)
+		{
+		}
+		TEST_METHOD(getCurrentWaterStorage)
+		{
+		}
+		TEST_METHOD(getCurrentBattery)
+		{
+		}
+		TEST_METHOD(fillWaterLessThenCurrentCapacity)
+		{
+		}
+		TEST_METHOD(fillWaterHigherThenMaxCapacity)
+		{
+		}
+		TEST_METHOD(fillWaterValidRangeHigherThenCurrentCapacity)
+		{
+		}
+		TEST_METHOD(drainWaterZeroPercent)
+		{
+		}
+		TEST_METHOD(startChargingConnectsToPad)
+		{
+		}
+		TEST_METHOD(startChargingBeginsCharge)
+		{
+		}
+		TEST_METHOD(startChargingIncreasesBattery)
+		{
+		}
+		TEST_METHOD(endChargingStopsCharge)
+		{
+		}
+		TEST_METHOD(endChargingDisconnectsBase)
+		{
+		}
+		TEST_METHOD(endChargingBatteryDoesNotChange)
+		{
+		}
+		TEST_METHOD(saveSuccess)
+		{
+		}
+		TEST_METHOD(getFlightEstimate)
+		{
+		}
+		TEST_METHOD(decreaseBattery4_3)
+		{
+		}
+		TEST_METHOD(decreaseBattery8_3)
+		{
+		}
+		TEST_METHOD(decreaseBattery12_3)
+		{
+		}
+		TEST_METHOD(decreaseBattery16_3)
+		{
+		}
+		TEST_METHOD(decreaseBattery20_3)
 		{
 		}
 	};
 }
+
 namespace Communication
 {
 	TEST_CLASS(tests)

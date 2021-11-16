@@ -78,13 +78,16 @@ public :
 	batteryWater();
 	~batteryWater();
 	void save();
-	
-private:
-	float update_Temp;
-	bool init;
+
+	// move to private after tests
 	float MAX_TEMP;
 	float waterAlert;
 	float batteryAlert;
+	// move to private after tests
+private:
+	float update_Temp;
+	bool init;
+
 	bool charging;
 	
 	void updateScreen();
