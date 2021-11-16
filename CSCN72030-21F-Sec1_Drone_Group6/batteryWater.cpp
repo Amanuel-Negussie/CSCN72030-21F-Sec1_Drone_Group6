@@ -465,73 +465,73 @@ float batteryWater::getTemp() { // errors when getting more then 1 needs to be f
 void batteryWater::update() { // keep most important errors on the bottom 
 	if (!init) { // only make changes if the system is not initializing
 	// ensure water is within paramaters
-	this->currentAlert = "";
-	if (this->waterCapacity > 100) {
-		this->waterCapacity = 100;
-	}
-	if (this->waterCapacity < 0) {
-		this->waterCapacity = 0;
-	}
+		this->currentAlert = "";
+		if (this->waterCapacity > 100) {
+			this->waterCapacity = 100;
+		}
+		if (this->waterCapacity < 0) {
+			this->waterCapacity = 0;
+		}
 
-	// ensure battery is within paramaters
+		// ensure battery is within paramaters
 
-	if (this->batteryCapacity > 100) {
-		this->batteryCapacity = 100;
-	}
-	if (this->batteryCapacity < 0) {
-		this->batteryCapacity = 0;
-	}
+		if (this->batteryCapacity > 100) {
+			this->batteryCapacity = 100;
+		}
+		if (this->batteryCapacity < 0) {
+			this->batteryCapacity = 0;
+		}
 
-	// Check Water Capacity
+		// Check Water Capacity
 
-	if (this->waterCapacity <= waterAlert / 2) {
-		logError("Water Critical");
-		this->sendAlert("WaterCritical");
-	}
-	else if (this->waterCapacity <= waterAlert) {
-		logError("Low Water");
-		this->sendAlert("LowWater");
-	}
+		if (this->waterCapacity <= waterAlert / 2) {
+			logError("Water Critical");
+			this->sendAlert("WaterCritical");
+		}
+		else if (this->waterCapacity <= waterAlert) {
+			logError("Low Water");
+			this->sendAlert("LowWater");
+		}
 
-	// check sonar Sensor
-	if (!this->sonar->isOnline()) {
-		logError("Sonar Sensor " + this->sonar->getID() + " Is Offline");
-		this->sendAlert("SonarSensorOffline");
-	}
+		// check sonar Sensor
+		if (!this->sonar->isOnline()) {
+			logError("Sonar Sensor " + this->sonar->getID() + " Is Offline");
+			this->sendAlert("SonarSensorOffline");
+		}
 
-	
 
-	// check Battery Capacity
-	
-	 if (this->batteryCapacity <= batteryAlert / 2) {
-		logError("battery Critical");
-		this->sendAlert("BatteryCritical");
-	}
-	 else if (this->batteryCapacity <= batteryAlert) {
-		 cout << "HI";
-		 logError("Low Battery");
-		 this->sendAlert("LowBattery");
-	 }
 
-	 // check temps and temp sensor
-	 if (this->temps[0]->isOnline()) {
-		 float temp = 0;
-		 temp = this->getTemp();
+		// check Battery Capacity
 
-		 this->update_Temp = temp;
-		 if (temp > this->MAX_TEMP) {
-			 logError("Max Temp Exceeded : " + to_string(this->MAX_TEMP) + "Current Temp : " + to_string(temp));
-			 this->sendAlert("MaxTempExceeded");
-		 }
-		 else if (temp > this->MAX_TEMP - 10) {
-			 logError("High Temperature : " + to_string(temp));
-			 this->sendAlert("MaxTempApproaching");
-		 }
-	 } // if temp sensor is online ensure good temps
-	 else { // log it
-		 logError("Temperature Sensor " + this->temps[0]->getID() + " is offline");
-		 this->sendAlert("TemperatureSensorOffline");
-	 }
+		if (this->batteryCapacity <= batteryAlert / 2) {
+			logError("battery Critical");
+			this->sendAlert("BatteryCritical");
+		}
+		else if (this->batteryCapacity <= batteryAlert) {
+			cout << "HI";
+			logError("Low Battery");
+			this->sendAlert("LowBattery");
+		}
+
+		// check temps and temp sensor
+		if (this->temps[0]->isOnline()) {
+			float temp = 0;
+			temp = this->getTemp();
+
+			this->update_Temp = temp;
+			if (temp > this->MAX_TEMP) {
+				logError("Max Temp Exceeded : " + to_string(this->MAX_TEMP) + "Current Temp : " + to_string(temp));
+				this->sendAlert("MaxTempExceeded");
+			}
+			else if (temp > this->MAX_TEMP - 10) {
+				logError("High Temperature : " + to_string(temp));
+				this->sendAlert("MaxTempApproaching");
+			}
+		} // if temp sensor is online ensure good temps
+		else { // log it
+			logError("Temperature Sensor " + this->temps[0]->getID() + " is offline");
+			this->sendAlert("TemperatureSensorOffline");
+		}
 
 		if (this->isCharging()) { // if battery is charging increase battery
 			this->batteryCapacity++;
@@ -539,10 +539,11 @@ void batteryWater::update() { // keep most important errors on the bottom
 		if (this->door) { // if door open reduce water because its spreading
 			this->waterCapacity--;
 		}
-	}
 
-	this->save();
-	this->updateScreen();
+
+		this->save();
+		this->updateScreen();
+	}
 }
 bool batteryWater::swapBattery() {
 	this->connectBase();

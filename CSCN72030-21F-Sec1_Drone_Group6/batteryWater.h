@@ -86,7 +86,7 @@ private:
 	float waterAlert;
 	float batteryAlert;
 	bool charging;
-
+	
 	void updateScreen();
 	float batteryCapacity;
 	float waterCapacity;
