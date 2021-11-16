@@ -6,19 +6,17 @@
 
 using namespace std;
 
-Weather::Weather(string filePath) {
+Weather::Weather(string weatherFileName) {
 
-	this->temperature = 1;
-	this->precipitationAmount = 50.25f;
-	this->windSpeed = 22.67f;
-	this->pop = 30;
-	this->humidity = 68;
-	this->weatherDescription = WeatherDescription::Overcast;
+	const string weatherDirectory = "Weather/";
+	string path = weatherDirectory + weatherFileName + ".txt";
+	this->getWeatherFromFile(path);
 
+}
 
-	this->getWeatherFromFile(filePath);
-	
-
+ostream& operator << (ostream& stream, WeatherDescription weatherDescription) {
+	const string weatherDescriptionString[] = { "Sunny", "Cloudy", "Overcast", "Showers", "Rainstorm", "Snow" };
+	return stream << weatherDescriptionString[weatherDescription];
 }
 
 
@@ -79,12 +77,67 @@ void Weather::setWeatherSafety(bool safeToFly) {
 	this->safeToFly = safeToFly;
 }
 
-
-
 void Weather::displayWeather() {
-	cout << "Weather: " << this->weatherDescription;
+	cout << "Weather: " << endl
+		<< "-------" << endl
+		<< "Description: " << this->weatherDescription << endl
+		<< "Temperature: " << this->temperature << endl
+		<< "POP: " << this->pop << endl
+		<< "Precipitation Amount: " << this->precipitationAmount << endl
+		<< "Wind Speed: " << this->windSpeed << endl
+		<< "Humidity: " << this->humidity << endl
+		<< "Safe To Fly: " << this->safeToFly << endl;
 }
 
 void Weather::getWeatherFromFile(string filePath) {
-	return;
+
+	ifstream file(filePath);
+	if (!file.is_open()) {
+		cout << "Error, could not find weather file.\n";
+		return;
+	}
+	
+	string line;
+
+	getline(file, line);
+	this->temperature = stof(line);
+
+	getline(file, line);
+	this->pop = stoi(line);
+
+	getline(file, line);
+	this->precipitationAmount = stof(line);
+
+	getline(file, line);
+	this->windSpeed = stof(line);
+
+	getline(file, line);
+	this->humidity = stoi(line);
+
+	getline(file, line);
+	if (line == "Sunny") {
+		this->weatherDescription = Sunny;
+	} else if (line == "Cloudy") {
+		this->weatherDescription = Cloudy;
+	} else if (line == "Rainstorm") {
+		this->weatherDescription = Rainstorm;
+	} else if (line == "Snow") {
+		this->weatherDescription = Snow;
+	} else if (line == "Overcast") {
+		this->weatherDescription = Overcast;
+	} else if (line == "Showers") {
+		this->weatherDescription = Showers;
+	}
+
+	getline(file, line);
+	if (line == "true") {
+		this->safeToFly = true;
+	} else {
+		this->safeToFly = false;
+	}
+
+
+	file.close();
+
+
 }
