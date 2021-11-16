@@ -11,14 +11,15 @@ public:
 	int alertCode;
 	string alertMessage;
 
-	Alert(int alertCode);
-	~Alert();
+	Alert(int);
 
 	int getAlertCode();
 	string getAlertMessage();
 	
 	void displayAlert();
-	string readAlertMessage(int alertCode);
-	void getAlertLog();
+	string readAlertMessage(int);
+	void updateAlertLog(Alert*);
 
 };
+
+void getAlertLog();

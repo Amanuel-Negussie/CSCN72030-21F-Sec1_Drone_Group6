@@ -26,9 +26,7 @@ class Weather {
 	int pop, humidity;
 	WeatherDescription weatherDescription;
 
-
 	Weather(string filePath);
-	~Weather();
 
 	float getWeatherTemperature();
 	int getWeatherPOP();

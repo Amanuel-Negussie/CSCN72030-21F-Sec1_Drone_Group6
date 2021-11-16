@@ -1,10 +1,13 @@
 
 #include <iostream>
 #include "batteryWater.h"
+#include "Alert.h"
 
 int main() {
-	std::cout << "Hello, World!" << std::endl;
-	connection* connect = new connection((char*) "A1", (char*) "a2");
+
+	/*for (int i = 0; i < 10; i++)
+		Alert a = Alert(111);*/
+	getAlertLog();
 
 	return 0;
 }
