@@ -33,12 +33,14 @@ int NavSensor::userPathSelection() {
 	} catch(exception e) {
 
 		//alert invalid path selection, using path 1
+		//Alert a = Alert(300); // 300 - Invalid path entry
 		selection = 1;
 
 	}
 
 	if (selection > 2 || selection < 1) {
 		//alert invalid path selection, using path 1
+		//Alert a = Alert(300); // 300 - Invalid path entry
 		selection = 1;
 	}
 
@@ -174,6 +176,7 @@ vector<Coord> NavSensor::updatePathCollisionFoundAt(int index) {
 
 	} else {
 		//(alert)
+		//Alert a = Alert(301); // 301 - Collision not found // should never happen
 	}
 
 	return this->path;
@@ -254,6 +257,7 @@ vector<Coord> NavSensor::updatePathGoHome(int index) {
 
 	} else {
 		//already home
+		//Alert a = Alert(302); // 302 - Unable to go home (Already Home)
 	}
 
 	return this->path;

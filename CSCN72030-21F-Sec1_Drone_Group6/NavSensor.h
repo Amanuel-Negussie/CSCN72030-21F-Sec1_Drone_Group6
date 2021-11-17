@@ -1,5 +1,7 @@
 #pragma once
 #include "Coord.h"
+#include "Alert.h"
+
 #include <iostream>
 #include <vector>
 #include <fstream>
