@@ -53,6 +53,7 @@
 	Version 1.1 - More variables added, Save function Added, setCharging function removed {Date : November 10, 2021 } Version edited by - Danny Smith
 	Version 1.2 - Magic number removed helper function for testing added
 */
+#pragma once
 #include <iostream>
 #include "sonarSensor.h";
 #define MAX_CONNECTIONS 50

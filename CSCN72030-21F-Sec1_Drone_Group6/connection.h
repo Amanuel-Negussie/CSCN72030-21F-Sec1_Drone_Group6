@@ -15,6 +15,7 @@
 * 1.2 - Rules File and Temps File Added { Date : November 10, 2021 } - Updated by Danny Smith
 * 1.3 - Point 1 and Point 2 changed to string & sensor file was added{ November 15, 2021 } by - Danny Smith
 */
+#pragma once 
 
 using namespace std;
 #define _CRT_SECURE_NO_WARNINGS

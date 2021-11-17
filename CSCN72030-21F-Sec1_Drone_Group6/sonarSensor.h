@@ -23,7 +23,7 @@
 
 --------------- { Date : November 6, 2021 } - version created by Danny Smith
 */
-
+#pragma once 
 #include "tempSensor.h";
 
 class sonarSensor {

@@ -95,7 +95,7 @@ batteryWater::batteryWater() {
 	this->batteryAlert = 40;
 
 	this->charging = false;
-	this->batteryCapacity = 0;
+	this->batteryCapacity = 550; //Amanuel - you can remove this just for understanding implementation default value was 0
 	this->door = false;
 	this->padConnected = false;
 	this->waterCapacity = 0;
@@ -237,7 +237,6 @@ batteryWater::batteryWater() {
 					x = 0;
 				} // if charging or not
 			} // check charging
-
 			if (count == 3) {
 				this->batteryCapacity = atoi(word);
 			} // check charging
@@ -334,6 +333,7 @@ bool batteryWater::decreaseBattery(float watts) {
 		return false;
 	}
 	
+
 }
 bool batteryWater::startCharging() {
 	this->charging = true;
@@ -380,7 +380,9 @@ bool batteryWater::fill(int percent) {
 	}
 }
 int batteryWater::getCurrentBattery() {
+
 	return this->batteryCapacity;
+
 }
 float batteryWater::getWaterStorage() {
 	return this->waterCapacity;

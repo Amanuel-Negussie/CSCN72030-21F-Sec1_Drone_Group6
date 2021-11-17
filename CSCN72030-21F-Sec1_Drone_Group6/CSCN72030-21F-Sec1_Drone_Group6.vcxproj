@@ -116,7 +116,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\CSCN72030-21F-Sec1_Drone_Group6\eigen-3.4.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,19 +142,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FlightController.cpp" />
-    <ClCompile Include="LocationAndLidar.cpp" />
+    <ClCompile Include="Location.cpp" />
     <ClCompile Include="Coord.cpp" />
     <ClCompile Include="NavSensor.cpp" />
     <ClCompile Include="batteryWater.cpp" />
     <ClCompile Include="connection.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="sonarSensor.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="tempSensor.cpp" />
     <ClCompile Include="Alert.cpp" />
+    <ClCompile Include="UserInterface.cpp" />
     <ClCompile Include="Weather.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alert.h" />
+    <ClInclude Include="Lidar.h" />
+    <ClInclude Include="PathHistory.h" />
+    <ClInclude Include="Physics.h" />
+    <ClInclude Include="UserInterface.h" />
     <ClInclude Include="Weather.h" />
     <ClInclude Include="batteryWater.h" />
     <ClInclude Include="connection.h" />
@@ -162,7 +169,10 @@
     <ClInclude Include="Coord.h" />
     <ClInclude Include="NavSensor.h" />
     <ClInclude Include="FlightController.h" />
-    <ClInclude Include="LocationAndLidar.h" />
+    <ClInclude Include="Location.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
