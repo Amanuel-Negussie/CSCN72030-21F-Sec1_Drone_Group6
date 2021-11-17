@@ -15,6 +15,7 @@ NavSensor::NavSensor() {
 		this->gridSize = 5;
 		break;
 	}
+	this->home = Coord(1, 1);
 }
 
 int NavSensor::userPathSelection() {
@@ -103,8 +104,6 @@ void NavSensor::initPath() {
 }
 
 vector<Coord> NavSensor::updatePathCollisionFoundAt(int index) {
-
-	//this->generateNewPath();
 
 	Coord cCoord = this->path.at(index);
 
