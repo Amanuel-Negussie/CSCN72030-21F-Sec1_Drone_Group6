@@ -66,7 +66,7 @@
 #ifdef _WIN64 // only use on windows machine
 #include <Windows.h>
 #endif 
-
+#define SCALER 4
 batteryWater::~batteryWater() {
 
 
@@ -315,12 +315,16 @@ void batteryWater::save() {
 #endif 
 
 }
-
+void batteryWater::reset() {
+	this->batteryCapacity = 100;
+	this->waterCapacity = 100;
+	this->save();
+}
 
 bool batteryWater::decreaseBattery(float watts) {
 	
 	float temp = this->batteryCapacity;
-	this->batteryCapacity = this->batteryCapacity - (watts/8); 
+	this->batteryCapacity = this->batteryCapacity - (watts/SCALER); 
 	if (this->batteryCapacity != temp) {
 		this->update();
 		return true;

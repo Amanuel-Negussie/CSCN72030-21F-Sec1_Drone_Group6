@@ -7009,3 +7009,13 @@ hi2021:11:5  22:59:34
 2021:11:16  11:24:21 - ERROR : Broken Connection
 2021:11:16  11:24:21 - ERROR : Temperature Sensor 002 is offline
 2021:11:16  12:2:46 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 83.599998
+2021:11:16  12:5:39 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 80.099998
+2021:11:16  12:5:40 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 87.099998
+2021:11:16  12:5:41 - ERROR : Broken Connection
+2021:11:16  12:5:41 - ERROR : Temperature Sensor 002 is offline
+2021:11:16  12:10:28 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 80.099998
+2021:11:16  12:10:29 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 87.099998
+2021:11:16  12:12:0 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 83.599998
+2021:11:16  12:13:22 - ERROR : Broken Connection
+2021:11:16  12:13:22 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:16  12:13:22 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 87.099998

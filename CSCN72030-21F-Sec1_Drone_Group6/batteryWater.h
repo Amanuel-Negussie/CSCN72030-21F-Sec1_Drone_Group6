@@ -78,7 +78,7 @@ public :
 	batteryWater();
 	~batteryWater();
 	void save();
-
+	void reset(); // helper function for testing
 	// move to private after tests
 	float MAX_TEMP;
 	float waterAlert;

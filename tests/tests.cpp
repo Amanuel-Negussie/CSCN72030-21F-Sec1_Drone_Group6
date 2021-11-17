@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "batteryWater.h"
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace BatteryWater
@@ -11,9 +12,26 @@ namespace BatteryWater
 
 		TEST_METHOD(constructorValidID)
 		{
+			connection* con = new connection("a1", "A2");
+			tempSensor* test = new tempSensor("001", con);
+			Assert::AreEqual((string)"001", test->getID());
+
 		}
 		TEST_METHOD(constructorValidConnection)
 		{
+			connection* con = new connection("a1", "A2");
+			tempSensor* test = new tempSensor("001", con);
+			if (con->point1 == "a1") {
+				if (con->point2 == "a2") {
+					
+				}
+				else {
+					Assert::Fail;
+				}
+			}
+			else {
+				Assert::Fail;
+			}
 		}
 		TEST_METHOD(getTempValidRange50Runs)
 		{
@@ -172,17 +190,7 @@ namespace BatteryWater
 	};
 }
 
-namespace Communication
-{
-	TEST_CLASS(tests)
-	{
-	public:
 
-		TEST_METHOD(TestMethod1)
-		{
-		}
-	};
-}
 namespace Flight
 {
 	TEST_CLASS(tests)
