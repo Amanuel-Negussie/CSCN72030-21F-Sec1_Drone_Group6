@@ -26,7 +26,7 @@ using namespace Eigen;
 #define GIVEN_SPEED 5
 #define AIR_DENSITY_CONSTANT_K 22.35
 #define YAW_SPEED 3
-#define CONSTANT_FACTOR_TEN 10
+#define CONSTANT_FACTOR_TEN 12
 #define DECCELERATION_RATE -1
 #define ACCELERATION_RATE 0.5
 

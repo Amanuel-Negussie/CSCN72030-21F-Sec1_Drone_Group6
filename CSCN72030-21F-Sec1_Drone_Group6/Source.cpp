@@ -1,7 +1,7 @@
 
 /*
-	Coord startingLocation(0, 0);
-	FlightController myFC = FlightController(startingLocation, WEST);
+	
+	
   
     vector<LOCATION> myWritingVector;
     for (int i = 0; i < 20; i++)
@@ -69,7 +69,6 @@
 #include "batteryWater.h"
 #include "Alert.h"
 #include "Weather.h"
-
 #include <iostream>
 #include <iomanip>
 #include "UserInterface.h"
@@ -85,7 +84,8 @@ int main(int argc, char** argv) {
 	vector<Coord> path = n.getNavSensorPath();
 	int pathSize = path.size();
 	bool safetofly = true;
-
+	Coord startingLocation(1, 1);
+	FlightController myFC = FlightController(startingLocation, NORTH);
 	bool OnTheWayHomeWater = false;
 	bool OnTheWayHomeBattery = false;
 	system("cls");
@@ -99,27 +99,24 @@ int main(int argc, char** argv) {
 			//amanuel returns true/false, use index of collision
 
 			//FlightController(n.getCurrentCoord(i), 0.0);
+			
+			
+		
+			Coord temp2;
+			temp2 = n.getCurrentCoord(i);
+			myFC.setCurrentLocation(temp2);
 
-			bool MoveDrone = true;
-
-			if (MoveDrone) {
-				battery->decreaseBattery(12); // should happen in flight
+			if (i < pathSize - 1) {
+				Coord temp;
+				temp = n.getCurrentCoord(i + 1);
+				myFC.setFutureLocation(temp);
+			}
+			
 				
-				if (i == 7) {
-					//hovermode on
-					//path = n.updatePathCollisionFoundAt(i);
-					path = n.updatePathGoHome(i);
-					pathSize = path.size();
-					//ask user if go home or create new path
-					//if yes update Path (go around collision)
-					//if no, update path to go home
-
-					//amanuel functions here
-
-				} else {
-
-				}
-
+		
+			if (!myFC.MoveDrone(battery)) {
+				
+				
 				//Check water (Danny)
 				//
 				//Danny returns something
@@ -130,11 +127,13 @@ int main(int argc, char** argv) {
 					//if not enough, update path to go home
 					battery->closeHatch();
 					OnTheWayHomeWater = true;
-					n.updatePathGoHome(i);
+					path = n.updatePathGoHome(i);
+					pathSize = path.size();
 				} else if (battery->getCurrentBattery() < battery->batteryAlert && OnTheWayHomeBattery == false) {
 					battery->closeHatch();
 					OnTheWayHomeBattery = true;
-					n.updatePathGoHome(i);
+					path= n.updatePathGoHome(i);
+					pathSize = path.size();
 				}
 
 				if (i >=0 && n.checkIfHome(i) && OnTheWayHomeWater == true) { // may crash ------------------------------
@@ -163,7 +162,7 @@ int main(int argc, char** argv) {
 				battery->update();
 				cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
 					<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) << endl;
-				Sleep(3000);
+				Sleep(20);
 				system("cls");
 
 				// <- DISPLAY
@@ -171,14 +170,31 @@ int main(int argc, char** argv) {
 
 
 			}
+			else {
+				
+					//hovermode on
+					path = n.updatePathCollisionFoundAt(i);
+					//path = n.updatePathGoHome(i);
+					pathSize = path.size();
+					//ask user if go home or create new path
+					//if yes update Path (go around collision)
+					//if no, update path to go home
+
+					//amanuel functions here
+				
+
+			}
 
 		}
+		
+
 	}
+	//viewPathHistory(myFC.getPathHistory());
+	//cout << "Total Time : " << calculateTotalTime(myFC.getPathHistory());
 
-
-    //cout << "The total time it took to get to final destination is " <<fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
-   // cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
-   // viewPathHistory(myFC.getPathHistory());
+    cout << "The total time it took to get to final destination is " <<fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
+    cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
+    viewPathHistory(myFC.getPathHistory());
 	return 0;
 
 }
