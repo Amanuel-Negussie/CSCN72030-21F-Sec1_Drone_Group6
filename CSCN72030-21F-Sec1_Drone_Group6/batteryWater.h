@@ -1,3 +1,4 @@
+#pragma once
 /*
 * File : batteryWater.h
 * Programmer : Danny Smith
@@ -6,7 +7,7 @@
 * Professor : Dr.Elliot coleshill
 * group : Islam Ahmed, Nicholas Prince, Amanual Negussie
 * Project : Drone
-* Version : 1.0
+* Version : 1.2
 *
 * UPDATE HISTORY -
 * 1.0 - Base Functionality created :
@@ -48,6 +49,9 @@
 	Exceptions - 
 	deleteFail
 	------------------------ { Date : November 6, 2021 } Version Created by - Danny Smith
+
+	Version 1.1 - More variables added, Save function Added, setCharging function removed {Date : November 10, 2021 } Version edited by - Danny Smith
+	Version 1.2 - Magic number removed helper function for testing added
 */
 #pragma once
 #include <iostream>
@@ -56,45 +60,57 @@
 #define MAX_SENSORS 10
 #define ERROR_FILE ""
 #define STARTUP_INFO ""
-
+#define SCALER 4
+#include <string>
 class batteryWater {
 public :
-	bool decreaseBattery(int watts);
+	bool decreaseBattery(float watts);
 	bool startCharging();
 	bool endCharging();
 	bool drainWater();
 	bool fill(int percent);
-	int getFlightEstimate(int speed, int maxW);
+	int getFlightEstimate(float speed, float maxW);
 	int getCurrentBattery();
-	int getWaterStorage();
+	float getWaterStorage();
 	bool swapBattery();
-	bool connections[MAX_CONNECTIONS+(MAX_SENSORS+1)];
+
 	void update();
 	bool isCharging();
-	bool addTempSensor(char* ID, char* connection1, char* connection2);
+
+	bool addTempSensor(string ID, string connection1, string connection2);
 	batteryWater();
 	~batteryWater();
+	void save();
+	void reset(); // helper function for testing
+	// move to private after tests
+	float MAX_TEMP;
+	float waterAlert;
+	float batteryAlert;
+	bool openHatch();
+	bool closeHatch();
+	// move to private after tests
 private:
-	
-	bool charging;
-	connection* circuit[MAX_CONNECTIONS];
+	float update_Temp;
+	bool init;
 
+	bool charging;
 	
-	int batteryCapacity;
-	int waterCapacity;
+	void updateScreen();
+	float batteryCapacity;
+	float waterCapacity;
 	bool padConnected;
 	tempSensor* temps[MAX_SENSORS];
 	sonarSensor* sonar;
 	bool door;
-	void verifyConnections();
-	int getTemp();
+
+	float getTemp();
 	bool isConnectedBase();
-	bool setCharging(bool charging);
 	bool connectBase();
 	bool disconnectBase();
-	void sendAlert();
-	bool openHatch();
-	bool closeHatch();
+	void sendAlert(string input);
+
+	int tempCount = 0;
+	string currentAlert;
 };
 
 
