@@ -487,8 +487,11 @@ void batteryWater::update() { // keep most important errors on the bottom
 		}
 
 		// Check Water Capacity
-
-		if (this->waterCapacity <= waterAlert / 2) {
+		if (this->waterCapacity ==0) {
+			logError("Water empty");
+			this->sendAlert("emptyWater");
+		}
+		else if (this->waterCapacity <= waterAlert / 2) {
 			logError("Water Critical");
 			this->sendAlert("WaterCritical");
 		}
@@ -506,13 +509,16 @@ void batteryWater::update() { // keep most important errors on the bottom
 
 
 		// check Battery Capacity
-
-		if (this->batteryCapacity <= batteryAlert / 2) {
+		if (this->batteryCapacity ==0) {
+			logError("battery Dead");
+			this->sendAlert("DeadBattery");
+		}
+		else if (this->batteryCapacity <= batteryAlert / 2) {
 			logError("battery Critical");
 			this->sendAlert("BatteryCritical");
 		}
 		else if (this->batteryCapacity <= batteryAlert) {
-			cout << "HI";
+		
 			logError("Low Battery");
 			this->sendAlert("LowBattery");
 		}
@@ -559,8 +565,44 @@ bool batteryWater::swapBattery() {
 }
 
 void batteryWater::updateScreen() {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	int red = 12;
+	int white = 15;
+	
 	cout << "\x1B[2J\x1B[H"; // <- cls
-	cout << "Battery : " << this->getCurrentBattery() << "%                 " << "Water : " << this->getWaterStorage() << "%" << "                Alert :" << this->currentAlert << "            Temperature : " << this->update_Temp<< trunc(this->getTemp()); "\n";
+	SetConsoleTextAttribute(hConsole, white);
+	cout << "Battery : ";
+	if (this->getCurrentBattery() <= this->batteryAlert) {
+		SetConsoleTextAttribute(hConsole, red);
+	}
+	else {
+		SetConsoleTextAttribute(hConsole, white);
+	}
+	cout << this->getCurrentBattery() << "%      ";
+	SetConsoleTextAttribute(hConsole, white);
+
+	cout << "Water : ";
+	if (this->getWaterStorage() <= waterAlert) {
+		SetConsoleTextAttribute(hConsole, red);
+	}
+	else {
+		SetConsoleTextAttribute(hConsole, white);
+	}
+	cout << this->getWaterStorage() << "%";
+	cout<< "                ";
+	SetConsoleTextAttribute(hConsole, white);
+	cout << "Alert : ";
+	SetConsoleTextAttribute(hConsole, red);
+	cout << this->currentAlert << "            ";
+	SetConsoleTextAttribute(hConsole, white);
+	cout << "Temperature : ";
+	if (this->update_Temp >= this->MAX_TEMP) {
+		SetConsoleTextAttribute(hConsole, red);
+	}
+	else {
+		SetConsoleTextAttribute(hConsole, white);
+	}
+	cout << this->update_Temp << trunc(this->getTemp()); "\n";
 }
 
 int batteryWater::getFlightEstimate(int speed, int maxW) {

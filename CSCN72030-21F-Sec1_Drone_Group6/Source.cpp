@@ -8,7 +8,7 @@ int main() {
 		connection* connect = new connection((char*)"A1", (char*)"a2");
 		batteryWater* temp = new batteryWater();
 		//temp->update();
-		
+		temp->reset();
 		for (int i = 0; i < 25; i++) {
 			temp->decreaseBattery(12);
 		}
