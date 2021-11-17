@@ -1,3 +1,4 @@
+#pragma once
 /*
 * File : tempSensor.h
 * Programmer : Danny Smith
@@ -6,7 +7,7 @@
 * Professor : Dr.Elliot coleshill
 * group : Islam Ahmed, Nicholas Prince, Amanual Negussie
 * Project : Drone
-* Version : 1.0
+* Version : 1.1
 *
 * UPDATE HISTORY -
 * 1.0 - Base functionality added :
@@ -21,18 +22,24 @@
 	connection* circuit;
 
 --------------- { Date : November 6, 2021 } - version created by Danny Smith
+
+1.1 - ID changed to string { November 15, 2021 } by - Danny Smith
 */
+#pragma once 
 #include "connection.h";
 
 class tempSensor {
 
 private:
-	char* ID;
+	
+	string ID;
 	connection* circuit;
 public:
-	tempSensor(char* ID, connection* circuit);
+	
+
+	tempSensor(string ID, connection* circuit);
 	~tempSensor();
 	float getTemp();
 	bool  isOnline();
-	char* getID();
+	string getID();
 };

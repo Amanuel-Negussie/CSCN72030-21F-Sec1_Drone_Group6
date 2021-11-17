@@ -1,3 +1,4 @@
+#pragma once
 /*
 * File : sonarSensor.h
 * Programmer : Danny Smith
@@ -22,7 +23,7 @@
 
 --------------- { Date : November 6, 2021 } - version created by Danny Smith
 */
-
+#pragma once 
 #include "tempSensor.h";
 
 class sonarSensor {
@@ -31,8 +32,9 @@ private:
 	char* ID;
 	connection* circuit;
 public:
+	
 	bool isOnline();
-	char* getID();
+	string getID();
 	double getTime();
 	sonarSensor(char* ID, connection* circuit);
 	~sonarSensor();
