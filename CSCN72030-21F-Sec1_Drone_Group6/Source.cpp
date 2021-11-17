@@ -63,7 +63,6 @@ int main(int argc, char** argv) {
 				OnTheWayHomeBattery = false;
 			}
 
-
 			cout << "Current Location: " << path.at(i).getX() << ", " << path.at(i).getY()
 				<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) << endl;
 			//Sleep(1000);

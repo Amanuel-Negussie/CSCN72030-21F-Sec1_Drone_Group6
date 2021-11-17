@@ -27,5 +27,4 @@ public:
 
 private:
 	void initPath(); //retrieve path from file
-	//void generateNewPath(); //generate a full path (not used in final)
 };

@@ -278,26 +278,3 @@ bool NavSensor::checkIfHome(int index) {
 	}
 
 }
-
-/*
-//temp usage for now
-void NavSensor::generateNewPath() {
-
-	vector<Coord> c;
-	for (int i = 0; i < this->gridSize; i++) {
-		if (i % 2 == 0) {
-			for (int j = 0; j < this->gridSize; j++) {
-				Coord temp(i + 1, j + 1);
-				c.push_back(temp);
-			}
-		} else {
-			for (int j = this->gridSize; j > 0; j--) {
-				Coord temp(i + 1, j);
-				c.push_back(temp);
-			}
-		}
-	}
-	this->path = c;
-	//this->path.erase(next(this->path.begin(), index + 1), next(this->path.begin(), this->path.size()));
-}
-*/
