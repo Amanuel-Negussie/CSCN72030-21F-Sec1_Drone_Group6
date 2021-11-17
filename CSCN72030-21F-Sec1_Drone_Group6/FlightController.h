@@ -62,7 +62,7 @@ private:
 public: 
 
 	//constuctor receives the location of Drone as well as direction in terms of Cardinal Degree
-	FlightController(Coord& locOfDrone, double direction);
+	FlightController(Coord locOfDrone, double direction);
 	double getSpeed(); 
 	double getRequestedSpeed(); //this is for the user to control
 	bool setRequestedSpeed(double); // this is for the user to control
