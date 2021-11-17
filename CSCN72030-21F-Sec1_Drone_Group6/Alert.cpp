@@ -35,7 +35,8 @@ string Alert::readAlertMessage(int alertCode) {
 	
 	ifstream file(fileDirectory);
 	if (!file.is_open()) {
-		return "Error, could not find alert message.\n";
+		//return "Error, could not find alert message.\n";
+		throw "Error, could not find alert message.";
 	}
 
 	string alertMessage((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());

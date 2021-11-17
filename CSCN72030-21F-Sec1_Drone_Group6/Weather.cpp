@@ -81,20 +81,27 @@ void Weather::displayWeather() {
 	cout << "Weather: " << endl
 		<< "-------" << endl
 		<< "Description: " << this->weatherDescription << endl
-		<< "Temperature: " << this->temperature << endl
-		<< "POP: " << this->pop << endl
-		<< "Precipitation Amount: " << this->precipitationAmount << endl
-		<< "Wind Speed: " << this->windSpeed << endl
-		<< "Humidity: " << this->humidity << endl
-		<< "Safe To Fly: " << this->safeToFly << endl;
+		<< "Temperature: " << this->temperature << " Degree Celcius" << endl
+		<< "POP: " << this->pop << "%" << endl
+		<< "Precipitation Amount: " << this->precipitationAmount << "mm" << endl
+		<< "Wind Speed: " << this->windSpeed << "km/h" << endl
+		<< "Humidity: " << this->humidity << "%" << endl;
+		
+	if (this->safeToFly == true) {
+		cout << "Safe To Fly: true" << endl;
+	} else {
+		cout << "Safe To Fly: false" << endl;
+	}
+
+		
 }
 
 void Weather::getWeatherFromFile(string filePath) {
 
 	ifstream file(filePath);
 	if (!file.is_open()) {
-		cout << "Error, could not find weather file.\n";
-		return;
+		//cout << "Error, could not find weather file.\n";
+		throw "Could not find weather file.";
 	}
 	
 	string line;
