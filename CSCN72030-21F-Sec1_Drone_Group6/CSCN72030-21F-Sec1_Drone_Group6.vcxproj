@@ -116,8 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\CSCN72030-21F-Sec1_Drone_Group6\eigen-3.4.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -158,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="Alert.h" />
     <ClInclude Include="Lidar.h" />
+    <ClInclude Include="Location.h" />
     <ClInclude Include="PathHistory.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="UserInterface.h" />
@@ -169,10 +169,7 @@
     <ClInclude Include="Coord.h" />
     <ClInclude Include="NavSensor.h" />
     <ClInclude Include="FlightController.h" />
-    <ClInclude Include="Location.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClInclude Include="LocationAndLidar.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

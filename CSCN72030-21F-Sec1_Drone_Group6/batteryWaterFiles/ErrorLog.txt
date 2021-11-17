@@ -7963,3 +7963,7 @@ hi2021:11:5  22:59:34
 2021:11:17  12:48:0 - ERROR : Broken Connection
 2021:11:17  12:48:0 - ERROR : Sonar Sensor 001 Is Offline
 2021:11:17  12:48:1 - ERROR : Low Water
+2021:11:17  15:1:23 - ERROR : Low Water
+2021:11:17  15:1:27 - ERROR : Low Water
+2021:11:17  15:1:27 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 82.400002
+2021:11:17  15:1:30 - ERROR : Low Water

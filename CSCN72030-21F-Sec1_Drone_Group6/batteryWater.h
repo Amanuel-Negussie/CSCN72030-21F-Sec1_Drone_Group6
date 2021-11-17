@@ -62,6 +62,7 @@
 #define STARTUP_INFO ""
 #define SCALER 4
 #include <string>
+#include <Windows.h>
 class batteryWater {
 public :
 	bool decreaseBattery(float watts);
