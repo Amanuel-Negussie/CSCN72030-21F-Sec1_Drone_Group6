@@ -29,7 +29,8 @@ int main(int argc, char** argv) {
 			if (MoveDrone) {
 				if (i == 7) {
 					//hovermode on
-					path = n.updatePathCollisionFoundAt(i);
+					//path = n.updatePathCollisionFoundAt(i);
+					path = n.updatePathGoHome(i);
 					pathSize = path.size();
 					//ask user if go home or create new path
 					//if yes update Path (go around collision)
