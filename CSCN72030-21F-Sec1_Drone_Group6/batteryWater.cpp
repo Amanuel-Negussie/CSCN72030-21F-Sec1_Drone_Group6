@@ -66,7 +66,7 @@
 #ifdef _WIN64 // only use on windows machine
 #include <Windows.h>
 #endif 
-#define SCALER 4
+
 batteryWater::~batteryWater() {
 
 
@@ -311,7 +311,7 @@ void batteryWater::save() {
 	}
 	file.close();
 #ifdef _WIN64 // only use on windows machine
-	Sleep(1000);
+	Sleep(400);
 #endif 
 
 }
@@ -326,11 +326,11 @@ bool batteryWater::decreaseBattery(float watts) {
 	float temp = this->batteryCapacity;
 	this->batteryCapacity = this->batteryCapacity - (watts/SCALER); 
 	if (this->batteryCapacity != temp) {
-		this->update();
+		//this->update();
 		return true;
 	}
 	else {
-		this->update();
+		//this->update();
 		return false;
 	}
 	
@@ -569,7 +569,7 @@ void batteryWater::updateScreen() {
 	int red = 12;
 	int white = 15;
 	
-	cout << "\x1B[2J\x1B[H"; // <- cls
+	//cout << "\x1B[2J\x1B[H"; // <- cls
 	SetConsoleTextAttribute(hConsole, white);
 	cout << "Battery : ";
 	if (this->getCurrentBattery() <= this->batteryAlert) {
@@ -603,6 +603,7 @@ void batteryWater::updateScreen() {
 		SetConsoleTextAttribute(hConsole, white);
 	}
 	cout << this->update_Temp << trunc(this->getTemp()); "\n";
+	SetConsoleTextAttribute(hConsole, white);
 }
 
 int batteryWater::getFlightEstimate(float speed, float maxW) {

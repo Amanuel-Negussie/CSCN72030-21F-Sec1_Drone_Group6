@@ -59,6 +59,7 @@
 #define MAX_SENSORS 10
 #define ERROR_FILE ""
 #define STARTUP_INFO ""
+#define SCALER 4
 #include <string>
 class batteryWater {
 public :
@@ -84,6 +85,8 @@ public :
 	float MAX_TEMP;
 	float waterAlert;
 	float batteryAlert;
+	bool openHatch();
+	bool closeHatch();
 	// move to private after tests
 private:
 	float update_Temp;
@@ -104,8 +107,7 @@ private:
 	bool connectBase();
 	bool disconnectBase();
 	void sendAlert(string input);
-	bool openHatch();
-	bool closeHatch();
+
 	int tempCount = 0;
 	string currentAlert;
 };
