@@ -13,63 +13,68 @@ int main(int argc, char** argv) {
 	vector<Coord> path = n.getNavSensorPath();
 	int pathSize = path.size();
 
-	for (int i = 0; i < pathSize; i++) {
+	bool safetofly = true;
+	if (safetofly) {
 
 
-		//Check next position for a collision (Amanuel)
-		//
-		//amanuel returns true/false, use index of collision
+		for (int i = 0; i < pathSize; i++) {
 
-		//FlightController(n.getCurrentCoord(i), 0.0);
-		bool MoveDrone = true;
-		if (MoveDrone) {
-			if (i == 200) {
-				//hovermode on
-				path = n.updatePathCollisionFoundAt(i);
-				pathSize = path.size();
-				//ask user if go home or create new path
-				//if yes update Path (go around collision)
-				//if no, update path to go home
 
-				//amanuel functions here
-
-			} else {
-
-			}
-
-			//Check water (Danny)
+			//Check next position for a collision (Amanuel)
 			//
-			//Danny returns something
-			bool waterCapacity = false; // false for now
-			int battery = 100;
-			bool OnTheWayHomeWater = false;
-			bool OnTheWayHomeBattery = false;
+			//amanuel returns true/false, use index of collision
 
-			if (waterCapacity) {
-				//if water is enough -> continue
-				//if not enough, update path to go home
-				OnTheWayHomeWater = true;
-				n.updatePathGoHome(i);
-			} else if (battery < 50) {
-				OnTheWayHomeBattery = true;
-				n.updatePathGoHome(i);
+			//FlightController(n.getCurrentCoord(i), 0.0);
+			bool MoveDrone = true;
+			if (MoveDrone) {
+				if (i == 200) {
+					//hovermode on
+					path = n.updatePathCollisionFoundAt(i);
+					pathSize = path.size();
+					//ask user if go home or create new path
+					//if yes update Path (go around collision)
+					//if no, update path to go home
+
+					//amanuel functions here
+
+				} else {
+
+				}
+
+				//Check water (Danny)
+				//
+				//Danny returns something
+				bool waterCapacity = false; // false for now
+				int battery = 100;
+				bool OnTheWayHomeWater = false;
+				bool OnTheWayHomeBattery = false;
+
+				if (waterCapacity) {
+					//if water is enough -> continue
+					//if not enough, update path to go home
+					OnTheWayHomeWater = true;
+					n.updatePathGoHome(i);
+				} else if (battery < 50) {
+					OnTheWayHomeBattery = true;
+					n.updatePathGoHome(i);
+				}
+
+				if (n.checkIfHome(i) && OnTheWayHomeWater == true) {
+					OnTheWayHomeWater = false;
+				}
+
+				if (n.checkIfHome(i) && OnTheWayHomeBattery == true) {
+					OnTheWayHomeBattery = false;
+				}
+
+				cout << "Current Location: " << path.at(i).getX() << ", " << path.at(i).getY()
+					<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) << endl;
+				//Sleep(1000);
+
+
 			}
-
-			if (n.checkIfHome(i) && OnTheWayHomeWater == true) {
-				OnTheWayHomeWater = false;
-			}
-
-			if (n.checkIfHome(i) && OnTheWayHomeBattery == true) {
-				OnTheWayHomeBattery = false;
-			}
-
-			cout << "Current Location: " << path.at(i).getX() << ", " << path.at(i).getY()
-				<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) << endl;
-			//Sleep(1000);
-
 
 		}
-
 	}
 
 	return 0;
