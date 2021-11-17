@@ -24,7 +24,7 @@ int NavSensor::userPathSelection() {
 		<< "2. 10x10 Grid" << endl
 		<< ": ";
 	
-	int selection = 0;
+	int selection = 1;
 
 	try {
 		
@@ -55,6 +55,10 @@ int NavSensor::getNavSensorSpeed(int speed) {
 	int roundTo = 5;
 	return ((speed + roundTo / 2) / roundTo) * roundTo;
 
+}
+
+Coord NavSensor::getCurrentCoord(int index) {
+	return this->path.at(index);
 }
 
 void NavSensor::initPath() {
@@ -98,7 +102,7 @@ void NavSensor::initPath() {
 
 vector<Coord> NavSensor::updatePathCollisionFoundAt(int index) {
 
-	this->generateNewPath();
+	//this->generateNewPath();
 
 	Coord cCoord = this->path.at(index);
 
@@ -271,7 +275,7 @@ bool NavSensor::checkIfHome(int index) {
 
 }
 
-
+/*
 //temp usage for now
 void NavSensor::generateNewPath() {
 
@@ -292,3 +296,4 @@ void NavSensor::generateNewPath() {
 	this->path = c;
 	//this->path.erase(next(this->path.begin(), index + 1), next(this->path.begin(), this->path.size()));
 }
+*/
