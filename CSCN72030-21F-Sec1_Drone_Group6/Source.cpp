@@ -1,9 +1,12 @@
 #include "Coord.h"
 #include "NavSensor.h"
 #include "FlightController.h"
-//#include "batteryWater.h"
+#include "batteryWater.h"
 #include <iostream>
+
+#ifdef _WIN32
 #include <Windows.h>
+#endif
 
 using namespace std;
 
