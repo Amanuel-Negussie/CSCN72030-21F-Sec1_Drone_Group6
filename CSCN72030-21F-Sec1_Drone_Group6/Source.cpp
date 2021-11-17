@@ -6,17 +6,14 @@
 
 int main() {
 
+	/*for (int i = 0; i < 10; i++)
+	Alert a = Alert(111);*/
 
-	try {
-		/*for (int i = 0; i < 10; i++)
-		Alert a = Alert(111);*/
-		getAlertLog();
-		Weather w = Weather("Sunny");
-		w.displayWeather();
-	} catch (const char* msg) {
-		cout << msg << endl;
-	}
-	
+	getAlertLog();
+
+	Weather w = Weather("Sunny");
+	w.displayWeather();
+
 
 
 	return 0;

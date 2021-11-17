@@ -8,9 +8,13 @@ using namespace std;
 
 Weather::Weather(string weatherFileName) {
 
-	const string weatherDirectory = "Weather/";
-	string path = weatherDirectory + weatherFileName + ".txt";
-	this->getWeatherFromFile(path);
+	try {
+		const string weatherDirectory = "Weather/";
+		string path = weatherDirectory + weatherFileName + ".txt";
+		this->getWeatherFromFile(path);
+	} catch (const char* msg) {
+		cout << msg << endl;
+	}
 
 }
 

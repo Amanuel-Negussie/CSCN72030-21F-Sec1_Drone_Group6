@@ -8,10 +8,14 @@
 using namespace std;
 
 Alert::Alert(int alertCode) {
-	this->alertCode = alertCode;
-	this->alertMessage = readAlertMessage(alertCode);
-	displayAlert();
-	updateAlertLog(this);
+	try {
+		this->alertCode = alertCode;
+		this->alertMessage = readAlertMessage(alertCode);
+		displayAlert();
+		updateAlertLog(this);
+	} catch (const char* msg) {
+		cout << msg << endl;
+	}
 }
 
 int Alert::getAlertCode() {
