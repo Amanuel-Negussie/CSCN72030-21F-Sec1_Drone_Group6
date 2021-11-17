@@ -67,7 +67,7 @@ public :
 	bool endCharging();
 	bool drainWater();
 	bool fill(int percent);
-	int getFlightEstimate(int speed, int maxW);
+	int getFlightEstimate(float speed, float maxW);
 	int getCurrentBattery();
 	float getWaterStorage();
 	bool swapBattery();

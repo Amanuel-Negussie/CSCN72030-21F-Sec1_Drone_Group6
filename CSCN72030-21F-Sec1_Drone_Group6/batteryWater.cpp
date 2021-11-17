@@ -605,7 +605,13 @@ void batteryWater::updateScreen() {
 	cout << this->update_Temp << trunc(this->getTemp()); "\n";
 }
 
-int batteryWater::getFlightEstimate(int speed, int maxW) {
-	return 1;
+int batteryWater::getFlightEstimate(float speed, float maxW) {
+	speed = speed / 100;
+	maxW = maxW * speed;
+	// maxW now equals watts used
+	int percent = maxW / SCALER;
+	int time = this->getCurrentBattery() / percent;
+	time = time + (this->getCurrentBattery() % percent);
+	return time;
 }
 
