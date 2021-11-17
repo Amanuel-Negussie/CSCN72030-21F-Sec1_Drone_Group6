@@ -11,12 +11,10 @@ int main() {
 
 	//Alert a = Alert(111);
 	
-	getAlertLog();
+	//getAlertLog();
 
-	Weather w = Weather("Sunny");
+	Weather w = Weather("Rainstorm");
 	w.displayWeather();
-
-	
 
 
 

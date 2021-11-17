@@ -86,11 +86,12 @@ void Weather::setWeatherSafety(bool safeToFly) {
 void Weather::displayWeather() {
 
 	try {
-		if (this->weatherDescription != Sunny ||
-			this->weatherDescription != Cloudy ||
-			this->weatherDescription != Showers ||
-			this->weatherDescription != Rainstorm ||
-			this->weatherDescription != Snow ||
+
+		if (this->weatherDescription != Sunny &&
+			this->weatherDescription != Cloudy &&
+			this->weatherDescription != Showers &&
+			this->weatherDescription != Rainstorm &&
+			this->weatherDescription != Snow &&
 			this->weatherDescription != Overcast) {
 			throw "weather null";
 			return;
