@@ -7,7 +7,7 @@
 * Professor : Dr.Elliot coleshill
 * group : Islam Ahmed, Nicholas Prince, Amanual Negussie
 * Project : Drone
-* Version : 1.1
+* Version : 1.2
 *
 * UPDATE HISTORY -
 * 1.0 - Base Functionality created :

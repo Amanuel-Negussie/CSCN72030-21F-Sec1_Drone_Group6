@@ -6,7 +6,7 @@
 * Professor : Dr.Elliot coleshill
 * group : Islam Ahmed, Nicholas Prince, Amanual Negussie
 * Project : Drone
-* Version : 1.2
+* Version : 1.3
 *
 * UPDATE HISTORY -
 * 1.0 - Base Functionality created : 	
@@ -51,7 +51,7 @@
 
 	Version 1.1 - Save Added { Date : November 10, 2021 } Version updated by - Danny Smith
 	Version 1.2 - wait Added to save function NOTE : only works on windows systems{ Date : November 10, 2021 } Version updated by - Danny Smith
-
+	Version 1.3 - Colour added to update UI function { November 17, 2021 } Version updated by - Danny Smith
 
 	BUG LOG
 	1 - Once in apx 40 runs water capacity will drop to zero percent - Suspision due to currupt files or excessive opening and closing
