@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 	bool OnTheWayHomeBattery = false;
 	system("cls");
 	if (safetofly) {
-
+		battery->openHatch();
 
 		for (int i = 0; i < pathSize; i++) {
 
@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
 
 			if (MoveDrone) {
 				battery->decreaseBattery(12); // should happen in flight
-				battery->openHatch();
+				
 				if (i == 7) {
 					//hovermode on
 					//path = n.updatePathCollisionFoundAt(i);
