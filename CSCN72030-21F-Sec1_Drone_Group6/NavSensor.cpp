@@ -1,7 +1,49 @@
 #include "NavSensor.h"
 
-NavSensor::NavSensor(int size) {
-	this->gridSize = size;
+NavSensor::NavSensor() {
+
+	this->selection = this->userPathSelection();
+
+	switch (this->selection) {
+	case 1:
+		this->gridSize = 5;
+		break;
+	case 2:
+		this->gridSize = 10;
+		break;
+	default:
+		this->gridSize = 5;
+		break;
+	}
+}
+
+int NavSensor::userPathSelection() {
+
+	cout << "Please select a start path (1 or 2):" << endl
+		<< "1. 5x5 Grid" << endl
+		<< "2. 10x10 Grid" << endl
+		<< ": ";
+	
+	int selection = 0;
+
+	try {
+		
+		cin >> selection;
+
+	} catch(exception e) {
+
+		//alert invalid path selection, using path 1
+		selection = 1;
+
+	}
+
+	if (selection > 2 || selection < 1) {
+		//alert invalid path selection, using path 1
+		selection = 1;
+	}
+
+	return selection;
+
 }
 
 vector<Coord> NavSensor::getNavSensorPath() {
@@ -23,9 +65,19 @@ void NavSensor::initPath() {
 	int tempY = 0;
 
 	string comma = ",";
-
 	fstream fileStream;
-	fileStream.open("Coords/inital.txt", ios::in);
+
+	switch (this->selection) {
+	case 1:
+		fileStream.open("Coords/initalOne.txt", ios::in);
+		break;
+	case 2:
+		fileStream.open("Coords/initalTwo.txt", ios::in);
+		break;
+	default:
+		fileStream.open("Coords/initalOne.txt", ios::in);
+		break;
+	}
 
 	while (fileStream.is_open()) {
 
@@ -123,6 +175,103 @@ vector<Coord> NavSensor::updatePathCollisionFoundAt(int index) {
 	return this->path;
 
 }
+
+vector<Coord> NavSensor::updatePathGoHome(int index) {
+
+	Coord cCoord = this->path.at(index);
+
+	if (index > 0) {
+
+		//left side
+		if (cCoord.getY() > 0 && cCoord.getX() == 1) {
+			//insert into vector until home
+			int counter = 1;
+			for (int i = cCoord.getY(); i > 1; i--) {
+				Coord newCoord(cCoord.getX(), cCoord.getY() - counter);
+				this->path.insert(this->path.begin() + index + counter, newCoord);
+				counter++;
+			}
+
+			//add in reverse to get back to position
+			for (int i = 2; i <= cCoord.getY(); i++) {
+				Coord newCoord(cCoord.getX(), i);
+				this->path.insert(this->path.begin() + index + counter, newCoord);
+				counter++;
+			}
+
+			//right
+		} else if (cCoord.getY() == 1 && cCoord.getX() > 1) {
+
+			int counter = 1;
+			for (int i = cCoord.getX(); i > 1; i--) {
+				Coord newCoord(cCoord.getX() - counter, cCoord.getY());
+				this->path.insert(this->path.begin() + index + counter, newCoord);
+				counter++;
+			}
+
+			for (int i = 2; i <= cCoord.getX(); i++) {
+				Coord newCoord(i, cCoord.getY());
+				this->path.insert(this->path.begin() + index + counter, newCoord);
+				counter++;
+			}
+
+
+			//middle
+		} else {
+
+			int counter = 1;
+			for (int i = cCoord.getX(); i > 1; i--) {
+				Coord newCoord(cCoord.getX() - counter, cCoord.getY());
+				this->path.insert(this->path.begin() + index + counter, newCoord);
+				counter++;
+			}
+
+			int counterY = 1;
+			for (int i = cCoord.getY(); i > 1; i--) {
+				Coord newCoord(1, cCoord.getY() - counterY);
+				this->path.insert(this->path.begin() + index + counter, newCoord);
+				counter++;
+				counterY++;
+			}
+
+			for (int i = 2; i <= cCoord.getY(); i++) {
+				Coord newCoord(1, i);
+				this->path.insert(this->path.begin() + index + counter, newCoord);
+				counter++;
+			}
+
+			for (int i = 2; i <= cCoord.getX(); i++) {
+				Coord newCoord(i, cCoord.getY());
+				this->path.insert(this->path.begin() + index + counter, newCoord);
+				counter++;
+			}
+
+		}
+
+	} else {
+		//already home
+	}
+
+	return this->path;
+
+}
+
+bool NavSensor::checkIfHome(int index) {
+
+	Coord cCoord = this->path.at(index);
+
+	if (cCoord.getX() == home.getX() &&
+		cCoord.getY() == home.getY()) {
+
+		return true;
+
+	} else {
+		return false;
+	}
+
+}
+
+
 //temp usage for now
 void NavSensor::generateNewPath() {
 

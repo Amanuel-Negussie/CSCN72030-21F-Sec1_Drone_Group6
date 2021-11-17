@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
-	NavSensor n = NavSensor(5);
+	NavSensor n = NavSensor();
 	vector<Coord> path = n.getNavSensorPath();
 	int pathSize = path.size();
 
