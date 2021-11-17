@@ -9,10 +9,14 @@ int main() {
 	/*for (int i = 0; i < 10; i++)
 	Alert a = Alert(111);*/
 
+	//Alert a = Alert(111);
+	
 	getAlertLog();
 
 	Weather w = Weather("Sunny");
 	w.displayWeather();
+
+	
 
 
 

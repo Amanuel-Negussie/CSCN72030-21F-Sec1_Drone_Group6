@@ -1,6 +1,7 @@
 
 
 #include "Weather.h";
+#include "batteryWater.h"
 #include <iostream>
 #include <fstream>
 
@@ -20,6 +21,7 @@ Weather::Weather(string weatherFileName) {
 
 ostream& operator << (ostream& stream, WeatherDescription weatherDescription) {
 	const string weatherDescriptionString[] = { "Sunny", "Cloudy", "Overcast", "Showers", "Rainstorm", "Snow" };
+
 	return stream << weatherDescriptionString[weatherDescription];
 }
 
@@ -82,21 +84,36 @@ void Weather::setWeatherSafety(bool safeToFly) {
 }
 
 void Weather::displayWeather() {
-	cout << "Weather: " << endl
-		<< "-------" << endl
-		<< "Description: " << this->weatherDescription << endl
-		<< "Temperature: " << this->temperature << " Degree Celcius" << endl
-		<< "POP: " << this->pop << "%" << endl
-		<< "Precipitation Amount: " << this->precipitationAmount << "mm" << endl
-		<< "Wind Speed: " << this->windSpeed << "km/h" << endl
-		<< "Humidity: " << this->humidity << "%" << endl;
-		
-	if (this->safeToFly == true) {
-		cout << "Safe To Fly: true" << endl;
-	} else {
-		cout << "Safe To Fly: false" << endl;
-	}
 
+	try {
+		if (this->weatherDescription != Sunny ||
+			this->weatherDescription != Cloudy ||
+			this->weatherDescription != Showers ||
+			this->weatherDescription != Rainstorm ||
+			this->weatherDescription != Snow ||
+			this->weatherDescription != Overcast) {
+			throw "weather null";
+			return;
+		}
+
+
+		cout << "Weather: " << endl
+			<< "-------" << endl
+			<< "Description: " << this->weatherDescription << endl
+			<< "Temperature: " << this->temperature << " Degree Celcius" << endl
+			<< "POP: " << this->pop << "%" << endl
+			<< "Precipitation Amount: " << this->precipitationAmount << "mm" << endl
+			<< "Wind Speed: " << this->windSpeed << "km/h" << endl
+			<< "Humidity: " << this->humidity << "%" << endl;
+
+		if (this->safeToFly == true) {
+			cout << "Safe To Fly: true" << endl;
+		} else {
+			cout << "Safe To Fly: false" << endl;
+		}
+	} catch (const char* msg) {
+		logError("SYSTEM ERROR: Weather Object Error");
+	}
 		
 }
 
