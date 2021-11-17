@@ -67,22 +67,15 @@
 #include "NavSensor.h"
 #include "FlightController.h"
 #include "batteryWater.h"
+#include "Alert.h"
+#include "Weather.h"
+
 #include <iostream>
 #include <iomanip>
 #include "UserInterface.h"
 #ifdef _WIN32
 #include <Windows.h>
 #endif
-
-
-
-
-
-
-
-
-
-
 
 using namespace std;
 
