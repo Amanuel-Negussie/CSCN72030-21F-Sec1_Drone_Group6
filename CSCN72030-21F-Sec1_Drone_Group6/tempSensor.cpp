@@ -80,7 +80,7 @@ float tempSensor::getTemp() {
 
 	if (rename(TEMP_FILE, TEMPS_FILE) != 0) { // rename temp file to replace circuit file after proper reading and appending
 		logError(" SYSTEM ERROR File Not Renamed");
-		throw renameFail();
+	
 	}
 	return temperature;
 }

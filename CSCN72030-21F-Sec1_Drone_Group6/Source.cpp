@@ -1,66 +1,4 @@
 
-/*
-	
-	
-  
-    vector<LOCATION> myWritingVector;
-    for (int i = 0; i < 20; i++)
-    {
-        LOCATION thisVector;
-        thisVector.setLocation(9, rand() % 10);
-        myWritingVector.push_back(thisVector);
-    }
-
-    myFC.writeToCollisionDATFile(myWritingVector);
-    myFC.readCollisionDATFile();
-   // myFC.writeToCollisionTXTFile(myWritingVector);
-    vector<Coord> coolPath;
-    Coord coolLoc;
-    for (int i = 0; i < 10; i++)
-    {
-        if (i % 2 == 0)
-        {
-            for (int j = 0; j < 10; j++)
-            {
-                coolLoc.setCoord(i, j);
-                cout << coolLoc.getX() << endl << coolLoc.getY() << endl;
-                coolPath.push_back(coolLoc);
-            }
-        }
-        else
-        {
-            for (int j = 9; j >= 0; j--)
-            {
-                coolLoc.setCoord(i, j);
-                cout << coolLoc.getX() << endl << coolLoc.getY() << endl;
-                coolPath.push_back(coolLoc);
-            }
-        }
-    }
-   
-    myFC.setRequestedSpeed(GIVEN_SPEED);
-    
-    for (Coord& loc : coolPath)
-    {
-        myFC.setFutureLocation(loc);
-        myFC.setRequestedSpeed(rand() % 10);
-        if(!myFC.MoveDrone(bW))
-        {       
-            break;
-        }
-        else
-        {
-            cout << "LOCATION: " << myFC.getCurrentLocation().x << "," << myFC.getCurrentLocation().y <<
-                "\tDrone Power: " << battery->getCurrentBattery() << " Watts" << endl;
-            myFC.setCurrentLocation(loc);
-        }
-    }
-    myFC.writeToPathHistoryDATFile();
-    myFC.writeToPathHistoryTXTFile();
-    myFC.writeToPathHistoryDATFile();
-    myFC.readPathHistoryDATFile();
-*/
-
 
 
 #include "Coord.h"
@@ -114,7 +52,7 @@ int main(int argc, char** argv) {
 			
 				
 		
-			if (!myFC.MoveDrone(battery)) {
+			if (myFC.MoveDrone(battery)) {
 				
 				
 				//Check water (Danny)

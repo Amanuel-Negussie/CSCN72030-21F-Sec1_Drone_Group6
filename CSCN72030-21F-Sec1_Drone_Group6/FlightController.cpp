@@ -123,7 +123,8 @@ void FlightController::decellerateDrone(batteryWater* P, double& duration) //cal
 void FlightController::accelerateDrone(batteryWater* P, double& duration)
 {
 	duration = 2 * (currentLocation.getDistance(futureLocation)) / (requestedSpeed + speed); //time = 2*displacement/(final velocity + initial velocity)
-	P->decreaseBattery(CONSTANT_FACTOR_TEN * duration);
+	//P->decreaseBattery(CONSTANT_FACTOR_TEN * duration);
+	P->decreaseBattery(CONSTANT_FACTOR_TEN);// Dannys modification
 	speed = requestedSpeed;
 }
 
