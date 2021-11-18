@@ -8886,3 +8886,238 @@ hi2021:11:5  22:59:34
 2021:11:18  13:34:23 - ERROR : Low Water
 2021:11:18  13:34:24 - ERROR : Low Water
 2021:11:18  13:34:24 - ERROR : Low Water
+2021:11:18  13:52:55 - ERROR : Low Water
+2021:11:18  13:52:55 - ERROR : Broken Connection
+2021:11:18  13:52:55 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:52:55 - ERROR : High Temperature : 78.000000
+2021:11:18  13:52:55 - ERROR : Low Water
+2021:11:18  13:52:55 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:52:56 - ERROR : Low Water
+2021:11:18  13:52:56 - ERROR : Low Water
+2021:11:18  13:52:57 - ERROR : Water Critical
+2021:11:18  13:52:57 - ERROR : Low Battery
+2021:11:18  13:52:57 - ERROR : Water Critical
+2021:11:18  13:52:57 - ERROR : Low Battery
+2021:11:18  13:52:58 - ERROR : Water Critical
+2021:11:18  13:52:58 - ERROR : Low Battery
+2021:11:18  13:52:59 - ERROR : Water Critical
+2021:11:18  13:52:59 - ERROR : Low Battery
+2021:11:18  13:52:59 - ERROR : High Temperature : 78.000000
+2021:11:18  13:52:59 - ERROR : Water Critical
+2021:11:18  13:52:59 - ERROR : Low Battery
+2021:11:18  13:52:59 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:0 - ERROR : Water Critical
+2021:11:18  13:53:0 - ERROR : Low Battery
+2021:11:18  13:53:0 - ERROR : Water Critical
+2021:11:18  13:53:0 - ERROR : Broken Connection
+2021:11:18  13:53:0 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:0 - ERROR : Low Battery
+2021:11:18  13:53:1 - ERROR : Water Critical
+2021:11:18  13:53:1 - ERROR : Low Battery
+2021:11:18  13:53:1 - ERROR : Water Critical
+2021:11:18  13:53:1 - ERROR : Low Battery
+2021:11:18  13:53:2 - ERROR : Water Critical
+2021:11:18  13:53:2 - ERROR : Low Battery
+2021:11:18  13:53:2 - ERROR : Water Critical
+2021:11:18  13:53:2 - ERROR : Low Battery
+2021:11:18  13:53:2 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:3 - ERROR : Water Critical
+2021:11:18  13:53:3 - ERROR : Low Battery
+2021:11:18  13:53:3 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:4 - ERROR : Water Critical
+2021:11:18  13:53:4 - ERROR : Low Battery
+2021:11:18  13:53:4 - ERROR : Water Critical
+2021:11:18  13:53:4 - ERROR : Low Battery
+2021:11:18  13:53:5 - ERROR : Water Critical
+2021:11:18  13:53:5 - ERROR : Low Battery
+2021:11:18  13:53:5 - ERROR : Water Critical
+2021:11:18  13:53:5 - ERROR : Low Battery
+2021:11:18  13:53:6 - ERROR : Water Critical
+2021:11:18  13:53:6 - ERROR : Broken Connection
+2021:11:18  13:53:6 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:6 - ERROR : Water Critical
+2021:11:18  13:53:6 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:7 - ERROR : Water Critical
+2021:11:18  13:53:7 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:8 - ERROR : Water Critical
+2021:11:18  13:53:8 - ERROR : Water Critical
+2021:11:18  13:53:9 - ERROR : Water Critical
+2021:11:18  13:53:9 - ERROR : Water Critical
+2021:11:18  13:53:10 - ERROR : Water Critical
+2021:11:18  13:53:10 - ERROR : Water Critical
+2021:11:18  13:53:11 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:11 - ERROR : Water Critical
+2021:11:18  13:53:11 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:12 - ERROR : Water Critical
+2021:11:18  13:53:12 - ERROR : Broken Connection
+2021:11:18  13:53:12 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:12 - ERROR : Water Critical
+2021:11:18  13:53:13 - ERROR : Water Critical
+2021:11:18  13:53:13 - ERROR : Water Critical
+2021:11:18  13:53:14 - ERROR : Water Critical
+2021:11:18  13:53:15 - ERROR : Water Critical
+2021:11:18  13:53:15 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:15 - ERROR : Water Critical
+2021:11:18  13:53:15 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:16 - ERROR : Water Critical
+2021:11:18  13:53:16 - ERROR : Water Critical
+2021:11:18  13:53:17 - ERROR : Water Critical
+2021:11:18  13:53:17 - ERROR : Water Critical
+2021:11:18  13:53:17 - ERROR : Broken Connection
+2021:11:18  13:53:17 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:18 - ERROR : Water Critical
+2021:11:18  13:53:19 - ERROR : Water Critical
+2021:11:18  13:53:19 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:19 - ERROR : Water Critical
+2021:11:18  13:53:19 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:20 - ERROR : Water Critical
+2021:11:18  13:53:20 - ERROR : Water Critical
+2021:11:18  13:53:21 - ERROR : Water Critical
+2021:11:18  13:53:21 - ERROR : Water Critical
+2021:11:18  13:53:22 - ERROR : Water Critical
+2021:11:18  13:53:23 - ERROR : Water Critical
+2021:11:18  13:53:23 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:23 - ERROR : Water Critical
+2021:11:18  13:53:23 - ERROR : Broken Connection
+2021:11:18  13:53:23 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:23 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:24 - ERROR : Water Critical
+2021:11:18  13:53:24 - ERROR : Water Critical
+2021:11:18  13:53:25 - ERROR : Water Critical
+2021:11:18  13:53:26 - ERROR : Water Critical
+2021:11:18  13:53:26 - ERROR : Water Critical
+2021:11:18  13:53:27 - ERROR : Water Critical
+2021:11:18  13:53:27 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:27 - ERROR : Water Critical
+2021:11:18  13:53:27 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:28 - ERROR : Water Critical
+2021:11:18  13:53:28 - ERROR : Water Critical
+2021:11:18  13:53:29 - ERROR : Water Critical
+2021:11:18  13:53:29 - ERROR : Broken Connection
+2021:11:18  13:53:29 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:30 - ERROR : Water Critical
+2021:11:18  13:53:30 - ERROR : Water Critical
+2021:11:18  13:53:31 - ERROR : Water Critical
+2021:11:18  13:53:31 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:31 - ERROR : Water Critical
+2021:11:18  13:53:31 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:32 - ERROR : Water Critical
+2021:11:18  13:53:32 - ERROR : Water Critical
+2021:11:18  13:53:33 - ERROR : Water Critical
+2021:11:18  13:53:34 - ERROR : Water Critical
+2021:11:18  13:53:34 - ERROR : Water Critical
+2021:11:18  13:53:35 - ERROR : Water Critical
+2021:11:18  13:53:35 - ERROR : Broken Connection
+2021:11:18  13:53:35 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:35 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:35 - ERROR : Water Critical
+2021:11:18  13:53:35 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:36 - ERROR : Water Critical
+2021:11:18  13:53:36 - ERROR : Water Critical
+2021:11:18  13:53:37 - ERROR : Water Critical
+2021:11:18  13:53:38 - ERROR : Water Critical
+2021:11:18  13:53:38 - ERROR : Water Critical
+2021:11:18  13:53:39 - ERROR : Water Critical
+2021:11:18  13:53:39 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:39 - ERROR : Water Critical
+2021:11:18  13:53:39 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:40 - ERROR : Water Critical
+2021:11:18  13:53:40 - ERROR : Water Critical
+2021:11:18  13:53:40 - ERROR : Broken Connection
+2021:11:18  13:53:40 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:41 - ERROR : Water Critical
+2021:11:18  13:53:42 - ERROR : Water Critical
+2021:11:18  13:53:42 - ERROR : Water Critical
+2021:11:18  13:53:43 - ERROR : Water Critical
+2021:11:18  13:53:43 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:43 - ERROR : Water Critical
+2021:11:18  13:53:43 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:44 - ERROR : Water Critical
+2021:11:18  13:53:44 - ERROR : Water Critical
+2021:11:18  13:53:45 - ERROR : Water Critical
+2021:11:18  13:53:45 - ERROR : Water Critical
+2021:11:18  13:53:46 - ERROR : Water Critical
+2021:11:18  13:53:46 - ERROR : Broken Connection
+2021:11:18  13:53:46 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:46 - ERROR : Water empty
+2021:11:18  13:53:46 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:47 - ERROR : Water empty
+2021:11:18  13:53:47 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:50 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:51 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:51 - ERROR : Broken Connection
+2021:11:18  13:53:51 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:54 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:54 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:56 - ERROR : Low Battery
+2021:11:18  13:53:57 - ERROR : Broken Connection
+2021:11:18  13:53:57 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:53:57 - ERROR : Low Battery
+2021:11:18  13:53:57 - ERROR : Low Battery
+2021:11:18  13:53:58 - ERROR : Low Battery
+2021:11:18  13:53:58 - ERROR : High Temperature : 78.000000
+2021:11:18  13:53:58 - ERROR : Low Battery
+2021:11:18  13:53:58 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:53:59 - ERROR : Low Battery
+2021:11:18  13:53:59 - ERROR : Low Battery
+2021:11:18  13:54:0 - ERROR : Low Battery
+2021:11:18  13:54:0 - ERROR : Low Battery
+2021:11:18  13:54:1 - ERROR : Low Battery
+2021:11:18  13:54:1 - ERROR : Low Battery
+2021:11:18  13:54:1 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:2 - ERROR : Broken Connection
+2021:11:18  13:54:2 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:54:2 - ERROR : Low Battery
+2021:11:18  13:54:2 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:3 - ERROR : Low Battery
+2021:11:18  13:54:3 - ERROR : Low Battery
+2021:11:18  13:54:4 - ERROR : Low Battery
+2021:11:18  13:54:4 - ERROR : Low Battery
+2021:11:18  13:54:5 - ERROR : Low Battery
+2021:11:18  13:54:5 - ERROR : Low Battery
+2021:11:18  13:54:6 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:6 - ERROR : Low Battery
+2021:11:18  13:54:6 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:7 - ERROR : Low Battery
+2021:11:18  13:54:7 - ERROR : Low Battery
+2021:11:18  13:54:8 - ERROR : Broken Connection
+2021:11:18  13:54:8 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:54:8 - ERROR : Low Battery
+2021:11:18  13:54:8 - ERROR : Low Battery
+2021:11:18  13:54:9 - ERROR : Low Battery
+2021:11:18  13:54:10 - ERROR : Low Battery
+2021:11:18  13:54:10 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:10 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:14 - ERROR : Broken Connection
+2021:11:18  13:54:14 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:54:14 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:14 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:18 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:18 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:19 - ERROR : Broken Connection
+2021:11:18  13:54:19 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:54:22 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:22 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:25 - ERROR : Broken Connection
+2021:11:18  13:54:25 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:54:26 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:26 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:30 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:30 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:31 - ERROR : Broken Connection
+2021:11:18  13:54:31 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:54:34 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:34 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:37 - ERROR : Broken Connection
+2021:11:18  13:54:37 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:54:38 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:38 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:42 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:42 - ERROR : Broken Connection
+2021:11:18  13:54:42 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:54:42 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:46 - ERROR : High Temperature : 78.000000
+2021:11:18  13:54:46 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 100.000000
+2021:11:18  13:54:48 - ERROR : Broken Connection
+2021:11:18  13:54:48 - ERROR : Sonar Sensor 001 Is Offline
+2021:11:18  13:54:50 - ERROR : High Temperature : 78.000000

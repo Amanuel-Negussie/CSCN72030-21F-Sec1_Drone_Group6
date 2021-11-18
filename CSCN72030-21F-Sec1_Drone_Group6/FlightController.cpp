@@ -12,6 +12,7 @@ FlightController::FlightController(Coord locOfDrone, double direction)
 	lidarData.backSensor = false;
 	lidarData.leftSensor = false;
 	lidarData.rightSensor = false;
+	requestedSpeed = GIVEN_SPEED;
 }
 
 //private functions
