@@ -171,13 +171,13 @@ Vector2d FlightController:: getDirectionOfDrone(void)
 
 
 // Interface Requirements for setting location through Coord 
-void FlightController:: setCurrentLocation(Coord& coord)
+void FlightController:: setCurrentLocation(Coord coord)
 {
 	this->currentLocation.x = coord.getX();
 	this->currentLocation.y = coord.getY();
 }
 
-void FlightController:: setFutureLocation(Coord& coord)
+void FlightController:: setFutureLocation(Coord coord)
 {
 	this->futureLocation.x = coord.getX();
 	this->futureLocation.y = coord.getY();

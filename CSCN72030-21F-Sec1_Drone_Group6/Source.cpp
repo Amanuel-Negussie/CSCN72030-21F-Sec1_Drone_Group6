@@ -40,14 +40,14 @@ int main(int argc, char** argv) {
 			
 			
 		
-			Coord temp2;
-			temp2 = n.getCurrentCoord(i);
-			myFC.setCurrentLocation(temp2);
+			/*Coord temp2;
+			temp2 = n.getCurrentCoord(i);*/
+			myFC.setCurrentLocation(n.getCurrentCoord(i)); //Amanuel fixing issue #14
 
 			if (i < pathSize - 1) {
-				Coord temp;
-				temp = n.getCurrentCoord(i + 1);
-				myFC.setFutureLocation(temp);
+				/*Coord temp;
+				temp = n.getCurrentCoord(i + 1);*/
+				myFC.setFutureLocation(n.getCurrentCoord(i+1)); //Amanuel fixing issue #14
 			}
 			
 				

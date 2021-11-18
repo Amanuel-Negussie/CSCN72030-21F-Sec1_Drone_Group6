@@ -68,8 +68,8 @@ public:
 	bool setRequestedSpeed(double); // this is for the user to control
 	LOCATION getCurrentLocation(void);
 	LOCATION getFutureLocation(void);
-	void setCurrentLocation(Coord& coord); 
-	void setFutureLocation(Coord& coord); 
+	void setCurrentLocation(Coord coord); 
+	void setFutureLocation(Coord coord); 
 	Vector2d getDirectionOfDrone(void);
 
 	//Move Drone
