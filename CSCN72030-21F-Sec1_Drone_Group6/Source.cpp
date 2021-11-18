@@ -128,8 +128,10 @@ int main(int argc, char** argv) {
 
 	 // water a field
 	if (leave == true && select == 4) { // if can exit menu and a field has been selected
+		
 		leave = false; // go back to menu after field is watered
 		batteryWater* battery = new batteryWater();
+		
 		Coord startingLocation(1, 1);
 		FlightController myFC = FlightController(startingLocation, NORTH);
 		NavSensor n = NavSensor();
@@ -139,6 +141,7 @@ int main(int argc, char** argv) {
 		bool OnTheWayHomeWater = false;
 		bool OnTheWayHomeBattery = false;
 		system("cls");
+		battery->initScreen();
 		if (safetofly) {
 			battery->openHatch();
 
@@ -198,24 +201,26 @@ int main(int argc, char** argv) {
 					if (i >= 0 && n.checkIfHome(i) && OnTheWayHomeBattery == true) { // may crash ------------------------------
 						OnTheWayHomeBattery = false;
 						battery->startCharging();
-						while (battery->getCurrentBattery() <= 100) {
-							if (battery->getCurrentBattery() > 100) {
-								battery->decreaseBattery(SCALER);
-							}
-							system("cls");
+						while (battery->getCurrentBattery() < 100) {
+						
+							
 							battery->update();
-							Sleep(150);
+							Sleep(100);
 							
 						}
+						battery->endCharging();
+						battery->update();
 						battery->openHatch();
 					}
 					// -> DISPLAY
-					system("cls");
-					battery->update();
+					
+					
+					battery->setCursorPosition(0, 1);
 					cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
 						<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) << endl;
-					Sleep(500);
-					system("cls");
+					battery->update();
+					Sleep(1000);
+					
 
 					// <- DISPLAY
 
@@ -243,11 +248,14 @@ int main(int argc, char** argv) {
 		}
 		//viewPathHistory(myFC.getPathHistory());
 		//cout << "Total Time : " << calculateTotalTime(myFC.getPathHistory());
-
+		system("cls");
 		cout << "The total time it took to get to final destination is " << fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
 		cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
 		viewPathHistory(myFC.getPathHistory());
-		return 0;
+		
+		
+		system("pause");
 	} // if temp
 	} // while leave == false
+	return 0;
 }

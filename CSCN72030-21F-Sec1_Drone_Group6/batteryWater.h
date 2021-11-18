@@ -60,7 +60,7 @@
 #define MAX_SENSORS 10
 #define ERROR_FILE ""
 #define STARTUP_INFO ""
-#define SCALER 4
+#define SCALER 6
 #include <string>
 #include <Windows.h>
 class batteryWater {
@@ -74,10 +74,10 @@ public :
 	int getCurrentBattery();
 	float getWaterStorage();
 	bool swapBattery();
-
+	void setCursorPosition(int x, int y);
 	void update();
 	bool isCharging();
-
+	void initScreen();
 	bool addTempSensor(string ID, string connection1, string connection2);
 	batteryWater();
 	~batteryWater();
