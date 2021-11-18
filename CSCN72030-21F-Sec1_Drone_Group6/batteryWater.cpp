@@ -566,6 +566,7 @@ bool batteryWater::swapBattery() {
 	return true;
 }
 
+
 void batteryWater::updateScreen() {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	int red = 12;
@@ -580,6 +581,7 @@ void batteryWater::updateScreen() {
 	else {
 		SetConsoleTextAttribute(hConsole, white);
 	}
+	setCursorPosition(11, 0);
 	cout << this->getCurrentBattery() << "%      ";
 	SetConsoleTextAttribute(hConsole, white);
 
@@ -592,10 +594,7 @@ void batteryWater::updateScreen() {
 	}
 	cout << this->getWaterStorage() << "%";
 	cout<< "                ";
-	SetConsoleTextAttribute(hConsole, white);
-	cout << "Alert : ";
-	SetConsoleTextAttribute(hConsole, red);
-	cout << this->currentAlert << "            ";
+	
 	SetConsoleTextAttribute(hConsole, white);
 	cout << "Temperature : ";
 	if (this->update_Temp >= this->MAX_TEMP) {
@@ -604,8 +603,13 @@ void batteryWater::updateScreen() {
 	else {
 		SetConsoleTextAttribute(hConsole, white);
 	}
-	cout << this->update_Temp << trunc(this->getTemp()); "\n";
+	cout << this->update_Temp << trunc(this->getTemp()) << "            ";
 	SetConsoleTextAttribute(hConsole, white);
+	cout << "Alert : ";
+	SetConsoleTextAttribute(hConsole, red);
+	cout << this->currentAlert<<"\n";
+	SetConsoleTextAttribute(hConsole, white);
+
 }
 
 int batteryWater::getFlightEstimate(float speed, float maxW) {
