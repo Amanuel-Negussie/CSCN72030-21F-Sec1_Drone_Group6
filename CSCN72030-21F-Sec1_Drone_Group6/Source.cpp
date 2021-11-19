@@ -173,7 +173,18 @@ int main(int argc, char** argv) {
 					//Check water (Danny)
 					//
 					//Danny returns something
+					
+					// -> DISPLAY
+					
+					
+					battery->setCursorPosition(0, 1);
+					cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
+						<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) << endl;
+					battery->update();
+					Sleep(1000);
+					
 
+					// <- DISPLAY
 
 					if (battery->getWaterStorage() <= 0 && OnTheWayHomeWater == false) {
 						//if water is enough -> continue
@@ -182,8 +193,7 @@ int main(int argc, char** argv) {
 						OnTheWayHomeWater = true;
 						path = n.updatePathGoHome(i);
 						pathSize = path.size();
-					}
-					else if (battery->getCurrentBattery() < battery->batteryAlert && OnTheWayHomeBattery == false) {
+					} else if (battery->getCurrentBattery() < battery->batteryAlert && OnTheWayHomeBattery == false) {
 						battery->closeHatch();
 						OnTheWayHomeBattery = true;
 						path = n.updatePathGoHome(i);
@@ -202,29 +212,16 @@ int main(int argc, char** argv) {
 						OnTheWayHomeBattery = false;
 						battery->startCharging();
 						while (battery->getCurrentBattery() < 100) {
-						
-							
+
+
 							battery->update();
 							Sleep(100);
-							
+
 						}
 						battery->endCharging();
 						battery->update();
 						battery->openHatch();
 					}
-					// -> DISPLAY
-					
-					
-					battery->setCursorPosition(0, 1);
-					cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
-						<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) << endl;
-					battery->update();
-					Sleep(1000);
-					
-
-					// <- DISPLAY
-
-
 
 				}
 				else {
