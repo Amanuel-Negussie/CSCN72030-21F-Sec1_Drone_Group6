@@ -7966,4 +7966,35 @@ hi2021:11:5  22:59:34
 2021:11:17  15:1:23 - ERROR : Low Water
 2021:11:17  15:1:27 - ERROR : Low Water
 2021:11:17  15:1:27 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 82.400002
-2021:11:17  15:1:30 - ERROR : Low Water
+2021:11:17  15:1:30 - ERROR : Low Water2021:11:18  18:49:23 - ERROR : SYSTEM ERROR: Weather Object Error
+2021:11:18  18:49:50 - ERROR : SYSTEM ERROR: Weather Object Error
+2021:11:18  18:50:32 - ERROR : SYSTEM ERROR: Weather Object Error
+2021:11:18  18:50:32 - ERROR : SYSTEM ERROR: Weather Object Error
+2021:11:18  18:52:52 - ERROR : Low Water
+2021:11:18  18:52:52 - ERROR : Low Battery
+2021:11:18  18:53:10 - ERROR : Broken Connection
+2021:11:18  18:53:10 - ERROR : Sonar Damaged
+2021:11:18  18:53:15 - ERROR : Low Battery
+2021:11:18  18:53:15 - ERROR : Low Battery
+2021:11:18  18:53:15 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 82.400002
+2021:11:18  18:53:50 - ERROR : Low Battery
+2021:11:18  18:53:50 - ERROR : Low Battery
+2021:11:18  18:53:51 - ERROR : Low Battery
+2021:11:18  18:53:51 - ERROR : Low Battery
+2021:11:18  18:53:51 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 82.400002
+2021:11:18  18:56:3 - ERROR : Low Battery
+2021:11:18  18:56:3 - ERROR : Broken Connection
+2021:11:18  18:56:3 - ERROR : Temperature Sensor 002 is offline
+2021:11:18  18:56:3 - ERROR : Low Battery
+2021:11:18  18:56:5 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 82.400002
+2021:11:18  18:56:7 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 82.400002
+2021:11:18  18:56:9 - ERROR : Broken Connection
+2021:11:18  18:56:9 - ERROR : Temperature Sensor 002 is offline
+2021:11:18  18:56:9 - ERROR : High Temperature : 72.900002
+2021:11:18  18:56:10 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 84.900002
+2021:11:18  18:56:12 - ERROR : High Temperature : 72.900002
+2021:11:18  18:56:13 - ERROR : Max Temp Exceeded : 80.000000Current Temp : 84.900002
+2021:11:18  18:56:14 - ERROR : High Temperature : 72.900002
+2021:11:18  18:56:15 - ERROR : Broken Connection
+2021:11:18  18:56:15 - ERROR : Temperature Sensor 002 is offline
+2021:11:18  18:56:17 - ERROR :  SYSTEM ERROR File Not Renamed

@@ -80,11 +80,25 @@
 using namespace std;
 
 int main(int argc, char** argv) {
+
+	Weather w = Weather("Sunny");
+	string str;
+	cout << "Please enter the weather or type 'Custom' to create one: ";
+	cin >> str;
+	cout << endl;
+	if (str != "Custom") {
+		w = Weather(str);
+	} else {
+		w.createCustomWeather();
+	}
+	
+
 	batteryWater* battery = new batteryWater();
 	NavSensor n = NavSensor();
 	vector<Coord> path = n.getNavSensorPath();
 	int pathSize = path.size();
 	bool safetofly = true;
+
 
 	bool OnTheWayHomeWater = false;
 	bool OnTheWayHomeBattery = false;

@@ -20,7 +20,7 @@ Weather::Weather(string weatherFileName) {
 }
 
 ostream& operator << (ostream& stream, WeatherDescription weatherDescription) {
-	const string weatherDescriptionString[] = { "Sunny", "Cloudy", "Overcast", "Showers", "Rainstorm", "Snow" };
+	const string weatherDescriptionString[] = { "Sunny", "Cloudy", "Overcast", "Showers", "Rainstorm", "Snow", "Custom"};
 
 	return stream << weatherDescriptionString[weatherDescription];
 }
@@ -79,6 +79,51 @@ void Weather::setWeatherDescription(WeatherDescription weatherDescription) {
 	this->weatherDescription = weatherDescription;
 }
 
+void Weather::createCustomWeather() {
+
+	string str;
+	this->weatherDescription = Custom;
+
+	cout << "Please enter the Temperature: ";
+	cin >> str;
+	cout << endl;
+	this->temperature = stof(str);
+
+	cout << "Please enter the POP: ";
+	cin >> str;
+	cout << endl;
+	this->pop = stoi(str);
+
+	cout << "Please enter the Pecipitation Amount: ";
+	cin >> str;
+	cout << endl;
+	this->precipitationAmount = stof(str);
+
+	cout << "Please enter the Humidity Precentage: ";
+	cin >> str;
+	cout << endl;
+	this->humidity = stoi(str);
+
+	cout << "Please enter the Wind Speed: ";
+	cin >> str;
+	cout << endl;
+	this->windSpeed = stof(str);
+
+	cout << "Is it safe to fly (y, n): ";
+	cin >> str;
+	if (str == "y") {
+		this->safeToFly = true;
+	} else {
+		this->safeToFly = false;
+	}
+
+	cout << endl << "Weather Updated" << endl;
+
+	this->displayWeather();
+
+
+}
+
 void Weather::setWeatherSafety(bool safeToFly) {
 	this->safeToFly = safeToFly;
 }
@@ -92,6 +137,7 @@ void Weather::displayWeather() {
 			this->weatherDescription != Showers &&
 			this->weatherDescription != Rainstorm &&
 			this->weatherDescription != Snow &&
+			this->weatherDescription != Custom &&
 			this->weatherDescription != Overcast) {
 			throw "weather null";
 			return;

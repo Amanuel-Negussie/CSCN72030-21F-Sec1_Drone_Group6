@@ -11,7 +11,8 @@ enum WeatherDescription {
 	Overcast,
 	Showers,
 	Rainstorm,
-	Snow
+	Snow,
+	Custom
 
 };
 
@@ -35,7 +36,6 @@ class Weather {
 	void setWeatherHumidity(int humidity);
 	void setWeatherDescription(WeatherDescription weatherDescription);
 
-
 public:
 
 	Weather(string);
@@ -46,6 +46,6 @@ public:
 	void setWeatherSafety(bool safeToFly);
 	void displayWeather();
 	void getWeatherFromFile(string filePath);
-
+	void createCustomWeather();
 
 };
