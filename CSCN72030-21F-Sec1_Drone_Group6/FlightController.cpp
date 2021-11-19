@@ -102,20 +102,21 @@ void FlightController::moveDroneYaw(batteryWater* P, double& yawDuration)
 //moving the Drone forward
 void FlightController::moveDronePitch(batteryWater* P, double& pitchDuration)
 {
-	pitchDuration = abs(currentLocation.getDistance(futureLocation)) / speed; //create real calculation 
+	pitchDuration = abs(currentLocation.getDistance(futureLocation)) / requestedSpeed; //create real calculation 
 	if (isnan(pitchDuration))
 		pitchDuration = 0;
 	if (pitchDuration != 0)
 	{
 
 		accelerateDrone(P, pitchDuration);
+		
 	}
 }
 
 //slowing down drone to speed 0
 void FlightController::decellerateDrone(batteryWater* P, double& duration) //calculate the duration to decellerate the drone
 {
-	duration = 2 * (currentLocation.getDistance(futureLocation)) / speed; //time = 2*displacement/(final velocity + initial velocity)
+	duration = 2 * (currentLocation.getDistance(futureLocation)) / requestedSpeed; //time = 2*displacement/(final velocity + initial velocity)
 	P->decreaseBattery(CONSTANT_FACTOR_TEN * duration);
 	speed = 0;
 }
@@ -185,7 +186,10 @@ void FlightController:: setFutureLocation(Coord coord)
 
 }
 
-
+vector<LOCATION> FlightController::getCollisionList()
+{
+	return collisionList;
+}
 
 
 bool FlightController::MoveDrone(batteryWater* P)
@@ -204,6 +208,7 @@ bool FlightController::MoveDrone(batteryWater* P)
 
 		double pitchDuration(0);
 		moveDronePitch(P, pitchDuration);
+
 
 	
 		PATH_HISTORY p;
@@ -241,59 +246,14 @@ vector<PATH_HISTORY> FlightController::getPathHistory()
 }
 
 
-
-
-//READING AND WRITING TO FILE COLLISIONS AND PATH HISTORY 
+//READING AND WRITING TO FILE COLLISIONS AND PATH HISTORY
 
 
 //saving to and reading From files (Collissions and Path History)
-void FlightController:: writeToCollisionDATFile(const vector<LOCATION>& vec)
-{
-	ofstream os(COLLISIONS_DAT_FILENAME, ios::out | ios::binary);
-	typename vector<LOCATION>::size_type size = vec.size();
-	os.write((char*)&size, sizeof(size));
-	os.write((char*)&vec[0], (vec.size() * sizeof(LOCATION)));
-	os.close();
-}
 
-
-
-void FlightController:: writeToCollisionTXTFile(const vector<LOCATION>& vec)
+bool FlightController:: readCollisionDATFile(string fileName) //populates collisions vector with contents of Collision File
 {
-	ofstream os(COLLISIONS_TXT_FILENAME, ios::out);
-	os << "LIST OF COLLISIONS" << endl;
-	int count = 0;
-	for (auto i : vec)
-	{
-		os << ++count << ".\tx: " << i.x << "\ty: " << i.y << "\n";
-	}
-	os.close();
-}
-void FlightController::  writeToPathHistoryDATFile()
-{
-	ofstream os(PATH_HISTORY_DAT_FILENAME, ios::out | ios::binary);
-	typename vector<PATH_HISTORY>::size_type size = pathHistory.size();
-	os.write((char*)&size, sizeof(size));
-	os.write((char*)&pathHistory[0], (pathHistory.size() * sizeof(PATH_HISTORY)));
-	os.close();
-}
-void FlightController:: writeToPathHistoryTXTFile()
-{
-
-	ofstream os(PATH_HISTORY_TXT_FILENAME, ios::out);
-	os << "Path History" << endl;
-	os << "#\tLOCATION\tDURATION\tDIRECTION\tSPEED\t\tPOWER\n";
-	int count(0);
-	for (auto i : pathHistory)
-	{
-		os << ++count << ".\t(" <<fixed<<setprecision(2)<< i.location.x << "," <<fixed<<setprecision(2)<< i.location.y << ")\t" 
-			<< fixed << setprecision(2) << i.duration << " s\t\t" << i.direction << "\t\t" << i.speed << " m/s\t" <<i.power <<" W"<< endl;
-	}
-	os.close();
-}
-bool FlightController:: readCollisionDATFile() //populates collisions vector with contents of Collision File
-{
-	ifstream is(COLLISIONS_DAT_FILENAME, ios::in | ios::binary);
+	ifstream is(fileName, ios::in | ios::binary);
 	if (!is.is_open())
 		return false;
 	typename vector<LOCATION>::size_type size = 0;
@@ -302,10 +262,11 @@ bool FlightController:: readCollisionDATFile() //populates collisions vector wit
 	is.read((char*)&collisionList[0], collisionList.size() * sizeof(LOCATION));
 	is.close();
 	return true;
+
 }
-bool FlightController:: readPathHistoryDATFile() //populates pathHistory vector with contents from PathHistoryFile
+bool FlightController:: readPathHistoryDATFile(string fileName) //populates pathHistory vector with contents from PathHistoryFile
 {
-	ifstream is(PATH_HISTORY_DAT_FILENAME, ios::in | ios::binary);
+	ifstream is(fileName, ios::in | ios::binary);
 	if (!is.is_open())
 		return false;
 	typename vector<PATH_HISTORY>::size_type size = 0;
@@ -314,7 +275,69 @@ bool FlightController:: readPathHistoryDATFile() //populates pathHistory vector 
 	is.read((char*)&pathHistory[0], pathHistory.size() * sizeof(pair<LOCATION,double>));
 	is.close();
 	return true;
+
+
 }
 
 
+//WRITING VECTORS TO FILE WITH GIVEN FILE NAME 
+bool writeCollisionToDATFile(const vector<LOCATION> vec, string fileName)
+{
+	ofstream os(fileName, ios::out | ios::binary);
+	if (!os.is_open())
+		return false;
+	typename vector<LOCATION>::size_type size = vec.size();
+	os.write((char*)&size, sizeof(size));
+	os.write((char*)&vec[0], (vec.size() * sizeof(LOCATION)));
+	os.close();
+	return true;
+}
+
+bool writeCollisionToTXTFile(const vector<LOCATION> vec, string fileName)
+{
+	ofstream os(fileName, ios::out);
+	if (!os.is_open())
+		return false;
+	os << "LIST OF COLLISIONS" << endl;
+	int count = 0;
+	for (auto i : vec)
+	{
+		os << ++count << ".\tx: " << i.x << "\ty: " << i.y << endl;
+	}
+	os.close();
+	return true;
+
+}
+
+//write Path History 
+
+//writing PathHistory to File 
+bool writePathHistoryToDATFile(const vector<PATH_HISTORY> vec, string fileName)
+{
+	ofstream os(fileName, ios::out | ios::binary);
+	if (!os.is_open())
+		return false;
+	typename vector<PATH_HISTORY>::size_type size = vec.size();
+	os.write((char*)&size, sizeof(size));
+	os.write((char*)&vec[0], (vec.size() * sizeof(PATH_HISTORY)));
+	os.close();
+	return true;
+}
+
+bool writePathHistoryToTXTFile(const vector<PATH_HISTORY> vec, string fileName)
+{
+	ofstream os(fileName, ios::out);
+	if (!os.is_open())
+		return false;
+	os << "Path History" << endl;
+	os << "#\tLOCATION\tDURATION\tDIRECTION\tSPEED\t\tPOWER\n";
+	int count(0);
+	for (auto i : vec)
+	{
+		os << ++count << ".\t(" << fixed << setprecision(2) << i.location.x << "," << fixed << setprecision(2) << i.location.y << ")\t"
+			<< fixed << setprecision(2) << i.duration << " s\t\t" << i.direction << "\t\t" << i.speed << " m/s\t" << i.power << " W" << endl;
+	}
+	os.close();
+	return true;
+}
 

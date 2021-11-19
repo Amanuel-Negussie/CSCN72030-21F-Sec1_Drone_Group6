@@ -1,4 +1,6 @@
 
+#include <iostream>
+#include <iomanip>
 
 
 #include "Coord.h"
@@ -7,14 +9,27 @@
 #include "batteryWater.h"
 #include "Alert.h"
 #include "Weather.h"
-#include <iostream>
-#include <iomanip>
 #include "UserInterface.h"
+
 #ifdef _WIN32
 #include <Windows.h>
 #endif
 
 using namespace std;
+
+vector<LOCATION> inline collisionCreator(int upperLimit)
+{
+	vector<LOCATION> col; 
+	LOCATION l; 
+	for (int i = 0; i < 5; i++)
+	{
+		int x = (rand() % upperLimit + 1);
+		int y = (rand() % upperLimit + 1);
+		l.setLocation(x, y);
+		col.push_back(l);
+	}
+	return col;
+}
 
 int main(int argc, char** argv) {
 	batteryWater* battery = new batteryWater();
@@ -26,6 +41,23 @@ int main(int argc, char** argv) {
 	FlightController myFC = FlightController(startingLocation, NORTH);
 	bool OnTheWayHomeWater = false;
 	bool OnTheWayHomeBattery = false;
+	vector<LOCATION> col = collisionCreator(5); //this returns 5 random coordinates just so i can test the writing of collisions to file 
+	string collisionFileName("Collision2.dat");
+	if (writeCollisionToDATFile(col, collisionFileName))
+		cout << "SUCCESS" << endl;
+	else
+		cout << "FAILURE" << endl;
+	string collisionFileName2("Collision2.txt");
+	if (writeCollisionToTXTFile(col, collisionFileName2))
+		cout << "SUCCESS in sending TXT";
+	else
+		cout << "FAILURE in sending TXT" << endl;
+	
+	if (!myFC.readCollisionDATFile(collisionFileName)) //this reads collision data file into Flight Controller module
+		std::cout << "This does not work for reading in file to Flight Controller" << endl;
+
+	viewCollisions(myFC.getCollisionList()); //
+
 	system("cls");
 	if (safetofly) {
 		battery->openHatch();
@@ -51,7 +83,6 @@ int main(int argc, char** argv) {
 			}
 			
 				
-		
 			if (myFC.MoveDrone(battery)) {
 				
 				
@@ -133,6 +164,11 @@ int main(int argc, char** argv) {
     cout << "The total time it took to get to final destination is " <<fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
     cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
     viewPathHistory(myFC.getPathHistory());
+	writePathHistoryToTXTFile(myFC.getPathHistory(), "PathHistory.txt");
+
 	return 0;
 
 }
+
+
+

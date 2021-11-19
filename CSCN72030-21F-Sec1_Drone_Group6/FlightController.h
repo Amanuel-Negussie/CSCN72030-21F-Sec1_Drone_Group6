@@ -62,10 +62,12 @@ private:
 public: 
 
 	//constuctor receives the location of Drone as well as direction in terms of Cardinal Degree
-	FlightController(Coord locOfDrone, double direction);
+	FlightController(Coord, double);
 	double getSpeed(); 
 	double getRequestedSpeed(); //this is for the user to control
 	bool setRequestedSpeed(double); // this is for the user to control
+	vector<LOCATION> getCollisionList();
+	vector<PATH_HISTORY> getPathHistory();
 	LOCATION getCurrentLocation(void);
 	LOCATION getFutureLocation(void);
 	void setCurrentLocation(Coord coord); 
@@ -74,20 +76,28 @@ public:
 
 	//Move Drone
 	bool MoveDrone(batteryWater* P); //moves drone unless there's an obstacle in the way
-	vector<PATH_HISTORY> getPathHistory();
+
 
 	//Navigation Interface
 
 
 	//saving to and reading From files (Collissions and Path History)
-	void writeToCollisionDATFile(const vector<LOCATION>& vec);
-	void writeToCollisionTXTFile(const vector<LOCATION>& vec);
-	void writeToPathHistoryDATFile();
-	void writeToPathHistoryTXTFile();
-	bool readCollisionDATFile(); //populates collisions vector with contents of Collision File
-	bool readPathHistoryDATFile(); //populates pathHistory vector with contents from PathHistoryFile
+
+
+	bool readCollisionDATFile(string fileName); //populates collisions vector with contents of Collision File
+	
+	//optional 
+	bool readPathHistoryDATFile(string fileName); //populates pathHistory vector with contents from PathHistoryFile
 };
 
+
+//Writing to File
+//writing Collision to File 
+bool writeCollisionToDATFile(const vector<LOCATION> vec, string fileName);
+bool writeCollisionToTXTFile(const vector<LOCATION> vec, string fileName);
+//writing PathHistory to File 
+bool writePathHistoryToDATFile(const vector<PATH_HISTORY> vec, string fileName);
+bool writePathHistoryToTXTFile(const vector<PATH_HISTORY> vec, string fileName);
 
 
 //helper function for converting direction from cardinal to vector vice/versa 

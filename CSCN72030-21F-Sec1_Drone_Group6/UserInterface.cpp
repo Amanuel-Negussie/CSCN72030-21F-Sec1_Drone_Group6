@@ -24,3 +24,19 @@ double calculateTotalTime(vector<PATH_HISTORY> myVector)
 	return totalTime;
 }
 
+
+//write a collision vector a file with name 
+
+
+
+void viewCollisions(vector<LOCATION> vec)
+{
+	cout <<endl<< "LIST OF COLLISIONS" << endl;
+	int count = 0;
+	for (auto i : vec)
+	{
+		cout << ++count << ".\tx: " << i.x << "\ty: " << i.y << endl;
+	}
+	
+}
+
