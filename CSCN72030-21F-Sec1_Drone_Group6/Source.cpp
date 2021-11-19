@@ -22,6 +22,7 @@ int main(int argc, char** argv) {
 	bool leave = false;
 	int input = 0;
 	int select = 0;
+	NavSensor n;
 	while (leave == false) {
 		system("cls");
 		cout << "\t\t\t    WELCOME TO DRONE 1_Prototype INTERFACE";
@@ -112,6 +113,10 @@ int main(int argc, char** argv) {
 		fstream file;
 		file.open(name, ios::in);
 		if (file.is_open()) {
+			string gridSelectionFromFile;
+			getline(file, gridSelectionFromFile);
+			int gridSelection = stoi(gridSelectionFromFile);
+			n = NavSensor(gridSelection);
 			select = 4;
 		}
 		else {
@@ -134,7 +139,7 @@ int main(int argc, char** argv) {
 		
 		Coord startingLocation(1, 1);
 		FlightController myFC = FlightController(startingLocation, NORTH);
-		NavSensor n = NavSensor();
+		
 		vector<Coord> path = n.getNavSensorPath();
 		int pathSize = path.size();
 		bool safetofly = true;
