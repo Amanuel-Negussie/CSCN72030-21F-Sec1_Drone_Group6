@@ -134,6 +134,10 @@ void FlightController::accelerateDrone(batteryWater* P, double& duration)
 //public functions
 //getters and setters 
 
+LIDAR FlightController::getLidarData(void)
+{
+	return lidarData;
+}
 
 bool FlightController::setRequestedSpeed(double speed)
 {

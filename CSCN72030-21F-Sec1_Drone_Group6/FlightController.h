@@ -70,6 +70,7 @@ public:
 	vector<PATH_HISTORY> getPathHistory();
 	LOCATION getCurrentLocation(void);
 	LOCATION getFutureLocation(void);
+	LIDAR getLidarData(void);
 	void setCurrentLocation(Coord coord); 
 	void setFutureLocation(Coord coord); 
 	Vector2d getDirectionOfDrone(void);

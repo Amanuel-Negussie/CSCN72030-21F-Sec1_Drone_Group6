@@ -126,7 +126,7 @@ int main(int argc, char** argv) {
 					}
 					battery->openHatch();
 				}
-				// -> DISPLAY
+				// -> DISPLAY 
 				system("cls");
 				battery->update();
 				cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
@@ -135,9 +135,6 @@ int main(int argc, char** argv) {
 				system("cls");
 
 				// <- DISPLAY
-				
-
-
 			}
 			else {
 				
