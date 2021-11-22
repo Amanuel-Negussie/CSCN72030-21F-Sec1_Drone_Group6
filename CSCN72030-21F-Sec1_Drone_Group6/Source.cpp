@@ -32,13 +32,28 @@ vector<LOCATION> inline collisionCreator(int upperLimit)
 }
 
 int main(int argc, char** argv) {
+
+	Weather w = Weather("Sunny");
+	string str;
+	cout << "Please enter the weather or type 'Custom' to create one: ";
+	cin >> str;
+	cout << endl;
+	if (str != "Custom") {
+		w = Weather(str);
+	} else {
+		w.createCustomWeather();
+	}
+	
+
 	batteryWater* battery = new batteryWater();
 	NavSensor n = NavSensor();
 	vector<Coord> path = n.getNavSensorPath();
 	int pathSize = path.size();
 	bool safetofly = true;
+
 	Coord startingLocation(1, 1);
 	FlightController myFC = FlightController(startingLocation, NORTH);
+
 	bool OnTheWayHomeWater = false;
 	bool OnTheWayHomeBattery = false;
 	vector<LOCATION> col = collisionCreator(5); //this returns 5 random coordinates just so i can test the writing of collisions to file 
