@@ -1,4 +1,6 @@
 
+#include <iostream>
+#include <iomanip>
 
 
 #include "Coord.h"
@@ -7,9 +9,8 @@
 #include "batteryWater.h"
 #include "Alert.h"
 #include "Weather.h"
-#include <iostream>
-#include <iomanip>
 #include "UserInterface.h"
+
 #ifdef _WIN32
 #include <Windows.h>
 #endif
@@ -18,7 +19,24 @@
 #define FIELDS_DIR "./Fields//"
 using namespace std;
 
+vector<LOCATION> inline collisionCreator(int upperLimit)
+{
+	vector<LOCATION> col; 
+	LOCATION l; 
+	for (int i = 0; i < 5; i++)
+	{
+		int x = (rand() % upperLimit + 1);
+		int y = (rand() % upperLimit + 1);
+		l.setLocation(x, y);
+		col.push_back(l);
+	}
+	return col;
+}
+
 int main(int argc, char** argv) {
+
+
+	Weather w;
 	bool leave = false;
 	int input = 0;
 	int select = 0;
@@ -30,7 +48,8 @@ int main(int argc, char** argv) {
 		cout << "\n1. Add New Field\n";
 		cout << "2. Delete Field\n";
 		cout << "3. Water a Field\n";
-		cout << "4. Shutdown\nEnter :";
+    cout << "4. Choose Weather\n
+		cout << "5. Shutdown\nEnter :";
 		cin >> input;
 		if (input > 4 && input < 0) {
 			leave = false;
@@ -50,8 +69,21 @@ int main(int argc, char** argv) {
 				leave = true;
 				break;
 			case 4:
-				exit(2);
+          	w = Weather("Sunny");
+	string str;
+	cout << "Please enter the weather or type 'Custom' to create one: ";
+	cin >> str;
+	cout << endl;
+	if (str != "Custom") {
+		w = Weather(str);
+	} else {
+		w.createCustomWeather();
+	}
+				
 				break;
+        case 5:
+          exit(2);
+          break;
 			default:
 				leave = false; // shouldnt be hit but just in case
 				break;
@@ -153,6 +185,67 @@ int main(int argc, char** argv) {
 			for (int i = 0; i < pathSize; i++) {
 
 				//Check next position for a collision (Amanuel)
+
+
+
+	batteryWater* battery = new batteryWater();
+	NavSensor n = NavSensor();
+	vector<Coord> path = n.getNavSensorPath();
+	int pathSize = path.size();
+	bool safetofly = true;
+
+	Coord startingLocation(1, 1);
+	FlightController myFC = FlightController(startingLocation, NORTH);
+
+	bool OnTheWayHomeWater = false;
+	bool OnTheWayHomeBattery = false;
+	vector<LOCATION> col = collisionCreator(5); //this returns 5 random coordinates just so i can test the writing of collisions to file 
+	string collisionFileName("Collision2.dat");
+	if (writeCollisionToDATFile(col, collisionFileName))
+		cout << "SUCCESS" << endl;
+	else
+		cout << "FAILURE" << endl;
+	string collisionFileName2("Collision2.txt");
+	if (writeCollisionToTXTFile(col, collisionFileName2))
+		cout << "SUCCESS in sending TXT";
+	else
+		cout << "FAILURE in sending TXT" << endl;
+	
+	if (!myFC.readCollisionDATFile(collisionFileName)) //this reads collision data file into Flight Controller module
+		std::cout << "This does not work for reading in file to Flight Controller" << endl;
+
+	viewCollisions(myFC.getCollisionList()); //
+
+	system("cls");
+	if (safetofly) {
+		battery->openHatch();
+
+		for (int i = 0; i < pathSize; i++) {
+
+			//Check next position for a collision (Amanuel)
+			//
+			//amanuel returns true/false, use index of collision
+
+			//FlightController(n.getCurrentCoord(i), 0.0);
+			
+			
+		
+			/*Coord temp2;
+			temp2 = n.getCurrentCoord(i);*/
+			myFC.setCurrentLocation(n.getCurrentCoord(i)); //Amanuel fixing issue #14
+
+			if (i < pathSize - 1) {
+				/*Coord temp;
+				temp = n.getCurrentCoord(i + 1);*/
+				myFC.setFutureLocation(n.getCurrentCoord(i+1)); //Amanuel fixing issue #14
+			}
+			
+				
+			if (myFC.MoveDrone(battery)) {
+				
+				
+				//Check water (Danny)
+
 				//
 				//amanuel returns true/false, use index of collision
 
@@ -191,6 +284,7 @@ int main(int argc, char** argv) {
 					battery->update(); // TOP BAR
 					battery->setCursorPosition(0, 2);
 					// -> PUT COUT'S HERE FOR NEXT
+          // cout w.weather
 					Sleep(1000);
 					
 
@@ -203,6 +297,7 @@ int main(int argc, char** argv) {
 						path = n.updatePathGoHome(i);
 						pathSize = path.size();
 					}
+
 				 if (i >= 0 && n.checkIfHome(i) && OnTheWayHomeBattery == true) { // may crash ------------------------------
 					 OnTheWayHomeBattery = false;
 					 battery->startCharging();
@@ -229,6 +324,7 @@ int main(int argc, char** argv) {
 				}
 				else {
 
+
 					//hovermode on
 					path = n.updatePathCollisionFoundAt(i);
 					//path = n.updatePathGoHome(i);
@@ -250,6 +346,7 @@ int main(int argc, char** argv) {
 		//cout << "Total Time : " << calculateTotalTime(myFC.getPathHistory());
 		system("cls");
 		
+
 		cout << "The total time it took to get to final destination is " << fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
 		cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
 		viewPathHistory(myFC.getPathHistory());
@@ -260,3 +357,4 @@ int main(int argc, char** argv) {
 	} // while leave == false
 	return 0;
 }
+
