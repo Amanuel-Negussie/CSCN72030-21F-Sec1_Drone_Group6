@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <fstream>
+#include <string>
 #include <iomanip>
 #include <vector>
 #include "Eigen/Dense"
@@ -13,6 +15,9 @@ using namespace std;
 //outside in the main or user interface
 double calculateTotalTime(vector<PATH_HISTORY> myVector);
 void viewPathHistory(vector<PATH_HISTORY> myVector);
+void viewCollisions(vector<LOCATION> vec);
+
+
 string provideCardinalName(double angle);
 
 
