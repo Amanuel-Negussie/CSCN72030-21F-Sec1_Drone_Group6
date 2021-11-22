@@ -67,6 +67,7 @@
 #include <Windows.h>
 #endif 
 #include <iomanip>
+#define WATERVAR 3
 
 batteryWater::~batteryWater() {
 
@@ -557,7 +558,7 @@ void batteryWater::update() { // keep most important errors on the bottom
 		
 		}
 		if (this->door) { // if door open reduce water because its spreading
-			this->waterCapacity--;
+			this->waterCapacity = this->waterCapacity - WATERVAR;
 		}
 
 		if (this->isCharging() == false) {
@@ -577,6 +578,7 @@ bool batteryWater::swapBattery() {
 
 void batteryWater::initScreen() {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
 	int red = 12;
 	int white = 15;
 	system("cls");

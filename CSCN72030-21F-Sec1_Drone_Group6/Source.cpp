@@ -183,50 +183,48 @@ int main(int argc, char** argv) {
 					
 					
 					battery->setCursorPosition(0, 1);
+					HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+					SetConsoleTextAttribute(hConsole, 15);
+					// OUTPUT WINDOW
 					cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
 						<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) << endl;
-					battery->update();
+					battery->update(); // TOP BAR
+					battery->setCursorPosition(0, 2);
+					// -> PUT COUT'S HERE FOR NEXT
 					Sleep(1000);
 					
 
 					// <- DISPLAY
 
-					if (battery->getWaterStorage() <= 0 && OnTheWayHomeWater == false) {
-						//if water is enough -> continue
-						//if not enough, update path to go home
+				 if (battery->getCurrentBattery() < battery->batteryAlert && OnTheWayHomeBattery == false || battery->getWaterStorage() <= 0 && OnTheWayHomeWater == false) {
 						battery->closeHatch();
+						OnTheWayHomeBattery = true;
 						OnTheWayHomeWater = true;
 						path = n.updatePathGoHome(i);
 						pathSize = path.size();
-					} else if (battery->getCurrentBattery() < battery->batteryAlert && OnTheWayHomeBattery == false) {
-						battery->closeHatch();
-						OnTheWayHomeBattery = true;
-						path = n.updatePathGoHome(i);
-						pathSize = path.size();
 					}
+				 if (i >= 0 && n.checkIfHome(i) && OnTheWayHomeBattery == true) { // may crash ------------------------------
+					 OnTheWayHomeBattery = false;
+					 battery->startCharging();
+					 while (battery->getCurrentBattery() < 100) {
 
+
+						 battery->update();
+						 Sleep(100);
+
+					 }
+					 battery->endCharging();
+					 battery->update();
+					 battery->openHatch();
+				 }
 					if (i >= 0 && n.checkIfHome(i) && OnTheWayHomeWater == true) { // may crash ------------------------------
 
 						OnTheWayHomeWater = false;
-
 						battery->fill(100);
 						battery->openHatch();
 					}
 
-					if (i >= 0 && n.checkIfHome(i) && OnTheWayHomeBattery == true) { // may crash ------------------------------
-						OnTheWayHomeBattery = false;
-						battery->startCharging();
-						while (battery->getCurrentBattery() < 100) {
-
-
-							battery->update();
-							Sleep(100);
-
-						}
-						battery->endCharging();
-						battery->update();
-						battery->openHatch();
-					}
+					
 
 				}
 				else {
@@ -251,6 +249,7 @@ int main(int argc, char** argv) {
 		//viewPathHistory(myFC.getPathHistory());
 		//cout << "Total Time : " << calculateTotalTime(myFC.getPathHistory());
 		system("cls");
+		
 		cout << "The total time it took to get to final destination is " << fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
 		cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
 		viewPathHistory(myFC.getPathHistory());
