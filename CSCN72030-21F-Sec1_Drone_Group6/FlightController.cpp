@@ -230,7 +230,7 @@ bool FlightController::MoveDrone(batteryWater* P)
 	}
 	else // if true means we must hover 
 	{
-		Alert a = Alert(111); //sending an alert that object is detected 
+		Alert a = Alert(100); //sending an alert that object is detected 
 		double hoverDuration(0);
 		decellerateDrone(P, hoverDuration);
 

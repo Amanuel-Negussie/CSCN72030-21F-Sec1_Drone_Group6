@@ -176,3 +176,48 @@ Alert: Wed Nov 24 10:24:45 2021
 Alert Code:	111
 Message:	THIS IS AN ALERT
 -------------------------------
+Alert: Wed Nov 24 11:07:44 2021
+-------------------------------
+Alert Code:	209
+Message:	Sonar Sensor Offline
+-------------------------------
+Alert: Wed Nov 24 11:07:45 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Wed Nov 24 11:07:48 2021
+-------------------------------
+Alert Code:	111
+Message:	THIS IS AN ALERT
+-------------------------------
+Alert: Wed Nov 24 11:08:02 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Wed Nov 24 11:08:17 2021
+-------------------------------
+Alert Code:	209
+Message:	Sonar Sensor Offline
+-------------------------------
+Alert: Wed Nov 24 11:08:28 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Wed Nov 24 11:08:53 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Wed Nov 24 11:09:01 2021
+-------------------------------
+Alert Code:	111
+Message:	THIS IS AN ALERT
+-------------------------------
+Alert: Wed Nov 24 11:09:02 2021
+-------------------------------
+Alert Code:	209
+Message:	Sonar Sensor Offline
+-------------------------------
