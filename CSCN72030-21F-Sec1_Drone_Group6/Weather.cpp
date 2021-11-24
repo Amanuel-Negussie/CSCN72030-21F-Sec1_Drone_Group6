@@ -144,14 +144,13 @@ void Weather::displayWeather() {
 		}
 
 
-		cout << "Weather: " << endl
-			<< "-------" << endl
-			<< "Description: " << this->weatherDescription << endl
-			<< "Temperature: " << this->temperature << " Degree Celcius" << endl
-			<< "POP: " << this->pop << "%" << endl
-			<< "Precipitation Amount: " << this->precipitationAmount << "mm" << endl
-			<< "Wind Speed: " << this->windSpeed << "km/h" << endl
-			<< "Humidity: " << this->humidity << "%" << endl;
+	
+			cout <<"Description: " << this->weatherDescription << "\t\t"
+			<< "Temperature: " << this->temperature << " Degree Celcius" << "\t"
+			<< "POP: " << this->pop << "%" << "\n"
+			<< "Precipitation Amount: " << this->precipitationAmount << "mm" << "\t"
+			<< "Wind Speed: " << this->windSpeed << "km/h" << "\t\t"
+			<< "Humidity: " << this->humidity << "%" << "\t";
 
 		if (this->safeToFly == true) {
 			cout << "Safe To Fly: true" << endl;

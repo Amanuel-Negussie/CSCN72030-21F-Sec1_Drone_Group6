@@ -67,7 +67,7 @@
 #include <Windows.h>
 #endif 
 #include <iomanip>
-#define WATERVAR 3
+#define WATERVAR 2
 
 batteryWater::~batteryWater() {
 
@@ -456,7 +456,7 @@ bool batteryWater::addTempSensor(string ID, string connection1, string connectio
 	return true;
 }
 
-void batteryWater::setCursorPosition(int x, int y)
+void setCursorPosition(int x, int y)
 {
 	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	std::cout.flush();

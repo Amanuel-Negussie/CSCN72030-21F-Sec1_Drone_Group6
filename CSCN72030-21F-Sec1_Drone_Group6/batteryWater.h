@@ -74,7 +74,7 @@ public :
 	int getCurrentBattery();
 	float getWaterStorage();
 	bool swapBattery();
-	void setCursorPosition(int x, int y);
+	
 	void update();
 	bool isCharging();
 	void initScreen();
@@ -114,7 +114,7 @@ private:
 	string currentAlert;
 };
 
-
+void setCursorPosition(int x, int y);
 
 struct deleteFail : public exception {
 	const char* issue() const throw() {

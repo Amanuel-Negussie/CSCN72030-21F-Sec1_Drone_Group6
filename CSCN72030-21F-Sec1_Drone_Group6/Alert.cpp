@@ -4,7 +4,7 @@
 #include <fstream>
 #include <ctime>
 #include <chrono>
-
+#include "batteryWater.h"
 using namespace std;
 
 Alert::Alert(int alertCode) {
@@ -27,9 +27,10 @@ string Alert::getAlertMessage() {
 }
 
 void Alert::displayAlert() {
-	cout << "Alert!\n------\n" <<
-		"AlertCode: " << this->alertCode <<
+	setCursorPosition(0, 15);
+	cout << "AlertCode: " << this->alertCode <<
 		"\nAlertMessage: " << this->alertMessage << "\n\n";
+	Sleep(1000);
 }
 
 string Alert::readAlertMessage(int alertCode) {
@@ -40,6 +41,7 @@ string Alert::readAlertMessage(int alertCode) {
 	ifstream file(fileDirectory);
 	if (!file.is_open()) {
 		//return "Error, could not find alert message.\n";
+		setCursorPosition(0, 15);
 		throw "Error, could not find alert message.";
 	}
 

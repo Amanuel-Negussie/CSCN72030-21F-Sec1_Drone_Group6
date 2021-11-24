@@ -43,7 +43,7 @@ enum DIRECTIONS {
 
 class FlightController
 {
-private: 
+private:
 	//LIDAR DATA 	
 	LOCATION currentLocation; //currentLocation of drone  //Islam
 	LOCATION futureLocation; //expected next Location of Drone
