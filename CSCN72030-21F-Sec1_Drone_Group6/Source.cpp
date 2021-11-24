@@ -196,8 +196,8 @@ int main(int argc, char** argv) {
 					int pathSize = path.size();
 					bool safetofly = true;
 
-					Coord startingLocation(1, 1);
-					FlightController myFC = FlightController(startingLocation, NORTH);
+				/*	Coord startingLocation(1, 1);
+					FlightController myFC = FlightController(startingLocation, NORTH);     //commented out because double use of variables-AN*/
 
 					bool OnTheWayHomeWater = false;
 					bool OnTheWayHomeBattery = false;
@@ -243,7 +243,7 @@ int main(int argc, char** argv) {
 							}
 
 
-							if (myFC.MoveDrone(battery)) {
+							if (myFC.MoveDrone(battery)) { //considered taking this out because double instance of moveDrone Amanuel Negussie 
 
 
 								//Check water (Danny)
@@ -283,7 +283,8 @@ int main(int argc, char** argv) {
 									// OUTPUT WINDOW
 									cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
 										<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) <<
-										"\tCurrent Drone Direction: " << myFC.getPathHistory().back().direction << endl;
+										"\tCurrent Drone Direction: " << myFC.getPathHistory().back().direction <<" " << endl;
+									cout<<outputLidarData(myFC.getLidarData())<<endl;
 									battery->update(); // TOP BAR
 									battery->setCursorPosition(0, 2);
 									// -> PUT COUT'S HERE FOR NEXT
@@ -341,7 +342,7 @@ int main(int argc, char** argv) {
 
 								}
 
-							}
+							} // considered taking this out because double use of MoveDrone wasn't helping with rendering -Amanuel Negussie
 
 
 						}
@@ -353,12 +354,15 @@ int main(int argc, char** argv) {
 						cout << "The total time it took to get to final destination is " << fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
 						cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
 						viewPathHistory(myFC.getPathHistory());
+						writePathHistoryToDATFile(myFC.getPathHistory(),PATH_HISTORY_DAT_FILENAME);
+						writePathHistoryToTXTFile(myFC.getPathHistory(), PATH_HISTORY_TXT_FILENAME);
 
 
 						system("pause");
 					} // if temp
+					return 0;
 				} // while leave == false
-				return 0;
+			
 			}
 		}
 	}

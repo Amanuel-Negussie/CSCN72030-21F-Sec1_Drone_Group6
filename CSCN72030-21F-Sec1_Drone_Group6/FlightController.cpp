@@ -19,6 +19,10 @@ FlightController::FlightController(Coord locOfDrone, double direction)
 void FlightController::updateLidarData()
 {
 	double angle = provideCardinalDegreeFromVector(directionOfDrone);
+	lidarData.frontSensor = false;
+	lidarData.leftSensor = false;
+	lidarData.rightSensor = false;
+	lidarData.backSensor = false;
 	if (angle == NORTH)
 		//north 
 	{

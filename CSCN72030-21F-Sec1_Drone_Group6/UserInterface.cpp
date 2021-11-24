@@ -40,3 +40,17 @@ void viewCollisions(vector<LOCATION> vec)
 	
 }
 
+string outputLidarData(LIDAR lid)
+{
+	string s; 
+	s.append("FRONT SENSOR: ");
+	s.append(lid.frontSensor ? "OBJECT DETECTED" : "                ");
+	s.append("\nLEFT SENSOR: ");
+	s.append(lid.leftSensor ? "OBJECT DETECTED" : "                 ");
+	s.append("\nRIGHT SENSOR: ");
+	s.append(lid.rightSensor ? "OBJECT DETECTED" : "                "); 
+	s.append("\nBACK SENSOR: ");
+	s.append(lid.backSensor ? "OBJECT DETECTED" : "                 ");
+	return s;
+}
+

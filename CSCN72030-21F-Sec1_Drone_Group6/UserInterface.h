@@ -8,6 +8,7 @@
 #include "Eigen/Dense"
 #include "Location.h"
 #include "PathHistory.h"
+#include "Lidar.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ using namespace std;
 double calculateTotalTime(vector<PATH_HISTORY> myVector);
 void viewPathHistory(vector<PATH_HISTORY> myVector);
 void viewCollisions(vector<LOCATION> vec);
+string outputLidarData(LIDAR lid); 
 
 
 string provideCardinalName(double angle);
