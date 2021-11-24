@@ -54,7 +54,7 @@ string Alert::readAlertMessage(int alertCode) {
 }
 
 void Alert::updateAlertLog(Alert* a) {
-
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	const string alertLogDirectory = "Alerts/alertLog.txt";
 	ofstream file(alertLogDirectory, ios_base::app);
 	if (!file.is_open()) {
@@ -64,14 +64,14 @@ void Alert::updateAlertLog(Alert* a) {
 	auto start = chrono::system_clock::now();
 	auto end = chrono::system_clock::now();
 	time_t end_time = std::chrono::system_clock::to_time_t(end);
-
+	SetConsoleTextAttribute(hConsole, 12);
 	file << "Alert: " << ctime(&end_time) << 
 		"-------------------------------\n";
 	file << "Alert Code:\t" + to_string(a->alertCode) + "\n";
 	file << "Message:\t" + a->alertMessage + "\n";
 	file << "-------------------------------\n";
 	file.close();
-
+	SetConsoleTextAttribute(hConsole, 15);
 }
 
 void getAlertLog() {

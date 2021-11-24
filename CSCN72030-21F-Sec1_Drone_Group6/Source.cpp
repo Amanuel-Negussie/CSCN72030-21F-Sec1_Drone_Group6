@@ -239,7 +239,7 @@ int main(int argc, char** argv) {
 										cout << "                                                   \n                                                                   ";
 										
 						  // cout w.weather
-									Sleep(3000);
+									Sleep(1000);
 
 
 									// <- DISPLAY
