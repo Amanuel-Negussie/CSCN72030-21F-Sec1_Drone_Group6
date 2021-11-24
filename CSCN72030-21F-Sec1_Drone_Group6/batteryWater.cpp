@@ -68,7 +68,7 @@
 #endif 
 #include <iomanip>
 #define WATERVAR 2
-
+#include "Alert.h"
 batteryWater::~batteryWater() {
 
 
@@ -445,6 +445,36 @@ bool batteryWater::closeHatch() {
 
 void batteryWater::sendAlert(string input) {
 	this->currentAlert = input;
+	if (input == "LowBattery") {
+		Alert a(201);
+	}
+	else if (input == "BatteryCritical") {
+		Alert a(202);
+	}
+	else if (input == "MaxTempApproaching") {
+		Alert a(207);
+	}
+	else if (input == "DeadBattery") {
+		Alert a(203);
+	}
+	else if (input == "LowWater") {
+		Alert a(204);
+	}
+	else if (input == "emptyWater") {
+		Alert a(206);
+	}
+	else if (input == "MaxTempExceeded") {
+		Alert a(208);
+	}
+	else if (input == "TemperatureSensorOffline") {
+		Alert a(211);
+	}
+	else if (input == "SonarSensorOffline") {
+		Alert a(209);
+	}
+	else if (input == "WaterCritical") {
+		Alert a(205);
+	}
 }
 
 bool batteryWater::addTempSensor(string ID, string connection1, string connection2) {
