@@ -282,7 +282,8 @@ int main(int argc, char** argv) {
 									SetConsoleTextAttribute(hConsole, 15);
 									// OUTPUT WINDOW
 									cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
-										<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) << endl;
+										<< " Current Nav Speed: " << n.getNavSensorSpeed(3/*getSpeedFromAmanuel*/) <<
+										"\tCurrent Drone Direction: " << myFC.getPathHistory().back().direction << endl;
 									battery->update(); // TOP BAR
 									battery->setCursorPosition(0, 2);
 									// -> PUT COUT'S HERE FOR NEXT
