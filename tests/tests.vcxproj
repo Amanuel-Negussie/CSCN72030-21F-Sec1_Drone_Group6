@@ -168,11 +168,6 @@
   <ItemGroup>
     <ClInclude Include="pch.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CSCN72030-21F-Sec1_Drone_Group6\CSCN72030-21F-Sec1_Drone_Group6.vcxproj">
-      <Project>{66af0f79-0dd0-4a44-8da8-e34a7c05603a}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

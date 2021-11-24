@@ -10,14 +10,13 @@ using namespace std;
 
 class NavSensor {
 protected:
-	int selection;
 	int gridSize;
 	Coord home;
 	vector<Coord> path;
 
 public:
 	NavSensor();
-	int userPathSelection(); //user selects path file
+	NavSensor(int);
 	vector<Coord> getNavSensorPath(); //retrieve path from file
 	vector<Coord> updatePathCollisionFoundAt(int); //collision handling (update path to go around collision)
 	vector<Coord> updatePathGoHome(int); //make drone go home and back to last position in path (instance where drone was told to go home)

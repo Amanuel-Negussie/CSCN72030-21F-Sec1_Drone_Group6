@@ -11,24 +11,16 @@ enum WeatherDescription {
 	Overcast,
 	Showers,
 	Rainstorm,
-	Snow
+	Snow,
+	Custom
 
 };
-
-ostream& operator << (ostream& stream, WeatherDescription weatherDescription) {
-	const string weatherDescriptionString[] = { "Sunny", "Cloudy", "Overcast", "Showers", "Rainstorm", "Snow" };
-	return stream << weatherDescriptionString[weatherDescription];
-}
 
 class Weather {
 
 	float temperature, precipitationAmount, windSpeed;
 	int pop, humidity;
 	WeatherDescription weatherDescription;
-
-
-	Weather(string filePath);
-	~Weather();
 
 	float getWeatherTemperature();
 	int getWeatherPOP();
@@ -44,17 +36,16 @@ class Weather {
 	void setWeatherHumidity(int humidity);
 	void setWeatherDescription(WeatherDescription weatherDescription);
 
-	void displayWeather();
-	void getWeatherFromFile(string filePath);
-
-
 public:
+
+	Weather(string);
 
 	bool safeToFly;
 
 	bool getWeatherSafety();
 	void setWeatherSafety(bool safeToFly);
-
-	void checkWeatherSafety();
+	void displayWeather();
+	void getWeatherFromFile(string filePath);
+	void createCustomWeather();
 
 };

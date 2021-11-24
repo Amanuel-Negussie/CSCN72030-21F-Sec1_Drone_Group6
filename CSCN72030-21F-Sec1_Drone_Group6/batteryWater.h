@@ -53,14 +53,16 @@
 	Version 1.1 - More variables added, Save function Added, setCharging function removed {Date : November 10, 2021 } Version edited by - Danny Smith
 	Version 1.2 - Magic number removed helper function for testing added
 */
+#pragma once
 #include <iostream>
 #include "sonarSensor.h";
 #define MAX_CONNECTIONS 50
 #define MAX_SENSORS 10
 #define ERROR_FILE ""
 #define STARTUP_INFO ""
-#define SCALER 4
+#define SCALER 6
 #include <string>
+#include <Windows.h>
 class batteryWater {
 public :
 	bool decreaseBattery(float watts);
@@ -72,10 +74,10 @@ public :
 	int getCurrentBattery();
 	float getWaterStorage();
 	bool swapBattery();
-
+	
 	void update();
 	bool isCharging();
-
+	void initScreen();
 	bool addTempSensor(string ID, string connection1, string connection2);
 	batteryWater();
 	~batteryWater();
@@ -112,7 +114,7 @@ private:
 	string currentAlert;
 };
 
-
+void setCursorPosition(int x, int y);
 
 struct deleteFail : public exception {
 	const char* issue() const throw() {

@@ -1,52 +1,15 @@
 #include "NavSensor.h"
 
-NavSensor::NavSensor() {
-
-	this->selection = this->userPathSelection();
-
-	switch (this->selection) {
-	case 1:
-		this->gridSize = 5;
-		break;
-	case 2:
-		this->gridSize = 10;
-		break;
-	default:
-		this->gridSize = 5;
-		break;
-	}
+NavSensor::NavSensor(){
+	this->gridSize = 0;
+	this->gridSize = 0;
 	this->home = Coord(1, 1);
 }
 
-int NavSensor::userPathSelection() {
+NavSensor::NavSensor(int gridSelection) {
 
-	cout << "Please select a start path (1 or 2):" << endl
-		<< "1. 5x5 Grid" << endl
-		<< "2. 10x10 Grid" << endl
-		<< ": ";
-	
-	int selection = 1;
-
-	try {
-		
-		cin >> selection;
-
-	} catch(exception e) {
-
-		//alert invalid path selection, using path 1
-		//Alert a = Alert(300); // 300 - Invalid path entry
-		selection = 1;
-
-	}
-
-	if (selection > 2 || selection < 1) {
-		//alert invalid path selection, using path 1
-		//Alert a = Alert(300); // 300 - Invalid path entry
-		selection = 1;
-	}
-
-	return selection;
-
+	this->gridSize = gridSelection;
+	this->home = Coord(1, 1);
 }
 
 vector<Coord> NavSensor::getNavSensorPath() {
@@ -74,7 +37,7 @@ void NavSensor::initPath() {
 	string comma = ",";
 	fstream fileStream;
 
-	switch (this->selection) {
+	switch (this->gridSize) {
 	case 1:
 		fileStream.open("Coords/initalOne.txt", ios::in);
 		break;

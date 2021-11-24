@@ -66,7 +66,9 @@
 #ifdef _WIN64 // only use on windows machine
 #include <Windows.h>
 #endif 
-
+#include <iomanip>
+#define WATERVAR 2
+#include "Alert.h"
 batteryWater::~batteryWater() {
 
 
@@ -95,7 +97,7 @@ batteryWater::batteryWater() {
 	this->batteryAlert = 40;
 
 	this->charging = false;
-	this->batteryCapacity = 0;
+	this->batteryCapacity = 550; //Amanuel - you can remove this just for understanding implementation default value was 0
 	this->door = false;
 	this->padConnected = false;
 	this->waterCapacity = 0;
@@ -237,7 +239,6 @@ batteryWater::batteryWater() {
 					x = 0;
 				} // if charging or not
 			} // check charging
-
 			if (count == 3) {
 				this->batteryCapacity = atoi(word);
 			} // check charging
@@ -334,6 +335,7 @@ bool batteryWater::decreaseBattery(float watts) {
 		return false;
 	}
 	
+
 }
 bool batteryWater::startCharging() {
 	this->charging = true;
@@ -380,7 +382,9 @@ bool batteryWater::fill(int percent) {
 	}
 }
 int batteryWater::getCurrentBattery() {
+
 	return this->batteryCapacity;
+
 }
 float batteryWater::getWaterStorage() {
 	return this->waterCapacity;
@@ -441,6 +445,36 @@ bool batteryWater::closeHatch() {
 
 void batteryWater::sendAlert(string input) {
 	this->currentAlert = input;
+	if (input == "LowBattery") {
+		Alert a(201);
+	}
+	else if (input == "BatteryCritical") {
+		Alert a(202);
+	}
+	else if (input == "MaxTempApproaching") {
+		Alert a(207);
+	}
+	else if (input == "DeadBattery") {
+		Alert a(203);
+	}
+	else if (input == "LowWater") {
+		Alert a(204);
+	}
+	else if (input == "emptyWater") {
+		Alert a(206);
+	}
+	else if (input == "MaxTempExceeded") {
+		Alert a(208);
+	}
+	else if (input == "TemperatureSensorOffline") {
+		Alert a(211);
+	}
+	else if (input == "SonarSensorOffline") {
+		Alert a(209);
+	}
+	else if (input == "WaterCritical") {
+		Alert a(205);
+	}
 }
 
 bool batteryWater::addTempSensor(string ID, string connection1, string connection2) {
@@ -452,7 +486,13 @@ bool batteryWater::addTempSensor(string ID, string connection1, string connectio
 	return true;
 }
 
-
+void setCursorPosition(int x, int y)
+{
+	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	std::cout.flush();
+	COORD coord = { (SHORT)x, (SHORT)y };
+	SetConsoleCursorPosition(hOut, coord);
+}
 
 
 
@@ -480,7 +520,7 @@ void batteryWater::update() { // keep most important errors on the bottom
 		// ensure battery is within paramaters
 
 		if (this->batteryCapacity > 100) {
-			this->batteryCapacity = 100;
+			this->batteryCapacity = 99;
 		}
 		if (this->batteryCapacity < 0) {
 			this->batteryCapacity = 0;
@@ -522,36 +562,38 @@ void batteryWater::update() { // keep most important errors on the bottom
 			logError("Low Battery");
 			this->sendAlert("LowBattery");
 		}
+		if (this->isCharging() == false) {
+			// check temps and temp sensor
+			if (this->temps[0]->isOnline()) {
+				float temp = 0;
+				temp = this->getTemp();
 
-		// check temps and temp sensor
-		if (this->temps[0]->isOnline()) {
-			float temp = 0;
-			temp = this->getTemp();
-
-			this->update_Temp = temp;
-			if (temp > this->MAX_TEMP) {
-				logError("Max Temp Exceeded : " + to_string(this->MAX_TEMP) + "Current Temp : " + to_string(temp));
-				this->sendAlert("MaxTempExceeded");
-			}
-			else if (temp > this->MAX_TEMP - 10) {
-				logError("High Temperature : " + to_string(temp));
-				this->sendAlert("MaxTempApproaching");
-			}
-		} // if temp sensor is online ensure good temps
-		else { // log it
-			logError("Temperature Sensor " + this->temps[0]->getID() + " is offline");
-			this->sendAlert("TemperatureSensorOffline");
+				this->update_Temp = temp;
+				if (temp > this->MAX_TEMP) {
+					logError("Max Temp Exceeded : " + to_string(this->MAX_TEMP) + "Current Temp : " + to_string(temp));
+					this->sendAlert("MaxTempExceeded");
+				}
+				else if (temp > this->MAX_TEMP - 10) {
+					logError("High Temperature : " + to_string(temp));
+					this->sendAlert("MaxTempApproaching");
+				}
+			} // if temp sensor is online ensure good temps
+			else { // log it
+				logError("Temperature Sensor " + this->temps[0]->getID() + " is offline");
+				this->sendAlert("TemperatureSensorOffline");
+			} // if not charging
 		}
-
 		if (this->isCharging()) { // if battery is charging increase battery
 			this->batteryCapacity++;
+		
 		}
 		if (this->door) { // if door open reduce water because its spreading
-			this->waterCapacity--;
+			this->waterCapacity = this->waterCapacity - WATERVAR;
 		}
 
-
-		this->save();
+		if (this->isCharging() == false) {
+			this->save();
+		}
 		this->updateScreen();
 	}
 }
@@ -564,46 +606,111 @@ bool batteryWater::swapBattery() {
 	return true;
 }
 
-void batteryWater::updateScreen() {
+void batteryWater::initScreen() {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
 	int red = 12;
 	int white = 15;
-	
-	//cout << "\x1B[2J\x1B[H"; // <- cls
+	system("cls");
+	setCursorPosition(0, 0);
 	SetConsoleTextAttribute(hConsole, white);
 	cout << "Battery : ";
+	setCursorPosition(25, 0);
+	cout << "Water : ";
+	setCursorPosition(40, 0);
+	cout << "Temperature : ";
+	setCursorPosition(75, 0);
+	cout << "Alert : ";
+
+	// put up original info
 	if (this->getCurrentBattery() <= this->batteryAlert) {
 		SetConsoleTextAttribute(hConsole, red);
 	}
 	else {
 		SetConsoleTextAttribute(hConsole, white);
 	}
-	cout << this->getCurrentBattery() << "%      ";
-	SetConsoleTextAttribute(hConsole, white);
+	setCursorPosition(11, 0);
+	std::cout << std::setfill('0') << std::setw(2) << this->getCurrentBattery() << "%";
 
-	cout << "Water : ";
-	if (this->getWaterStorage() <= waterAlert) {
+	if (this->isCharging()) {
+		if (this->getWaterStorage() <= waterAlert) {
+			SetConsoleTextAttribute(hConsole, red);
+		}
+		else {
+			SetConsoleTextAttribute(hConsole, white);
+		}
+		setCursorPosition(34, 0);
+		cout << this->getWaterStorage() << "%";
+
+
+
+
+
+		if (this->update_Temp >= this->MAX_TEMP) {
+			SetConsoleTextAttribute(hConsole, red);
+		}
+		else {
+			SetConsoleTextAttribute(hConsole, white);
+		}
+		setCursorPosition(55, 0);
+		cout << this->update_Temp << trunc(this->getTemp()) << "            ";
+
+
+		SetConsoleTextAttribute(hConsole, red);
+		setCursorPosition(82, 0);
+		cout << std::setfill(' ') << std::setw(25) << this->currentAlert << "\n";
+		SetConsoleTextAttribute(hConsole, white);
+	}
+}
+void batteryWater::updateScreen() {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	int red = 12;
+	int white = 15;
+	
+
+	if (this->getCurrentBattery() <= this->batteryAlert) {
 		SetConsoleTextAttribute(hConsole, red);
 	}
 	else {
 		SetConsoleTextAttribute(hConsole, white);
 	}
-	cout << this->getWaterStorage() << "%";
-	cout<< "                ";
+	setCursorPosition(11, 0);
+	std::cout << std::setfill(' ') << std::setw(3) << this->getCurrentBattery();
+	setCursorPosition(14, 0);
+	cout << "%";
 	SetConsoleTextAttribute(hConsole, white);
-	cout << "Alert : ";
-	SetConsoleTextAttribute(hConsole, red);
-	cout << this->currentAlert << "            ";
-	SetConsoleTextAttribute(hConsole, white);
-	cout << "Temperature : ";
-	if (this->update_Temp >= this->MAX_TEMP) {
+	
+	if (!this->isCharging()) {
+		if (this->getWaterStorage() <= waterAlert) {
+			SetConsoleTextAttribute(hConsole, red);
+		}
+		else {
+			SetConsoleTextAttribute(hConsole, white);
+		}
+		setCursorPosition(34, 0);
+		std::cout << std::setfill(' ') << std::setw(3) << this->getWaterStorage();
+		setCursorPosition(37, 0);
+		cout << "%";
+
+
+
+
+
+		if (this->update_Temp >= this->MAX_TEMP) {
+			SetConsoleTextAttribute(hConsole, red);
+		}
+		else {
+			SetConsoleTextAttribute(hConsole, white);
+		}
+		setCursorPosition(55, 0);
+		cout << this->update_Temp << trunc(this->getTemp()) << "            ";
+
+
 		SetConsoleTextAttribute(hConsole, red);
-	}
-	else {
+		setCursorPosition(82, 0);
+		cout << std::setfill(' ') << std::setw(25) << this->currentAlert << "\n";
 		SetConsoleTextAttribute(hConsole, white);
-	}
-	cout << this->update_Temp << trunc(this->getTemp()); "\n";
-	SetConsoleTextAttribute(hConsole, white);
+	} // if not charging display update other stuff
 }
 
 int batteryWater::getFlightEstimate(float speed, float maxW) {

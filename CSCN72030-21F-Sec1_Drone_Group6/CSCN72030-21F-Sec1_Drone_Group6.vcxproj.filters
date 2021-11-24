@@ -18,9 +18,6 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LocationAndLidar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FlightController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -48,12 +45,18 @@
     <ClCompile Include="batteryWater.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Location.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FlightController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LocationAndLidar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Coord.h">
@@ -80,6 +83,27 @@
     <ClInclude Include="tempSensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Lidar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Location.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PathHistory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LocationAndLidar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

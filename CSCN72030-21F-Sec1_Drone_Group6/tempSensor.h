@@ -25,6 +25,7 @@
 
 1.1 - ID changed to string { November 15, 2021 } by - Danny Smith
 */
+#pragma once 
 #include "connection.h";
 
 class tempSensor {
