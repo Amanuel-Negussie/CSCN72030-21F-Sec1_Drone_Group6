@@ -337,7 +337,7 @@ bool writePathHistoryToTXTFile(const vector<PATH_HISTORY> vec, string fileName)
 	ofstream os(fileName, ios::out);
 	if (!os.is_open())
 		return false;
-	os << "Path History" << endl;
+	os << "Drone's Movement History" << endl;
 	os << "#\tLOCATION\tDURATION\tDIRECTION\tSPEED\t\tPOWER\n";
 	int count(0);
 	for (auto i : vec)
