@@ -1546,3 +1546,48 @@ Alert: Thu Nov 25 13:21:39 2021
 Alert Code:	208
 Message:	Max Temperature Exceeded
 -------------------------------
+Alert: Thu Nov 25 13:28:53 2021
+-------------------------------
+Alert Code:	207
+Message:	Temperature Limit Approaching
+-------------------------------
+Alert: Thu Nov 25 13:28:54 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 13:28:56 2021
+-------------------------------
+Alert Code:	100
+Message:	Object Detected Ahead
+-------------------------------
+Alert: Thu Nov 25 13:29:01 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 13:29:13 2021
+-------------------------------
+Alert Code:	209
+Message:	Sonar Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 13:29:14 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 13:29:17 2021
+-------------------------------
+Alert Code:	100
+Message:	Object Detected Ahead
+-------------------------------
+Alert: Thu Nov 25 13:29:22 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 13:29:25 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
