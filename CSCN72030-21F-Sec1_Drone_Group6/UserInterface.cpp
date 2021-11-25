@@ -2,7 +2,7 @@
 
 void viewPathHistory(vector<PATH_HISTORY> myVector)
 {
-	cout << "Path History" << endl;
+	cout << "Drone's Movement History" << endl;
 	cout << "#\tLOCATION\tDURATION\tDIRECTION\tSPEED\t\tPOWER\n";
 	int count(0);
 	for (auto i : myVector)

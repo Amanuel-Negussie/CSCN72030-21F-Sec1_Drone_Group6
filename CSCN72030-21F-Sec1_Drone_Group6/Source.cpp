@@ -336,10 +336,10 @@ int main(int argc, char** argv) {
 
 
 				cout << "The total time it took to get to final destination is " << fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
-				cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
+				cout << "--------------------------------" << endl;
 				viewPathHistory(myFC.getPathHistory());
-				//writePathHistoryToDATFile(myFC.getPathHistory(),PATH_HISTORY_DAT_FILENAME);
-				//writePathHistoryToTXTFile(myFC.getPathHistory(), PATH_HISTORY_TXT_FILENAME);
+		
+				writePathHistoryToTXTFile(myFC.getPathHistory(), PATH_HISTORY_TXT_FILENAME);
 
 
 				system("pause");
