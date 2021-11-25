@@ -137,7 +137,7 @@ vector<Coord> NavSensor::updatePathCollisionFoundAt(int index) {
 
 	} else {
 		//(alert)
-		//Alert a = Alert(301); // 301 - Collision not found // should never happen
+		Alert a = Alert(301); // 301 - Collision not found // should never happen
 	}
 
 	return this->path;
@@ -218,7 +218,7 @@ vector<Coord> NavSensor::updatePathGoHome(int index) {
 
 	} else {
 		//already home
-		//Alert a = Alert(302); // 302 - Unable to go home (Already Home)
+		Alert a = Alert(302); // 302 - Unable to go home (Already Home)
 	}
 
 	return this->path;
