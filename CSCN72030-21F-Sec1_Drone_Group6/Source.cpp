@@ -159,8 +159,8 @@ int main(int argc, char** argv) {
 
 			leave = false; // go back to menu after field is watered
 			batteryWater* battery = new batteryWater();
-			battery->fill(100);
-			battery->swapBattery();
+			//battery->fill(100);
+			//battery->swapBattery();
 			Coord startingLocation(1, 1);
 			FlightController myFC = FlightController(startingLocation, NORTH);
 			
@@ -216,6 +216,8 @@ int main(int argc, char** argv) {
 
 					if (i < pathSize - 1) {
 						myFC.setFutureLocation(n.getCurrentCoord(i + 1));
+					} else {
+						myFC.setFutureLocation(n.getCurrentCoord(i));
 					}
 					
 					
