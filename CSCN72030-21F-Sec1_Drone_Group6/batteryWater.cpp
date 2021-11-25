@@ -445,35 +445,37 @@ bool batteryWater::closeHatch() {
 
 void batteryWater::sendAlert(string input) {
 	this->currentAlert = input;
-	if (input == "LowBattery") {
-		Alert a(201);
-	}
-	else if (input == "BatteryCritical") {
-		Alert a(202);
-	}
-	else if (input == "MaxTempApproaching") {
-		Alert a(207);
-	}
-	else if (input == "DeadBattery") {
-		Alert a(203);
-	}
-	else if (input == "LowWater") {
-		Alert a(204);
-	}
-	else if (input == "emptyWater") {
-		Alert a(206);
-	}
-	else if (input == "MaxTempExceeded") {
-		Alert a(208);
-	}
-	else if (input == "TemperatureSensorOffline") {
-		Alert a(211);
-	}
-	else if (input == "SonarSensorOffline") {
-		Alert a(209);
-	}
-	else if (input == "WaterCritical") {
-		Alert a(205);
+	if (!this->isCharging()) {
+		if (input == "LowBattery") {
+			Alert a(201);
+		}
+		else if (input == "BatteryCritical") {
+			Alert a(202);
+		}
+		else if (input == "MaxTempApproaching") {
+			Alert a(207);
+		}
+		else if (input == "DeadBattery") {
+			Alert a(203);
+		}
+		else if (input == "LowWater") {
+			Alert a(204);
+		}
+		else if (input == "emptyWater") {
+			Alert a(206);
+		}
+		else if (input == "MaxTempExceeded") {
+			Alert a(208);
+		}
+		else if (input == "TemperatureSensorOffline") {
+			Alert a(211);
+		}
+		else if (input == "SonarSensorOffline") {
+			Alert a(209);
+		}
+		else if (input == "WaterCritical") {
+			Alert a(205);
+		}
 	}
 }
 
@@ -611,7 +613,10 @@ void batteryWater::initScreen() {
 
 	int red = 12;
 	int white = 15;
+	
+	setCursorPosition(0, 0);
 	system("cls");
+	std::cout << std::setfill(' ') << std::setw(120) << this->getCurrentBattery() << " ";
 	setCursorPosition(0, 0);
 	SetConsoleTextAttribute(hConsole, white);
 	cout << "Battery : ";

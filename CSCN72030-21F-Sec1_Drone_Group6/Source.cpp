@@ -173,6 +173,8 @@ int main(int argc, char** argv) {
 			bool OnTheWayHomeWater = false;
 			bool OnTheWayHomeBattery = false;
 			system("cls");
+			setCursorPosition(0, 0);
+			cout << "                                                                                                                                                 ";
 			battery->initScreen();
 			if (w.safeToFly) {
 				battery->openHatch();
