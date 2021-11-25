@@ -311,3 +311,193 @@ Alert: Wed Nov 24 11:14:18 2021
 Alert Code:	201
 Message:	Low Battery
 -------------------------------
+Alert: Thu Nov 25 10:45:44 2021
+-------------------------------
+Alert Code:	201
+Message:	Low Battery
+-------------------------------
+Alert: Thu Nov 25 10:45:45 2021
+-------------------------------
+Alert Code:	201
+Message:	Low Battery
+-------------------------------
+Alert: Thu Nov 25 10:45:46 2021
+-------------------------------
+Alert Code:	201
+Message:	Low Battery
+-------------------------------
+Alert: Thu Nov 25 10:45:47 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 10:45:50 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 10:45:55 2021
+-------------------------------
+Alert Code:	207
+Message:	Temperature Limit Approaching
+-------------------------------
+Alert: Thu Nov 25 10:48:48 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 10:49:01 2021
+-------------------------------
+Alert Code:	209
+Message:	Sonar Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 10:49:02 2021
+-------------------------------
+Alert Code:	207
+Message:	Temperature Limit Approaching
+-------------------------------
+Alert: Thu Nov 25 10:49:04 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 10:49:40 2021
+-------------------------------
+Alert Code:	207
+Message:	Temperature Limit Approaching
+-------------------------------
+Alert: Thu Nov 25 10:49:43 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 10:49:50 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 10:50:21 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 10:50:35 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 10:50:39 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 10:50:54 2021
+-------------------------------
+Alert Code:	207
+Message:	Temperature Limit Approaching
+-------------------------------
+Alert: Thu Nov 25 10:50:57 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 10:52:48 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 11:07:27 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 11:07:37 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 11:07:39 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 11:07:46 2021
+-------------------------------
+Alert Code:	207
+Message:	Temperature Limit Approaching
+-------------------------------
+Alert: Thu Nov 25 11:07:48 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 11:07:53 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 11:07:57 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 11:08:10 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 11:08:11 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 11:08:17 2021
+-------------------------------
+Alert Code:	207
+Message:	Temperature Limit Approaching
+-------------------------------
+Alert: Thu Nov 25 11:08:19 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 11:08:25 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 11:08:55 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 11:08:59 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 11:09:02 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 11:09:08 2021
+-------------------------------
+Alert Code:	207
+Message:	Temperature Limit Approaching
+-------------------------------
+Alert: Thu Nov 25 11:09:10 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
+Alert: Thu Nov 25 11:09:17 2021
+-------------------------------
+Alert Code:	211
+Message:	Temperature Sensor Offline
+-------------------------------
+Alert: Thu Nov 25 11:09:19 2021
+-------------------------------
+Alert Code:	208
+Message:	Max Temperature Exceeded
+-------------------------------
