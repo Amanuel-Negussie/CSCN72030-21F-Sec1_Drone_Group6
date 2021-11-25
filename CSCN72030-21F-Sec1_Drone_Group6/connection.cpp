@@ -72,7 +72,8 @@ int connection::getVoltage() { // designed to read from file. Remove first line 
 				temp << "0;";
 				break;
 			default:
-				throw wrongVoltage();
+				throw wrongVoltage();		//changes by I& A
+				temp << "0;";				//changes by I& A, plz fix
 				break;
 			}
 		}
@@ -94,7 +95,8 @@ int connection::getVoltage() { // designed to read from file. Remove first line 
 		break;
 	default:
 		logError(" SYSTEM ERROR Wrong Voltage Passed");
-		throw wrongVoltage();
+		throw wrongVoltage();		//changes by I& A, plz fix
+		//return 0;					//changes by I& A, plz fix
 		break;
 	}
 	return voltage;

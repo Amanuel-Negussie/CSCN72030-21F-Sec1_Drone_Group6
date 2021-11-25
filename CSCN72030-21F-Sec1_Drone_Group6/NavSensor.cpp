@@ -2,7 +2,6 @@
 
 NavSensor::NavSensor(){
 	this->gridSize = 0;
-	this->gridSize = 0;
 	this->home = Coord(1, 1);
 }
 
@@ -38,10 +37,10 @@ void NavSensor::initPath() {
 	fstream fileStream;
 
 	switch (this->gridSize) {
-	case 1:
+	case 5:
 		fileStream.open("Coords/initalOne.txt", ios::in);
 		break;
-	case 2:
+	case 10:
 		fileStream.open("Coords/initalTwo.txt", ios::in);
 		break;
 	default:

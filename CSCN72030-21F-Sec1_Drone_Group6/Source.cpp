@@ -84,10 +84,15 @@ int main(int argc, char** argv) {
 			cout << "\t\t\t Add a Field\n\t\t\t-------------------\n";
 			cout << "Enter the field ID/Name :";
 			cin >> name;
-			cout << "\n 1. 5x5 Grid\n 2. 10x10Grid\n";
+			cout << "\n 1. 5x5 Grid\n 2. 10x10 Grid (Experimental ~ Not Working)\n";
 			cout << "Please enter a field Size [1,2] :";
 			cin >> size;
 
+			if (size == 2) {
+				size = 10;
+			} else {
+				size = 5;
+			}
 
 
 			// Create and open a text file
@@ -158,6 +163,7 @@ int main(int argc, char** argv) {
 			battery->swapBattery();
 			Coord startingLocation(1, 1);
 			FlightController myFC = FlightController(startingLocation, NORTH);
+			
 			myFC.readCollisionDATFile(COLLISIONS_DAT_FILENAME);
 
 
@@ -196,17 +202,23 @@ int main(int argc, char** argv) {
 						//FlightController(n.getCurrentCoord(i), 0.0);
 
 
-					Coord temp2;
-					temp2 = n.getCurrentCoord(i);
-					myFC.setCurrentLocation(temp2);
+					/*Coord temp;
+					temp = n.getCurrentCoord(i);
+					myFC.setCurrentLocation(temp);
 
 					if (i < pathSize - 1) {
-						Coord temp;
-						temp = n.getCurrentCoord(i + 1);
-						myFC.setFutureLocation(temp);
+						Coord temp2;
+						temp2 = n.getCurrentCoord(i + 1);
+						
+					}*/
+
+					myFC.setCurrentLocation(n.getCurrentCoord(i));
+
+					if (i < pathSize - 1) {
+						myFC.setFutureLocation(n.getCurrentCoord(i + 1));
 					}
-
-
+					
+					
 
 					if (myFC.MoveDrone(battery)) {
 
@@ -273,6 +285,28 @@ int main(int argc, char** argv) {
 
 
 					} else {
+
+
+						setCursorPosition(0, 1);
+						HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+						SetConsoleTextAttribute(hConsole, 15);
+						// OUTPUT WINDOW
+						battery->update(); // TOP BAR
+						setCursorPosition(0, 3);
+						w.displayWeather();
+						setCursorPosition(0, 5);
+						cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
+							<< " Current Nav Speed: " << n.getNavSensorSpeed(myFC.getSpeed()) <<
+							"\tCurrent Drone Direction: " << myFC.getPathHistory().back().direction << " " << endl;
+						setCursorPosition(0, 8);
+						cout << outputLidarData(myFC.getLidarData()) << endl;
+						// -> PUT COUT'S HERE FOR NEXT
+						setCursorPosition(0, 15);
+						cout << "                                                   \n                                                                   ";
+
+						// cout w.weather
+						Sleep(1000);
+
 
 
 						//hovermode on
