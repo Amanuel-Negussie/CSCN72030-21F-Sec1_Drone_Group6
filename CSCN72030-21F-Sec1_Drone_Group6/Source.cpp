@@ -238,7 +238,8 @@ int main(int argc, char** argv) {
 						setCursorPosition(0, 3);
 						w.displayWeather();
 						setCursorPosition(0, 5);
-						cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
+						cout << "                                                                                         " << endl;;
+						cout << "Current Location: " << path.at(i).getX() << ", " << path.at(i).getY()
 							<< " Current Nav Speed: " << n.getNavSensorSpeed(myFC.getSpeed()) <<
 							"\tCurrent Drone Direction: " << myFC.getPathHistory().back().direction << " " << endl;
 						setCursorPosition(0, 8);
