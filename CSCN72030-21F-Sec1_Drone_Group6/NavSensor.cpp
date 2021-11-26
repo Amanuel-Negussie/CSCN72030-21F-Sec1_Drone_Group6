@@ -2,7 +2,6 @@
 
 NavSensor::NavSensor(){
 	this->gridSize = 0;
-	this->gridSize = 0;
 	this->home = Coord(1, 1);
 }
 
@@ -38,10 +37,10 @@ void NavSensor::initPath() {
 	fstream fileStream;
 
 	switch (this->gridSize) {
-	case 1:
+	case 5:
 		fileStream.open("Coords/initalOne.txt", ios::in);
 		break;
-	case 2:
+	case 10:
 		fileStream.open("Coords/initalTwo.txt", ios::in);
 		break;
 	default:
@@ -138,7 +137,7 @@ vector<Coord> NavSensor::updatePathCollisionFoundAt(int index) {
 
 	} else {
 		//(alert)
-		//Alert a = Alert(301); // 301 - Collision not found // should never happen
+		Alert a = Alert(301); // 301 - Collision not found // should never happen
 	}
 
 	return this->path;
@@ -219,7 +218,7 @@ vector<Coord> NavSensor::updatePathGoHome(int index) {
 
 	} else {
 		//already home
-		//Alert a = Alert(302); // 302 - Unable to go home (Already Home)
+		Alert a = Alert(302); // 302 - Unable to go home (Already Home)
 	}
 
 	return this->path;

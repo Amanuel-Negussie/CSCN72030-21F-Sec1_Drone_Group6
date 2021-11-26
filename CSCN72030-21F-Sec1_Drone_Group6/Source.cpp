@@ -41,8 +41,7 @@ int main(int argc, char** argv) {
 		string str;
 		if (input > 5 && input < 0) {
 			leave = false;
-		}
-		else {
+		} else {
 			switch (input) {
 			case 1:
 				select = 1;
@@ -58,14 +57,13 @@ int main(int argc, char** argv) {
 				break;
 			case 4:
 				w = Weather("Sunny");
-				
+
 				cout << "Please enter the weather or type 'Custom' to create one: ";
 				cin >> str;
 				cout << endl;
 				if (str != "Custom") {
 					w = Weather(str);
-				}
-				else {
+				} else {
 					w.createCustomWeather();
 				}
 
@@ -86,10 +84,15 @@ int main(int argc, char** argv) {
 			cout << "\t\t\t Add a Field\n\t\t\t-------------------\n";
 			cout << "Enter the field ID/Name :";
 			cin >> name;
-			cout << "\n 1. 5x5 Grid\n 2. 10x10Grid\n";
+			cout << "\n 1. 5x5 Grid\n 2. 10x10 Grid (Experimental ~ Not Working)\n";
 			cout << "Please enter a field Size [1,2] :";
 			cin >> size;
 
+			if (size == 2) {
+				size = 10;
+			} else {
+				size = 5;
+			}
 
 
 			// Create and open a text file
@@ -139,8 +142,7 @@ int main(int argc, char** argv) {
 				int gridSelection = stoi(gridSelectionFromFile);
 				n = NavSensor(gridSelection);
 				select = 4;
-			}
-			else {
+			} else {
 				cout << "\n Incorrect Name.... <Enter> to continue";
 				cin >> name;
 				leave = false; // go back to menu after field is watered
@@ -157,19 +159,22 @@ int main(int argc, char** argv) {
 
 			leave = false; // go back to menu after field is watered
 			batteryWater* battery = new batteryWater();
-			battery->fill(100);
-			battery->swapBattery();
+			//battery->fill(100);
+			//battery->swapBattery();
 			Coord startingLocation(1, 1);
 			FlightController myFC = FlightController(startingLocation, NORTH);
-			myFC.readCollisionDATFile(COLLISIONS_DAT_FILENAME);
-		
 			
+			myFC.readCollisionDATFile(COLLISIONS_DAT_FILENAME);
+
+
 			vector<Coord> path = n.getNavSensorPath();
 			int pathSize = path.size();
-			
+
 			bool OnTheWayHomeWater = false;
 			bool OnTheWayHomeBattery = false;
 			system("cls");
+			setCursorPosition(0, 0);
+			cout << "                                                                                                                                                 ";
 			battery->initScreen();
 			if (w.safeToFly) {
 				battery->openHatch();
@@ -177,150 +182,181 @@ int main(int argc, char** argv) {
 				for (int i = 0; i < pathSize; i++) {
 
 					//Check next position for a collision (Amanuel)
-					batteryWater* battery = new batteryWater();
-					NavSensor n = NavSensor();
-					vector<Coord> path = n.getNavSensorPath();
-					int pathSize = path.size();
-					bool safetofly = true;
-					battery->initScreen();
-					bool OnTheWayHomeWater = false;
-					bool OnTheWayHomeBattery = false;
+					//batteryWater* battery = new batteryWater();
+					//NavSensor n = NavSensor();
+					//vector<Coord> path = n.getNavSensorPath();
+					//int pathSize = path.size();
+					//bool safetofly = true;
+					//battery->initScreen();
+					//bool OnTheWayHomeWater = false;
+					//bool OnTheWayHomeBattery = false;
 
-				
-					if (safetofly) {
-						battery->openHatch();
 
-						for (int i = 0; i < pathSize; i++) {
+					//if (safetofly) {
+						//battery->openHatch();
 
-							//Check next position for a collision (Amanuel)
-							//
-							//amanuel returns true/false, use index of collision
+					//for (int i = 0; i < pathSize; i++) {
 
-							//FlightController(n.getCurrentCoord(i), 0.0);
+						//Check next position for a collision (Amanuel)
+						//
+						//amanuel returns true/false, use index of collision
+
+						//FlightController(n.getCurrentCoord(i), 0.0);
+
+
+					/*Coord temp;
+					temp = n.getCurrentCoord(i);
+					myFC.setCurrentLocation(temp);
+
+					if (i < pathSize - 1) {
+						Coord temp2;
+						temp2 = n.getCurrentCoord(i + 1);
+						
+					}*/
+
+					myFC.setCurrentLocation(n.getCurrentCoord(i));
+
+					if (i < pathSize - 1) {
+						myFC.setFutureLocation(n.getCurrentCoord(i + 1));
+					} else {
+						myFC.setFutureLocation(n.getCurrentCoord(i));
+					}
+					
 					
 
-								Coord temp2;
-								temp2 = n.getCurrentCoord(i);
-								myFC.setCurrentLocation(temp2);
-
-								if (i < pathSize - 1) {
-									Coord temp;
-									temp = n.getCurrentCoord(i + 1);
-									myFC.setFutureLocation(temp);
-								}
+					if (myFC.MoveDrone(battery)) {
 
 
+						//Check water (Danny)
+						//
+						//Danny returns something
 
-								if (myFC.MoveDrone(battery)) {
-
-
-									//Check water (Danny)
-									//
-									//Danny returns something
-
-									// -> DISPLAY
+						// -> DISPLAY
 
 
-									setCursorPosition(0, 1);
-									HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-									SetConsoleTextAttribute(hConsole, 15);
-									// OUTPUT WINDOW
-									battery->update(); // TOP BAR
-									setCursorPosition(0, 3);
-									w.displayWeather();
-									setCursorPosition(0, 5);
-									cout << "\nCurrent Location: " << path.at(i).getX() << ", " << path.at(i).getY()
-										<< " Current Nav Speed: " << n.getNavSensorSpeed(myFC.getSpeed()) <<
-										"\tCurrent Drone Direction: " << myFC.getPathHistory().back().direction << " " << endl;
-									setCursorPosition(0, 8);
-										cout<<outputLidarData(myFC.getLidarData())<<endl;
-									// -> PUT COUT'S HERE FOR NEXT
-										setCursorPosition(0, 15);
-										cout << "                                                   \n                                                                   ";
-										
-						  // cout w.weather
-									Sleep(1000);
+						setCursorPosition(0, 1);
+						HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+						SetConsoleTextAttribute(hConsole, 15);
+						// OUTPUT WINDOW
+						battery->update(); // TOP BAR
+						setCursorPosition(0, 3);
+						w.displayWeather();
+						setCursorPosition(0, 5);
+						cout << "                                                                                         " << endl;;
+						cout << "Current Location: " << path.at(i).getX() << ", " << path.at(i).getY()
+							<< " Current Nav Speed: " << n.getNavSensorSpeed(myFC.getSpeed()) <<
+							"\tCurrent Drone Direction: " << myFC.getPathHistory().back().direction << " " << endl;
+						setCursorPosition(0, 8);
+						cout << outputLidarData(myFC.getLidarData()) << endl;
+						// -> PUT COUT'S HERE FOR NEXT
+						setCursorPosition(0, 15);
+						cout << "                                                   \n                                                                   ";
+
+						// cout w.weather
+						Sleep(1000);
 
 
-									// <- DISPLAY
+						// <- DISPLAY
 
-									if (battery->getCurrentBattery() < battery->batteryAlert && OnTheWayHomeBattery == false || battery->getWaterStorage() <= 0 && OnTheWayHomeWater == false) {
-										battery->closeHatch();
-										OnTheWayHomeBattery = true;
-										OnTheWayHomeWater = true;
-										path = n.updatePathGoHome(i);
-										pathSize = path.size();
-									}
-
-									if (n.checkIfHome(i) && OnTheWayHomeBattery == true) { // may crash ------------------------------
-										OnTheWayHomeBattery = false;
-										battery->startCharging();
-										while (battery->getCurrentBattery() < 100) {
-
-
-											battery->update();
-											Sleep(100);
-
-										}
-										battery->endCharging();
-										battery->update();
-										battery->openHatch();
-									}
-									if (n.checkIfHome(i) && OnTheWayHomeWater == true) { // may crash ------------------------------
-
-										OnTheWayHomeWater = false;
-										battery->fill(100);
-										battery->openHatch();
-									}
-
-
-
-								}
-								else {
-
-
-									//hovermode on
-									path = n.updatePathCollisionFoundAt(i);
-									//path = n.updatePathGoHome(i);
-									pathSize = path.size();
-									//ask user if go home or create new path
-									//if yes update Path (go around collision)
-									//if no, update path to go home
-
-									//amanuel functions here
-
-
-								}
-
-							} // considered taking this out because double use of MoveDrone wasn't helping with rendering -Amanuel Negussie
-
-
+						if (battery->getCurrentBattery() < battery->batteryAlert && OnTheWayHomeBattery == false || battery->getWaterStorage() <= 0 && OnTheWayHomeWater == false) {
+							battery->closeHatch();
+							OnTheWayHomeBattery = true;
+							OnTheWayHomeWater = true;
+							path = n.updatePathGoHome(i);
+							pathSize = path.size();
 						}
-						//viewPathHistory(myFC.getPathHistory());
-						//cout << "Total Time : " << calculateTotalTime(myFC.getPathHistory());
-						system("cls");
+
+						if (n.checkIfHome(i) && OnTheWayHomeBattery == true) { // may crash ------------------------------
+							OnTheWayHomeBattery = false;
+							battery->startCharging();
+							while (battery->getCurrentBattery() < 100) {
 
 
-						cout << "The total time it took to get to final destination is " << fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
-						cout << "HERE IS THE FLIGHT PATH HISTORY " << endl;
-						viewPathHistory(myFC.getPathHistory());
-						//writePathHistoryToDATFile(myFC.getPathHistory(),PATH_HISTORY_DAT_FILENAME);
-						//writePathHistoryToTXTFile(myFC.getPathHistory(), PATH_HISTORY_TXT_FILENAME);
+								battery->update();
+								Sleep(100);
+
+							}
+							battery->endCharging();
+							battery->update();
+							battery->openHatch();
+						}
+						if (n.checkIfHome(i) && OnTheWayHomeWater == true) { // may crash ------------------------------
+
+							OnTheWayHomeWater = false;
+							battery->fill(100);
+							battery->openHatch();
+						}
 
 
-						system("pause");
-					} // if temp
-					
-				} // while leave == false
-				else {
-					system("cls");
-					cout << "UNSAFE TO FLY\n";
-					system("pause");
+
+					} else {
+
+
+						setCursorPosition(0, 1);
+						HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+						SetConsoleTextAttribute(hConsole, 15);
+						// OUTPUT WINDOW
+						battery->update(); // TOP BAR
+						setCursorPosition(0, 3);
+						w.displayWeather();
+						setCursorPosition(0, 5);
+						cout << "                                                                                         " << endl;;
+						cout << "Current Location: " << path.at(i).getX() << ", " << path.at(i).getY()
+							<< " Current Nav Speed: " << n.getNavSensorSpeed(myFC.getSpeed()) <<
+							"\tCurrent Drone Direction: " << myFC.getPathHistory().back().direction << " " << endl;
+						setCursorPosition(0, 8);
+						cout << outputLidarData(myFC.getLidarData()) << endl;
+						// -> PUT COUT'S HERE FOR NEXT
+						setCursorPosition(0, 15);
+						cout << "                                                   \n                                                                   ";
+
+						// cout w.weather
+						Sleep(1000);
+
+
+
+						//hovermode on
+						path = n.updatePathCollisionFoundAt(i);
+						//path = n.updatePathGoHome(i);
+						pathSize = path.size();
+						//ask user if go home or create new path
+						//if yes update Path (go around collision)
+						//if no, update path to go home
+
+						//amanuel functions here
+
+
+					}
+
+					//} // considered taking this out because double use of MoveDrone wasn't helping with rendering -Amanuel Negussie
+
+
 				}
+				//viewPathHistory(myFC.getPathHistory());
+				//cout << "Total Time : " << calculateTotalTime(myFC.getPathHistory());
+				system("cls");
+
+
+				cout << "The total time it took to get to final destination is " << fixed << setprecision(2) << calculateTotalTime(myFC.getPathHistory()) << " seconds." << endl;
+				cout << "--------------------------------" << endl;
+				viewPathHistory(myFC.getPathHistory());
+		
+				writePathHistoryToTXTFile(myFC.getPathHistory(), PATH_HISTORY_TXT_FILENAME);
+
+
+				system("pause");
+				//} // if temp
+
+			}// while leave == false
+			else {
+				system("cls");
+				cout << "UNSAFE TO FLY\n";
+				system("pause");
 			}
-			
 		}
 
-		return 0;
 	}
+
+	return 0;
+}
 
