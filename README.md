@@ -19,7 +19,7 @@
     <a href="https://github.com/nickvprince/CSCN72030-21F-Sec1_Drone_Group6"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=qiv4vR5ux-8">View Demo</a>
     ·
     <a href="https://github.com/nickvprince/CSCN72030-21F-Sec1_Drone_Group6/issues">Report Bug</a>
     ·
